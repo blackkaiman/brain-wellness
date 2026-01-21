@@ -1400,6 +1400,11 @@
             color: var(--gold);
         }
 
+        /* Mobile slider hidden on desktop */
+        .brands-slider-mobile {
+            display: none;
+        }
+
         /* ============ CLINIC DETAILS EXPANDED ============ */
         .clinic-expanded {
             padding: 80px 60px;
@@ -1726,27 +1731,74 @@
                 grid-column: span 2;
             }
 
-            .brands-grid {
-                grid-template-columns: repeat(2, 1fr);
+            /* Hide desktop grid on mobile, show slider */
+            .brands-desktop {
+                display: none !important;
+            }
+
+            .brands-slider-mobile {
+                display: block;
+                width: 100%;
+                overflow: hidden;
+                margin: 0 -20px;
+                padding: 0 20px;
+            }
+
+            .brands-slider-track {
+                display: flex;
                 gap: 15px;
+                animation: slideBrandsMobile 25s linear infinite;
+                width: max-content;
             }
 
-            .brand-card {
-                min-height: 150px;
-                padding: 20px 15px;
+            .brand-card-mobile {
+                flex-shrink: 0;
+                width: 200px;
+                min-height: 160px;
+                padding: 25px 20px;
+                background: linear-gradient(145deg, rgba(201, 169, 98, 0.08), rgba(10, 10, 10, 0.95));
+                border: 1px solid rgba(201, 169, 98, 0.15);
+                border-radius: 12px;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
             }
 
-            .brand-logo {
+            .brand-card-mobile .brand-logo {
                 max-width: 100px;
                 height: 45px;
+                object-fit: contain;
+                filter: brightness(0) invert(1);
+                transition: filter 0.3s ease;
             }
 
-            .brand-name {
+            .brand-card-mobile .brand-name {
+                font-family: var(--font-heading);
                 font-size: 14px;
+                font-weight: 600;
+                color: var(--white);
+                letter-spacing: 1px;
+                margin: 0;
             }
 
-            .brand-author {
+            .brand-card-mobile .brand-author {
                 font-size: 10px;
+                color: var(--gold);
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                margin: 0;
+            }
+
+            @keyframes slideBrandsMobile {
+                0% {
+                    transform: translateX(0);
+                }
+                100% {
+                    transform: translateX(-50%);
+                }
             }
 
             .clinic-service-full {
@@ -2844,7 +2896,8 @@
             <p class="section-subtitle">Partener oficial al liderilor globali în biohacking</p>
         </div>
 
-        <div class="brands-grid">
+        <!-- Desktop Grid -->
+        <div class="brands-grid brands-desktop">
             <div class="brand-card">
                 <img src="images/logos/brainmd.png" alt="BrainMD" class="brand-logo">
                 <h3 class="brand-name">BRAINMD</h3>
@@ -2873,6 +2926,64 @@
                 <img src="images/logos/noordcode.png" alt="NoordCode" class="brand-logo">
                 <h3 class="brand-name">NoordCode</h3>
                 <p class="brand-author">Premium Biohacking</p>
+            </div>
+        </div>
+
+        <!-- Mobile Slider -->
+        <div class="brands-slider-mobile">
+            <div class="brands-slider-track">
+                <!-- First set -->
+                <div class="brand-card-mobile">
+                    <img src="images/logos/brainmd.png" alt="BrainMD" class="brand-logo">
+                    <h3 class="brand-name">BRAINMD</h3>
+                    <p class="brand-author">by Dr. Daniel Amen</p>
+                </div>
+                <div class="brand-card-mobile">
+                    <img src="images/logos/biosintropy.png" alt="Biosyntropy" class="brand-logo">
+                    <h3 class="brand-name">Biosyntropy</h3>
+                    <p class="brand-author">Dr. Joe Dispenza</p>
+                </div>
+                <div class="brand-card-mobile">
+                    <img src="images/logos/garybreka.png" alt="Gary Breka" class="brand-logo">
+                    <h3 class="brand-name">Gary Breka</h3>
+                    <p class="brand-author">Biohacking Expert</p>
+                </div>
+                <div class="brand-card-mobile">
+                    <img src="images/logos/Dave Asprey.png" alt="Dave Asprey" class="brand-logo">
+                    <h3 class="brand-name">Dave Asprey</h3>
+                    <p class="brand-author">Father of Biohacking</p>
+                </div>
+                <div class="brand-card-mobile">
+                    <img src="images/logos/noordcode.png" alt="NoordCode" class="brand-logo">
+                    <h3 class="brand-name">NoordCode</h3>
+                    <p class="brand-author">Premium Biohacking</p>
+                </div>
+                <!-- Duplicate for infinite loop -->
+                <div class="brand-card-mobile">
+                    <img src="images/logos/brainmd.png" alt="BrainMD" class="brand-logo">
+                    <h3 class="brand-name">BRAINMD</h3>
+                    <p class="brand-author">by Dr. Daniel Amen</p>
+                </div>
+                <div class="brand-card-mobile">
+                    <img src="images/logos/biosintropy.png" alt="Biosyntropy" class="brand-logo">
+                    <h3 class="brand-name">Biosyntropy</h3>
+                    <p class="brand-author">Dr. Joe Dispenza</p>
+                </div>
+                <div class="brand-card-mobile">
+                    <img src="images/logos/garybreka.png" alt="Gary Breka" class="brand-logo">
+                    <h3 class="brand-name">Gary Breka</h3>
+                    <p class="brand-author">Biohacking Expert</p>
+                </div>
+                <div class="brand-card-mobile">
+                    <img src="images/logos/Dave Asprey.png" alt="Dave Asprey" class="brand-logo">
+                    <h3 class="brand-name">Dave Asprey</h3>
+                    <p class="brand-author">Father of Biohacking</p>
+                </div>
+                <div class="brand-card-mobile">
+                    <img src="images/logos/noordcode.png" alt="NoordCode" class="brand-logo">
+                    <h3 class="brand-name">NoordCode</h3>
+                    <p class="brand-author">Premium Biohacking</p>
+                </div>
             </div>
         </div>
 
