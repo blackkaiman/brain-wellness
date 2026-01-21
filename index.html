@@ -1,0 +1,3389 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Wellness | Mai mult decât psihologie</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --gold: #c9a962;
+            --gold-light: #d4b978;
+            --gold-dark: #a88a4a;
+            --gold-glow: rgba(201, 169, 98, 0.15);
+            --gold-glow-strong: rgba(201, 169, 98, 0.25);
+            --black: #0a0a0a;
+            --black-light: #1a1a1a;
+            --black-card: #111111;
+            --black-burgundy: linear-gradient(135deg, #0a0a0a 0%, #1a0a0a 30%, #0d0808 60%, #0a0a0a 100%);
+            --white: #ffffff;
+            --white-soft: rgba(255,255,255,0.85);
+            --white-muted: rgba(255,255,255,0.6);
+            
+            /* Premium shadows */
+            --shadow-gold-sm: 0 4px 20px rgba(201, 169, 98, 0.1);
+            --shadow-gold-md: 0 8px 40px rgba(201, 169, 98, 0.12);
+            --shadow-gold-lg: 0 15px 60px rgba(201, 169, 98, 0.15);
+            --shadow-gold-hover: 0 20px 80px rgba(201, 169, 98, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ============ WORDPRESS FULL-WIDTH OVERRIDE ============ */
+        /* Force full-width in WordPress themes */
+        .brainwellness-landing {
+            width: 100vw !important;
+            max-width: 100vw !important;
+            margin-left: calc(-50vw + 50%) !important;
+            margin-right: calc(-50vw + 50%) !important;
+            padding: 0 !important;
+            overflow-x: hidden;
+        }
+
+        /* Reset WordPress container restrictions */
+        .brainwellness-landing,
+        .brainwellness-landing * {
+            box-sizing: border-box;
+        }
+
+        /* Common WordPress theme containers - override */
+        .entry-content .brainwellness-landing,
+        .page-content .brainwellness-landing,
+        .post-content .brainwellness-landing,
+        .content-area .brainwellness-landing,
+        .site-content .brainwellness-landing,
+        .container .brainwellness-landing,
+        .wrapper .brainwellness-landing,
+        article .brainwellness-landing {
+            width: 100vw !important;
+            max-width: 100vw !important;
+            margin-left: calc(-50vw + 50%) !important;
+            padding: 0 !important;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ============ HEADER / NAVIGATION ============ */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to bottom, rgba(10,10,10,0.95), transparent);
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            background: rgba(10,10,10,0.98);
+            padding: 15px 60px;
+            backdrop-filter: blur(10px);
+        }
+
+        .header .logo {
+            opacity: 0;
+            transform: translateX(-20px);
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled .logo {
+            opacity: 1;
+            transform: translateX(0);
+            pointer-events: auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            height: 70px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--gold);
+            letter-spacing: 2px;
+            line-height: 1.1;
+        }
+
+        .logo-text span {
+            display: block;
+            font-size: 10px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            color: var(--white-muted);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .nav-main {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-link:hover {
+            color: var(--gold);
+        }
+
+        .nav-link i {
+            font-size: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-item:hover .nav-link i {
+            transform: rotate(180deg);
+        }
+
+        /* Dropdown */
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: -20px;
+            min-width: 250px;
+            background: var(--black-light);
+            border: 1px solid rgba(201, 169, 98, 0.2);
+            border-radius: 4px;
+            padding: 15px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-link {
+            display: block;
+            padding: 12px 25px;
+            color: var(--white-soft);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-link:hover {
+            color: var(--gold);
+            background: rgba(201, 169, 98, 0.1);
+            padding-left: 30px;
+        }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-icon {
+            color: var(--white);
+            font-size: 18px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-icon:hover {
+            color: var(--gold);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--gold);
+            color: var(--black);
+            font-size: 10px;
+            font-weight: 600;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lang-switch {
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            cursor: pointer;
+            padding: 5px 10px;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .lang-switch:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        /* ============ HERO SECTION ============ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a0a 30%, #0d0808 60%, #0a0a0a 100%);
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 70% 60%, rgba(139, 69, 80, 0.25) 0%, transparent 50%),
+                radial-gradient(ellipse at 75% 50%, rgba(201, 169, 98, 0.15) 0%, transparent 40%),
+                radial-gradient(ellipse at 60% 70%, rgba(120, 50, 60, 0.2) 0%, transparent 45%),
+                radial-gradient(ellipse at 80% 40%, rgba(255, 200, 150, 0.1) 0%, transparent 35%);
+        }
+
+        .hero-glow {
+            position: absolute;
+            right: 15%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 500px;
+            height: 600px;
+            background: radial-gradient(ellipse, rgba(201, 169, 98, 0.12) 0%, rgba(139, 69, 80, 0.08) 40%, transparent 70%);
+            filter: blur(60px);
+            pointer-events: none;
+        }
+
+        .hero-image {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 65%;
+            background: url('images/hero-sorina.png') right center / cover no-repeat;
+            animation: slideInFromRight 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            transform: translateX(100%);
+        }
+
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: linear-gradient(to top, var(--black) 0%, transparent 100%);
+            pointer-events: none;
+        }
+
+        @keyframes slideInFromRight {
+            0% {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+            30% {
+                opacity: 0.5;
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 80px;
+            max-width: 750px;
+        }
+
+        .hero-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 50px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+            animation-delay: 0.3s;
+        }
+
+        .hero-logo-icon {
+            height: 400px;
+            width: auto;
+        }
+
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 58px;
+            font-weight: 300;
+            line-height: 1.15;
+            margin-bottom: 40px;
+            color: var(--gold);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+            animation-delay: 0.5s;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--white);
+        }
+
+        .hero-divider {
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-dark));
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: expandWidth 0.6s ease forwards;
+            animation-delay: 0.8s;
+        }
+
+        @keyframes expandWidth {
+            0% {
+                width: 0;
+                opacity: 0;
+            }
+            100% {
+                width: 80px;
+                opacity: 1;
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 13px;
+            color: var(--white-muted);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 500;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+            animation-delay: 1s;
+        }
+
+        .hero-subtitle span {
+            color: var(--gold);
+            margin: 0 8px;
+        }
+
+        /* ============ LOGO SLOGAN IN HEADER ============ */
+        .logo-text-group {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .logo-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--gold);
+            letter-spacing: 2px;
+        }
+
+        .logo-slogan {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 11px;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--white-soft);
+            letter-spacing: 1px;
+        }
+
+        /* ============ HERO ANIMATED TITLE ============ */
+        .hero-animated-title {
+            position: relative;
+            height: 80px;
+            margin-bottom: 40px;
+            overflow: hidden;
+        }
+
+        .hero-title-word {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 58px;
+            font-weight: 300;
+            color: var(--gold);
+            position: absolute;
+            opacity: 0;
+            transform: translateX(-100%);
+            animation: slideWordIn 6s ease-in-out infinite;
+        }
+
+        .hero-title-word:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .hero-title-word:nth-child(2) {
+            animation-delay: 2s;
+        }
+
+        .hero-title-word:nth-child(3) {
+            animation-delay: 4s;
+        }
+
+        @keyframes slideWordIn {
+            0% {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+            8% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            25% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            33% {
+                opacity: 0;
+                transform: translateX(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-slogan {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            font-style: italic;
+            color: var(--white-soft);
+            letter-spacing: 2px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+            animation-delay: 1s;
+        }
+
+        /* ============ NAVIGATION BUTTONS SECTION ============ */
+        .nav-buttons-section {
+            padding: 60px 60px;
+            background: var(--black);
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn-premium {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 18px 40px;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn-premium:hover {
+            background: var(--gold);
+            color: var(--black);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-gold-md);
+        }
+
+        /* ============ PILLAR CARDS - BUTTON ALIGNMENT ============ */
+        .pillar-card {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pillar-card .pillar-btn {
+            margin-top: auto;
+        }
+
+        /* ============ PRICE STYLES ============ */
+        .price-original {
+            text-decoration: line-through;
+            color: var(--white-muted);
+            font-size: 13px;
+            font-weight: 400;
+            margin-right: 10px;
+        }
+
+        .price-discount {
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .price-reduced-note {
+            font-size: 11px;
+            color: var(--white-muted);
+            font-weight: 400;
+            margin-right: 8px;
+        }
+
+        /* ============ COMING SOON BADGE ============ */
+        .coming-soon-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--gold);
+            color: var(--black);
+            font-size: 9px;
+            font-weight: 700;
+            padding: 5px 12px;
+            border-radius: 3px;
+            letter-spacing: 1px;
+        }
+
+        .service-card {
+            position: relative;
+        }
+
+        /* ============ BRAND MENTION ============ */
+        .brand-mention {
+            text-align: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px;
+            font-style: italic;
+            color: var(--gold);
+            letter-spacing: 2px;
+            margin-top: 30px;
+            opacity: 0.8;
+        }
+
+        /* ============ FEATURED SLIDER ============ */
+        .featured-slider-wrapper {
+            width: 100%;
+            overflow: hidden;
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+
+        .featured-slider {
+            display: flex;
+            gap: 60px;
+            animation: slideLogos 25s linear infinite;
+            width: max-content;
+        }
+
+        @keyframes slideLogos {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .featured-slider:hover {
+            animation-play-state: paused;
+        }
+
+        .featured-logos {
+            display: none;
+        }
+
+        /* ============ FOOTER NEWSLETTER ============ */
+        .footer-newsletter {
+            max-width: 500px;
+            margin: 0 auto 40px;
+            text-align: center;
+            padding: 40px;
+            background: var(--black-card);
+            border: 1px solid rgba(201, 169, 98, 0.2);
+            border-radius: 12px;
+        }
+
+        .footer-newsletter h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .newsletter-form input[type="email"] {
+            flex: 1;
+            min-width: 200px;
+            padding: 15px 20px;
+            background: var(--black);
+            border: 1px solid rgba(201, 169, 98, 0.3);
+            border-radius: 6px;
+            color: var(--white);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+        }
+
+        .newsletter-form input[type="email"]:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .newsletter-form button {
+            padding: 15px 30px;
+            background: var(--gold);
+            border: none;
+            color: var(--black);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        /* ============ BRANDS GRID UPDATE FOR 5 ITEMS ============ */
+        .brands-grid {
+            grid-template-columns: repeat(5, 1fr);
+        }
+
+        @media (max-width: 1024px) {
+            .brands-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .brands-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-animated-title {
+                height: 50px;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+            }
+
+            .hero-title-word {
+                font-size: 32px;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                text-align: center;
+                animation: slideWordInMobile 6s ease-in-out infinite;
+            }
+
+            .hero-title-word:nth-child(1) {
+                animation-delay: 0s;
+            }
+
+            .hero-title-word:nth-child(2) {
+                animation-delay: 2s;
+            }
+
+            .hero-title-word:nth-child(3) {
+                animation-delay: 4s;
+            }
+
+            @keyframes slideWordInMobile {
+                0% {
+                    opacity: 0;
+                    transform: translateX(-150%);
+                }
+                8% {
+                    opacity: 1;
+                    transform: translateX(-50%);
+                }
+                25% {
+                    opacity: 1;
+                    transform: translateX(-50%);
+                }
+                33% {
+                    opacity: 0;
+                    transform: translateX(-50%);
+                }
+                100% {
+                    opacity: 0;
+                    transform: translateX(-50%);
+                }
+            }
+
+            .hero-slogan {
+                font-size: 14px;
+            }
+
+            .nav-buttons-section {
+                padding: 40px 20px;
+                gap: 15px;
+            }
+
+            .nav-btn-premium {
+                padding: 14px 25px;
+                font-size: 11px;
+            }
+
+            .footer-newsletter {
+                padding: 30px 20px;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form input[type="email"],
+            .newsletter-form button {
+                width: 100%;
+            }
+        }
+
+        /* ============ QUOTE SECTION ============ */
+        .quote-section {
+            padding: 120px 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 60px;
+            background: var(--black);
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .quote-manifest {
+            text-align: center;
+            max-width: 900px;
+        }
+
+        .quote-manifest .quote-text {
+            padding-left: 0;
+        }
+
+        .quote-manifest .quote-text::before {
+            display: none;
+        }
+
+        .quote-founder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .quote-image {
+            width: 280px;
+            height: 350px;
+            border-radius: 200px 200px 20px 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: var(--shadow-gold-lg);
+        }
+
+        .quote-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .quote-image::before {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            background: linear-gradient(180deg, var(--gold), var(--gold-dark), transparent);
+            border-radius: inherit;
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        .quote-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 2px solid var(--gold);
+            border-radius: inherit;
+            opacity: 0.3;
+        }
+
+        .founder-caption {
+            text-align: center;
+        }
+
+        .founder-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 500;
+            color: var(--gold);
+            margin-bottom: 5px;
+        }
+
+        .founder-title {
+            font-size: 13px;
+            color: var(--white-muted);
+            letter-spacing: 1px;
+        }
+
+        .quote-content {
+            flex: 1;
+            max-width: 900px;
+        }
+
+        .quote-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-style: italic;
+            font-weight: 300;
+            line-height: 1.6;
+            color: var(--white);
+            margin-bottom: 25px;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .quote-text::before {
+            content: '"';
+            position: absolute;
+            left: -20px;
+            top: -20px;
+            font-size: 100px;
+            color: var(--gold);
+            opacity: 0.3;
+            font-family: Georgia, serif;
+        }
+
+        .quote-author {
+            font-size: 14px;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .quote-description {
+            text-align: center;
+        }
+
+        .quote-description h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 400;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .quote-description p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: var(--white-soft);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ============ PILLARS SECTION (3 Cards) ============ */
+        .pillars-section {
+            padding: 100px 60px;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a0a 30%, #0d0808 60%, #0a0a0a 100%);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+            font-weight: 400;
+            color: var(--white);
+            margin-bottom: 15px;
+        }
+
+        .section-title span {
+            color: var(--gold);
+        }
+
+        .section-subtitle {
+            font-size: 14px;
+            color: var(--white-muted);
+            letter-spacing: 1px;
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pillar-card {
+            background: var(--black-card);
+            border: 1px solid rgba(201, 169, 98, 0.15);
+            border-radius: 8px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-gold-sm);
+        }
+
+        .pillar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .pillar-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, var(--gold-glow) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(201, 169, 98, 0.4);
+            box-shadow: var(--shadow-gold-hover);
+        }
+
+        .pillar-card:hover::before {
+            opacity: 1;
+        }
+
+        .pillar-card:hover::after {
+            opacity: 1;
+        }
+
+        .pillar-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--gold);
+            border-radius: 50%;
+            color: var(--gold);
+            font-size: 24px;
+        }
+
+        .pillar-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26px;
+            font-weight: 500;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .pillar-description {
+            font-size: 14px;
+            color: var(--white-muted);
+            line-height: 1.7;
+            margin-bottom: 25px;
+            min-height: 80px;
+        }
+
+        .pillar-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border-radius: 3px;
+        }
+
+        .pillar-btn:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        /* ============ BENEFITS SECTION ============ */
+        .benefits-section {
+            padding: 100px 60px;
+            background: var(--black);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .benefit-item {
+            text-align: center;
+            padding: 30px 20px;
+            border: 1px solid rgba(201, 169, 98, 0.15);
+            border-radius: 8px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            background: var(--black-card);
+            box-shadow: var(--shadow-gold-sm);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: benefitFadeIn 0.8s ease forwards;
+        }
+
+        @keyframes benefitFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .benefit-item::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, var(--gold-glow-strong) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.6s ease;
+            pointer-events: none;
+        }
+
+        .benefit-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, var(--gold-glow) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .benefit-item:hover {
+            border-color: var(--gold);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-gold-hover);
+        }
+
+        .benefit-item:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .benefit-item:hover::after {
+            opacity: 1;
+        }
+
+        .benefit-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            color: var(--gold);
+            font-size: 28px;
+            position: relative;
+            transition: all 0.5s ease;
+            background: transparent;
+        }
+
+        .benefit-icon::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark), var(--gold));
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.4s ease;
+        }
+
+        .benefit-item:hover .benefit-icon {
+            transform: scale(1.1) rotate(5deg);
+            border-color: transparent;
+            color: var(--black);
+            background: var(--gold);
+            box-shadow: 0 0 30px rgba(201, 169, 98, 0.5);
+        }
+
+        .benefit-item:hover .benefit-icon::before {
+            opacity: 1;
+        }
+
+        .benefit-icon i {
+            transition: transform 0.4s ease;
+        }
+
+        .benefit-item:hover .benefit-icon i {
+            transform: scale(1.15);
+        }
+
+        .benefit-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--white);
+            line-height: 1.4;
+            transition: color 0.3s ease;
+        }
+
+        .benefit-item:hover .benefit-title {
+            color: var(--gold);
+        }
+
+        /* ============ BRANDS SECTION ============ */
+        .brands-section {
+            padding: 100px 60px;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a0a 30%, #0d0808 60%, #0a0a0a 100%);
+        }
+
+        .brands-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .brand-card {
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--black-card);
+            border: 1px solid rgba(201, 169, 98, 0.15);
+            border-radius: 12px;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-gold-sm);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 180px;
+        }
+
+        .brand-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .brand-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, var(--gold-glow) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .brand-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-gold-hover);
+        }
+
+        .brand-card:hover::before {
+            opacity: 1;
+        }
+
+        .brand-card:hover::after {
+            opacity: 1;
+        }
+
+        .brand-logo {
+            width: 100%;
+            max-width: 140px;
+            height: 60px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+            opacity: 0.8;
+            transition: all 0.4s ease;
+            margin-bottom: 15px;
+        }
+
+        .brand-card:hover .brand-logo {
+            transform: scale(1.05);
+            opacity: 1;
+            filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(5deg);
+        }
+
+        .brand-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 5px;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+
+        .brand-card:hover .brand-name {
+            color: var(--gold);
+            opacity: 1;
+        }
+
+        .brand-author {
+            font-size: 11px;
+            color: var(--white-muted);
+            font-style: italic;
+            letter-spacing: 0.5px;
+        }
+
+        .brands-note {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 14px;
+            color: var(--white-muted);
+            font-style: italic;
+        }
+
+        .brands-note strong {
+            color: var(--gold);
+        }
+
+        /* ============ CLINIC DETAILS EXPANDED ============ */
+        .clinic-expanded {
+            padding: 80px 60px;
+            background: var(--black);
+        }
+
+        .clinic-service-full {
+            max-width: 900px;
+            margin: 0 auto 60px;
+            padding: 50px;
+            background: var(--black-card);
+            border: 1px solid rgba(201, 169, 98, 0.2);
+            border-radius: 12px;
+            box-shadow: var(--shadow-gold-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .clinic-service-full::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        .clinic-service-full::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at top center, var(--gold-glow) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .clinic-service-full:last-child {
+            margin-bottom: 0;
+        }
+
+        .clinic-service-full h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            font-weight: 500;
+            color: var(--gold);
+            margin-bottom: 25px;
+        }
+
+        .clinic-service-full p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: var(--white-soft);
+            margin-bottom: 15px;
+        }
+
+        .clinic-service-full ul {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .clinic-service-full ul li {
+            padding: 8px 0 8px 25px;
+            position: relative;
+            color: var(--white-soft);
+            font-size: 14px;
+        }
+
+        .clinic-service-full ul li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
+
+        .clinic-service-full .service-highlight {
+            margin: 25px 0;
+            padding: 20px 25px;
+            background: rgba(201, 169, 98, 0.08);
+            border-left: 3px solid var(--gold);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .clinic-service-full .service-highlight h4 {
+            font-size: 16px;
+            color: var(--gold);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .price-info {
+            margin-top: 30px;
+            padding: 25px;
+            background: rgba(201, 169, 98, 0.1);
+            border-radius: 8px;
+        }
+
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .price-item:last-child {
+            border-bottom: none;
+        }
+
+        .price-label {
+            color: var(--white-soft);
+            font-size: 14px;
+        }
+
+        .price-value {
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        /* ============ CONTACT FORM ============ */
+        .contact-form-section {
+            padding: 80px 60px;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a0a 30%, #0d0808 60%, #0a0a0a 100%);
+        }
+
+        .contact-form-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            background: var(--black-card);
+            padding: 50px;
+            border: 1px solid rgba(201, 169, 98, 0.2);
+            border-radius: 12px;
+            box-shadow: var(--shadow-gold-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        .contact-form::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at top center, var(--gold-glow) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            color: var(--gold);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px 20px;
+            background: var(--black);
+            border: 1px solid rgba(201, 169, 98, 0.3);
+            border-radius: 6px;
+            color: var(--white);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: var(--gold);
+            border: none;
+            color: var(--black);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        .programare-btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 15px 35px;
+            background: var(--gold);
+            color: var(--black);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .programare-btn:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        /* ============ VIDEO TESTIMONIAL ============ */
+        .video-testimonial {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            background: var(--black-card);
+            border: 1px solid rgba(201, 169, 98, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-gold-md);
+            position: relative;
+        }
+
+        .video-testimonial::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, var(--gold-glow) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a0a 30%, #0d0808 60%, #0a0a0a 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--white-muted);
+        }
+
+        .video-placeholder i {
+            font-size: 60px;
+            color: var(--gold);
+            margin-bottom: 20px;
+            opacity: 0.6;
+            text-shadow: 0 0 30px rgba(201, 169, 98, 0.5);
+        }
+
+        .video-placeholder p {
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        /* ============ RESPONSIVE - NEW SECTIONS ============ */
+        @media (max-width: 1024px) {
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .benefit-item:last-child {
+                grid-column: span 2;
+            }
+
+            .brands-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .quote-section {
+                padding: 80px 40px;
+            }
+
+            .quote-text {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .benefits-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+            }
+
+            .benefit-item:last-child {
+                grid-column: span 2;
+            }
+
+            .brands-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .brand-card {
+                min-height: 150px;
+                padding: 20px 15px;
+            }
+
+            .brand-logo {
+                max-width: 100px;
+                height: 45px;
+            }
+
+            .brand-name {
+                font-size: 14px;
+            }
+
+            .brand-author {
+                font-size: 10px;
+            }
+
+            .clinic-service-full {
+                padding: 30px 20px;
+            }
+
+            .contact-form {
+                padding: 30px 20px;
+            }
+
+            .video-placeholder {
+                height: 250px;
+            }
+
+            .quote-section {
+                padding: 60px 20px;
+                gap: 40px;
+            }
+
+            .quote-text {
+                font-size: 20px;
+                line-height: 1.5;
+            }
+
+            .quote-author {
+                font-size: 12px;
+                letter-spacing: 1px;
+            }
+
+            .quote-image {
+                width: 220px;
+                height: 280px;
+            }
+
+            .founder-name {
+                font-size: 20px;
+            }
+
+            .quote-description h3 {
+                font-size: 24px;
+            }
+
+            .quote-description p {
+                font-size: 14px;
+            }
+        }
+
+        /* ============ CLINIC SECTION ============ */
+        .clinic-section {
+            padding: 100px 60px;
+            background: var(--black);
+        }
+
+        .clinic-header {
+            margin-bottom: 50px;
+        }
+
+        .clinic-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
+            font-weight: 400;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        .clinic-title span {
+            color: var(--white);
+            font-weight: 300;
+        }
+
+        .clinic-subtitle {
+            font-size: 14px;
+            color: var(--white-muted);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--black-card);
+            border: 1px solid rgba(201, 169, 98, 0.15);
+            border-radius: 6px;
+            padding: 35px 25px;
+            text-align: center;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-gold-sm);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, var(--gold-glow) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .service-card:hover {
+            border-color: var(--gold);
+            box-shadow: var(--shadow-gold-lg);
+            transform: translateY(-5px);
+        }
+
+        .service-card:hover::after {
+            opacity: 1;
+        }
+
+        .service-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-weight: 500;
+            color: var(--white);
+            margin-bottom: 15px;
+        }
+
+        .service-description {
+            font-size: 13px;
+            color: var(--white-muted);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .service-btn {
+            display: inline-block;
+            padding: 10px 25px;
+            border: 1px solid rgba(201, 169, 98, 0.5);
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border-radius: 3px;
+        }
+
+        .service-btn:hover {
+            background: var(--gold);
+            color: var(--black);
+            border-color: var(--gold);
+        }
+
+        /* ============ BIOHACKING SECTION ============ */
+        .biohacking-section {
+            padding: 100px 60px;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a0a 30%, #0d0808 60%, #0a0a0a 100%);
+        }
+
+        /* ============ ACADEMY SECTION ============ */
+        .academy-section {
+            padding: 100px 60px;
+            background: var(--black);
+        }
+
+        /* ============ PRODUCTS CAROUSEL ============ */
+        .products-section {
+            padding: 80px 60px;
+            background: var(--black);
+            overflow: hidden;
+        }
+
+        .products-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .products-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
+            font-weight: 400;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        .products-header p {
+            font-size: 14px;
+            color: var(--white-muted);
+        }
+
+        .products-carousel {
+            display: flex;
+            gap: 30px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 20px 0;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .products-carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .product-card {
+            flex: 0 0 280px;
+            background: var(--black-card);
+            border: 1px solid rgba(201, 169, 98, 0.15);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow-gold-sm);
+            position: relative;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center bottom, var(--gold-glow) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+            box-shadow: var(--shadow-gold-hover);
+        }
+
+        .product-card:hover::before {
+            opacity: 1;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #252525 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 15px;
+            transition: transform 0.4s ease;
+        }
+
+        .product-image img[src=""],
+        .product-image img:not([src]) {
+            display: none;
+        }
+
+        .product-icon {
+            font-size: 60px;
+            color: var(--gold);
+            opacity: 0.6;
+            transition: all 0.4s ease;
+        }
+
+        .product-card:hover .product-icon {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--gold);
+            color: var(--black);
+            font-size: 10px;
+            font-weight: 600;
+            padding: 5px 12px;
+            border-radius: 3px;
+            letter-spacing: 1px;
+        }
+
+        .product-info {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-category {
+            font-size: 11px;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .product-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            font-weight: 500;
+            color: var(--white);
+            margin-bottom: 12px;
+            line-height: 1.3;
+            min-height: 52px;
+        }
+
+        .product-price {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 15px;
+            margin-top: auto;
+        }
+
+        .product-price span {
+            font-size: 13px;
+            color: var(--white-muted);
+            font-weight: 400;
+            margin-left: 5px;
+        }
+
+        .product-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            text-align: center;
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .product-btn:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .carousel-btn {
+            width: 50px;
+            height: 50px;
+            border: 1px solid var(--gold);
+            background: transparent;
+            color: var(--gold);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .carousel-btn:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        .view-all-btn {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 15px 40px;
+            background: var(--gold);
+            color: var(--black);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .view-all-btn:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        .products-footer {
+            text-align: center;
+        }
+
+        /* ============ TESTIMONIALS SECTION ============ */
+        .testimonials-section {
+            padding: 100px 60px;
+            background: var(--black);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: stretch;
+        }
+
+        .testimonial-card {
+            background: var(--black-card);
+            border: 1px solid rgba(201, 169, 98, 0.15);
+            border-radius: 8px;
+            padding: 35px;
+            padding-top: 50px;
+            position: relative;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-gold-sm);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .testimonial-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, var(--gold-glow) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .testimonial-card:hover {
+            border-color: var(--gold);
+            box-shadow: var(--shadow-gold-lg);
+            transform: translateY(-5px);
+        }
+
+        .testimonial-card:hover::after {
+            opacity: 1;
+        }
+
+        .testimonial-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            font-style: italic;
+            color: var(--white-soft);
+            line-height: 1.7;
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: auto;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            min-width: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--black);
+            font-weight: 600;
+            font-size: 18px;
+            overflow: hidden;
+        }
+
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .testimonial-info h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 3px;
+        }
+
+        .testimonial-info span {
+            font-size: 12px;
+            color: var(--gold);
+        }
+
+        .testimonial-stars {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: var(--gold);
+            font-size: 11px;
+            letter-spacing: 2px;
+            z-index: 2;
+        }
+
+        /* ============ FEATURED IN SECTION ============ */
+        .featured-section {
+            padding: 80px 60px;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a0a 30%, #0d0808 60%, #0a0a0a 100%);
+            text-align: center;
+        }
+
+        .featured-title {
+            font-size: 12px;
+            color: var(--white-muted);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+
+        .featured-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            opacity: 0.6;
+        }
+
+        .featured-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            color: var(--white);
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        /* ============ FOOTER ============ */
+        .footer {
+            background: var(--black);
+            padding: 80px 60px 40px;
+            border-top: 1px solid rgba(201, 169, 98, 0.1);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto 60px;
+        }
+
+        .footer-brand .logo {
+            margin-bottom: 20px;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            color: var(--white-muted);
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(201, 169, 98, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--black);
+        }
+
+        .footer-column h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            color: var(--gold);
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column a {
+            color: var(--white-muted);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-bottom p {
+            font-size: 13px;
+            color: var(--white-muted);
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 1024px) {
+            .header {
+                padding: 15px 30px;
+            }
+
+            .nav-menu {
+                gap: 25px;
+            }
+
+            .hero-content {
+                padding: 0 30px;
+            }
+
+            .hero-title {
+                font-size: 40px;
+            }
+
+            .pillars-grid,
+            .services-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+
+            .quote-section {
+                flex-direction: column;
+                text-align: center;
+                padding: 80px 30px;
+            }
+
+            .quote-image {
+                flex: none;
+                width: 300px;
+                height: 400px;
+            }
+
+            .quote-text::before {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            /* Hero Mobile Layout */
+            .hero {
+                flex-direction: column;
+                justify-content: flex-start;
+                padding-top: 100px;
+                min-height: auto;
+                padding-bottom: 0;
+            }
+
+            .hero-background {
+                background: 
+                    radial-gradient(ellipse at 50% 80%, rgba(139, 69, 80, 0.25) 0%, transparent 50%),
+                    radial-gradient(ellipse at 50% 70%, rgba(201, 169, 98, 0.15) 0%, transparent 40%);
+            }
+
+            .hero-glow {
+                display: none;
+            }
+
+            .hero-content {
+                position: relative;
+                max-width: 100%;
+                text-align: center;
+                padding: 0 30px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                order: 1;
+            }
+
+            .hero-image {
+                position: relative;
+                width: 100%;
+                height: 500px;
+                right: auto;
+                top: auto;
+                bottom: auto;
+                background: url('images/hero-sorina-mobile.png') 50% center / auto 100% no-repeat;
+                opacity: 1;
+                margin-top: 20px;
+                order: 4;
+                animation: none;
+                transform: none;
+            }
+
+            .hero-image::after {
+                height: 120px;
+            }
+
+            .hero-logo {
+                justify-content: center;
+                order: 1;
+                margin-bottom: 30px;
+            }
+
+            .hero-logo-icon {
+                height: 150px;
+            }
+
+            .hero-title {
+                font-size: 32px;
+                margin-bottom: 25px;
+                order: 2;
+            }
+
+            .hero-divider {
+                margin: 0 auto 20px;
+                order: 3;
+            }
+
+            .hero-subtitle {
+                font-size: 10px;
+                letter-spacing: 2px;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 8px;
+                order: 5;
+            }
+
+            .hero-animated-title {
+                order: 2;
+                margin-bottom: 20px;
+                height: 50px;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .hero-title-word {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 32px;
+                text-align: center;
+                white-space: nowrap;
+            }
+
+            .hero-slogan {
+                order: 3;
+                margin-bottom: 20px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-social {
+                justify-content: center;
+            }
+
+            /* Products Carousel Mobile */
+            .products-carousel {
+                gap: 15px;
+                padding: 20px 10px;
+                scroll-snap-type: x mandatory;
+            }
+
+            .product-card {
+                flex: 0 0 85vw;
+                min-width: 85vw;
+                scroll-snap-align: center;
+            }
+
+            .product-info {
+                padding: 20px;
+            }
+
+            .product-name {
+                font-size: 18px;
+                min-height: auto;
+            }
+
+            .product-price {
+                font-size: 16px;
+            }
+
+            .carousel-controls {
+                margin-top: 20px;
+            }
+
+            .carousel-btn {
+                width: 45px;
+                height: 45px;
+            }
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+    </style>
+</head>
+<body>
+<div class="brainwellness-landing">
+
+    <!-- ============ HEADER ============ -->
+    <header class="header" id="header">
+        <a href="/" class="logo">
+            <img src="images/logo.png" alt="Brain Wellness" class="logo-icon">
+            <div class="logo-text-group">
+                <span class="logo-brand">BRAIN WELLNESS</span>
+                <span class="logo-slogan">The new era of Health optimization</span>
+            </div>
+        </a>
+
+        <nav class="nav-main">
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#clinic" class="nav-link">Clinic <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <a href="#neurowellness" class="dropdown-link">Neuro-Wellness</a>
+                        <a href="#psihologie" class="dropdown-link">Psihologie</a>
+                        <a href="#pachete" class="dropdown-link">Pachete & Prețuri</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="https://brainwellnessacademy.com" class="nav-link">Academy <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <a href="#cursuri" class="dropdown-link">Cursuri</a>
+                        <a href="#emisiune" class="dropdown-link">Emisiune TV</a>
+                        <a href="#youtube" class="dropdown-link">YouTube</a>
+                        <a href="#conference" class="dropdown-link">Biohacking Conference</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#biohacking" class="nav-link">Biohacking <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown">
+                        <a href="#produse" class="dropdown-link">Produse de Biohacking</a>
+                        <a href="#center" class="dropdown-link">Romania Biohacking Center</a>
+                        <a href="#pachete-promo" class="dropdown-link">Pachete Promoționale</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#blog" class="nav-link">Blog</a>
+                </li>
+            </ul>
+
+            <div class="nav-icons">
+                <i class="fas fa-search nav-icon"></i>
+                <span class="lang-switch">RO</span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ============ HERO SECTION ============ -->
+    <section class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-glow"></div>
+        <div class="hero-image"></div>
+        <div class="hero-content">
+            <div class="hero-logo">
+                <img src="images/logo.png" alt="Brain Wellness" class="hero-logo-icon">
+            </div>
+
+            <div class="hero-animated-title">
+                <h1 class="hero-title-word">Neuro-Wellness</h1>
+                <h1 class="hero-title-word">Performanță</h1>
+                <h1 class="hero-title-word">Biohacking</h1>
+            </div>
+
+            <div class="hero-divider"></div>
+
+            <p class="hero-slogan">The new era of Health optimization</p>
+        </div>
+    </section>
+
+    <!-- ============ PILLARS SECTION ============ -->
+    <section class="pillars-section" id="pillars">
+        <div class="section-header">
+            <h2 class="section-title">Cei 3 piloni <span>Brain Wellness</span></h2>
+        </div>
+
+        <div class="pillars-grid">
+            <!-- Clinic - UPDATED -->
+            <div class="pillar-card">
+                <div class="pillar-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3 class="pillar-title">Brain Wellness Clinic</h3>
+                <p class="pillar-description">
+                    Abordare de ultimă generație, în care mintea și creierul nu mai sunt privite separat, ci ca un tot unitar.
+                </p>
+                <a href="#clinic" class="pillar-btn">Intră în Clinic</a>
+            </div>
+
+            <!-- Academy - UPDATED -->
+            <div class="pillar-card">
+                <div class="pillar-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3 class="pillar-title">Academy</h3>
+                <p class="pillar-description">
+                    Informații validate științific despre cum să îți upgradezi mintea și corpul. Educație bazată pe studii clinice, practicate de elita mondială pentru obținerea sănătății perfecte.
+                </p>
+                <a href="https://brainwellnessacademy.com" class="pillar-btn">Intră în Academy</a>
+            </div>
+
+            <!-- Biohacking - UPDATED -->
+            <div class="pillar-card">
+                <div class="pillar-icon">
+                    <i class="fas fa-dna"></i>
+                </div>
+                <h3 class="pillar-title">Biohacking</h3>
+                <p class="pillar-description">
+                    Suplimente inteligente de ultimă generație. Bio-tehnologii pentru upgrade uman. Protocoale super-human.
+                </p>
+                <a href="#biohacking" class="pillar-btn">Vezi Produsele</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ NAVIGATION BUTTONS ============ -->
+    <section class="nav-buttons-section">
+        <a href="#programare" class="nav-btn-premium">
+            <i class="fas fa-calendar-check"></i> Programare
+        </a>
+        <a href="#testimoniale" class="nav-btn-premium">
+            <i class="fas fa-star"></i> Recenzii
+        </a>
+        <a href="mailto:contact@brainwellness.ro" class="nav-btn-premium">
+            <i class="fas fa-envelope"></i> Contact
+        </a>
+    </section>
+
+    <!-- ============ QUOTE SECTION - RESTRUCTURED ============ -->
+    <section class="quote-section">
+        <!-- MANIFEST PRINCIPAL - PRIMA PARTE -->
+        <div class="quote-manifest">
+            <p class="quote-text">
+                Mulți oameni nu sunt bolnavi, dar trăiesc cu o oboseală, o tensiune și o lipsă de claritate, care, în timp, le afectează vitalitatea, rezistența la stres și chiar felul de a fi și de a se comporta. De cele mai multe ori nu se primește un diagnostic, dar sunt suficient de prezente aceste simptome, încât să îți afecteze real calitatea vieții.
+            </p>
+            <p class="quote-text" style="margin-top: 25px;">
+                Apare astfel nevoia unei perspective diferite asupra sănătății. Aici intră în scenă biohacking-ul — știința optimizării umane și a longevității. Un domeniu în care creierul joacă rolul principal, iar mintea îl urmează.
+            </p>
+            <p class="quote-author">În 2026, doar așa mai putem vorbi despre energie care se menține, despre claritate mentală, lipsa burn-out-ului și o stare de bine care nu este ocazională, ci stabilă.</p>
+        </div>
+
+        <!-- FONDATOR - IMAGINE + LEGENDA -->
+        <div class="quote-founder">
+            <div class="quote-image">
+                <img src="images/Sorina.jpg" alt="Sorina Vlad - Fondator Brain Wellness" loading="lazy">
+            </div>
+            <div class="founder-caption">
+                <h3 class="founder-name">Sorina Vlad</h3>
+                <p class="founder-title">Psiholog Clinician & Fondator Brain Wellness</p>
+            </div>
+        </div>
+            
+        <!-- DESPRE BRAIN WELLNESS -->
+        <div class="quote-content">
+            <div class="quote-description">
+                <h3>Ce este Brain Wellness?</h3>
+                <p>
+                    Brain Wellness este primul concept din România care aduce împreună psihologia de ultimă generație, neuro-wellness-ul și biohacking-ul — nu ca un trend practicat de celebritățile lumii, ci ca o evoluție firească a modului în care este înțeleasă sănătatea umană.
+                </p>
+                <p style="margin-top: 15px;">
+                    După ani de studii clinice și practică aplicată, aceasta este infrastructura care promite vindecare și optimizare în 2026. Am intrat într-o nouă eră a umanității — era în care omul își înțelege și își optimizează mintea și corpul în realitatea actuală.
+                </p>
+                <p style="margin-top: 15px;">
+                    Creat de <strong>Sorina Vlad</strong>, psiholog clinician, Brain Health Coach în cadrul Universității Dr. Amen și una dintre vocile care au deschis drumul biohacking-ului în România, Brain Wellness s-a născut dintr-o experiență personală profundă: confruntarea cu o criză medicală complexă, cu simptome „misterioase", pentru care medicina clasică nu a oferit răspunsuri clare.
+                </p>
+                <blockquote style="margin: 25px auto; padding: 20px 25px; border-left: 3px solid var(--gold); font-style: italic; color: var(--white-soft); max-width: 600px; text-align: left;">
+                    „Știu cum este să nu ai energie, să nu ai mintea lucidă, să uiți și să nu te poți concentra. Să simți că îți pierzi controlul asupra propriei minți și asupra propriului corp."
+                </blockquote>
+                <p>
+                    <strong style="color: var(--gold);">Misiunea Brain Wellness este clară:</strong> să ajute oamenii să își înțeleagă mai bine mintea și creierul și să își recapete controlul asupra propriului organism.
+                </p>
+                <p style="margin-top: 15px;">
+                    Pentru că ne pasă. Pentru că am fost acolo. Și pentru că știm că se poate.
+                </p>
+                <p style="margin-top: 15px; font-size: 13px; color: var(--white-muted);">
+                    Tot ceea ce este recomandat pe această platformă este validat prin studiu, practică și rigoare științifică și a fost testat personal.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ BENEFITS SECTION - NEW ============ -->
+    <section class="benefits-section">
+        <div class="section-header">
+            <h2 class="section-title">Life <span>Transformation</span></h2>
+            <p class="section-subtitle">Beneficiile abordării Brain Wellness</p>
+        </div>
+
+        <div class="benefits-grid">
+            <div class="benefit-item" style="animation-delay: 0.1s;">
+                <div class="benefit-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3 class="benefit-title">Restabilește-ți<br>Mintea</h3>
+            </div>
+
+            <div class="benefit-item" style="animation-delay: 0.2s;">
+                <div class="benefit-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3 class="benefit-title">Construiește-ți<br>Vitalitatea</h3>
+            </div>
+
+            <div class="benefit-item" style="animation-delay: 0.3s;">
+                <div class="benefit-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3 class="benefit-title">Previne<br>Bolile</h3>
+            </div>
+
+            <div class="benefit-item" style="animation-delay: 0.4s;">
+                <div class="benefit-icon">
+                    <i class="fas fa-infinity"></i>
+                </div>
+                <h3 class="benefit-title">Atinge<br>Longevitatea</h3>
+            </div>
+
+            <div class="benefit-item" style="animation-delay: 0.5s;">
+                <div class="benefit-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h3 class="benefit-title">Performanță<br>Maximă</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ RECOMMENDED BRANDS SECTION - NEW ============ -->
+    <section class="brands-section">
+        <div class="section-header">
+            <h2 class="section-title">Principalul distribuitor de <span>produse de biohacking</span> din România</h2>
+            <p class="section-subtitle">Partener oficial al liderilor globali în biohacking</p>
+        </div>
+
+        <div class="brands-grid">
+            <div class="brand-card">
+                <img src="images/logos/brainmd.png" alt="BrainMD" class="brand-logo">
+                <h3 class="brand-name">BRAINMD</h3>
+                <p class="brand-author">by Dr. Daniel Amen</p>
+            </div>
+
+            <div class="brand-card">
+                <img src="images/logos/biosintropy.png" alt="Biosyntropy" class="brand-logo">
+                <h3 class="brand-name">Biosyntropy</h3>
+                <p class="brand-author">Dr. Joe Dispenza</p>
+            </div>
+
+            <div class="brand-card">
+                <img src="images/logos/garybreka.png" alt="Gary Breka" class="brand-logo">
+                <h3 class="brand-name">Gary Breka</h3>
+                <p class="brand-author">Biohacking Expert</p>
+            </div>
+
+            <div class="brand-card">
+                <img src="images/logos/Dave Asprey.png" alt="Dave Asprey" class="brand-logo">
+                <h3 class="brand-name">Dave Asprey</h3>
+                <p class="brand-author">Father of Biohacking</p>
+            </div>
+
+            <div class="brand-card">
+                <img src="images/logos/noordcode.png" alt="NoordCode" class="brand-logo">
+                <h3 class="brand-name">NoordCode</h3>
+                <p class="brand-author">Premium Biohacking</p>
+            </div>
+        </div>
+
+        <p class="brands-note">
+            <strong>Brain Wellness</strong> este singura platformă din România care aduce și recomandă aceste direcții validate internațional.
+        </p>
+    </section>
+
+    <!-- ============ CLINIC DETAILS ============ -->
+    <section class="clinic-section" id="clinic">
+        <div class="clinic-header">
+            <h2 class="clinic-title">Brain Wellness Clinic <span>— Neuro-wellness & Psihologie & Performanță</span></h2>
+            <p class="clinic-subtitle">Mai mult decât psihologie.</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <h3 class="service-title">Neuro-Wellness</h3>
+                <p class="service-description">
+                    Abordare modernă, integrativă și preventivă, orientată către funcționarea optimă a creierului.
+                </p>
+                <a href="#neurowellness-detail" class="service-btn">Află mai multe</a>
+            </div>
+
+            <div class="service-card">
+                <h3 class="service-title">Psihologie Integrativă</h3>
+                <p class="service-description">
+                    Combinăm psihologia profundă cu ghidaj orientat spre performanță și identitate.
+                </p>
+                <a href="#psihologie-detail" class="service-btn">Vezi serviciile</a>
+            </div>
+
+            <div class="service-card">
+                <h3 class="service-title">Prețuri & Programe</h3>
+                <p class="service-description">
+                    Programe de transformare construite pentru rezultate reale și sustenabile.
+                </p>
+                <a href="#preturi-detail" class="service-btn">Vezi pachetele</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ CLINIC EXPANDED DETAILS - NEW ============ -->
+    <section class="clinic-expanded">
+        <!-- NEURO-WELLNESS DETAIL -->
+        <div class="clinic-service-full" id="neurowellness-detail">
+            <h3><i class="fas fa-brain" style="margin-right: 15px;"></i>Neuro-Wellness</h3>
+            <p>
+                La Brain Wellness Clinic, componenta clinică nu este despre diagnosticarea clasică, ci despre înțelegerea profundă a cauzelor și optimizarea funcționării umane la nivel cerebral, emoțional și comportamental.
+            </p>
+            <p>
+                <strong style="color: var(--gold);">Neuro-wellness este nucleul Brain Wellness Clinic:</strong> o abordare modernă, integrativă și preventivă, orientată către funcționarea optimă a creierului, adresată persoanelor care vor mai mult decât „să se simtă funcționali".
+            </p>
+            <p>
+                Această abordare se concentrează pe factori biologici reali: toxicitate, inflamație, stres cronic, disfuncționalitatea sistemului nervos, dezechilibre neurochimice și impactul mediului asupra creierului.
+            </p>
+
+            <div class="service-highlight">
+                <h4>Se adresează persoanelor care se confruntă cu:</h4>
+                <ul>
+                    <li>Brain fog, oboseală mentală, lipsă de focus</li>
+                    <li>Stres cronic sau burn-out</li>
+                    <li>Scăderea motivației, energiei și lucidității</li>
+                    <li>Senzația că „fac tot ce trebuie", dar nu funcționează la capacitate maximă</li>
+                </ul>
+            </div>
+
+            <div class="service-highlight">
+                <h4>Ce presupune Neuro-wellness:</h4>
+                <ul>
+                    <li>Evaluarea factorilor fiziologici care influențează creierul</li>
+                    <li>Identificarea impactului toxinelor, inflamației și stresului (prin teste de ultimă generație, unice în România)</li>
+                    <li>Susținerea detoxifierii și reglării neurobiologice</li>
+                    <li>Strategii personalizate pentru claritate mentală, focus și energie</li>
+                    <li>Prevenția bolilor neurodegenerative și a bolilor în general</li>
+                </ul>
+            </div>
+
+            <a href="#programare" class="programare-btn"><i class="fas fa-calendar-check" style="margin-right: 10px;"></i>Programare</a>
+        </div>
+
+        <!-- PSIHOLOGIE INTEGRATIVA DETAIL -->
+        <div class="clinic-service-full" id="psihologie-detail">
+            <h3><i class="fas fa-heart" style="margin-right: 15px;"></i>Psihologie Integrativă & Mentorat de Evoluție</h3>
+            <p>
+                O abordare diferită de psihologia clasică sau coaching-ul tradițional.
+            </p>
+            <p>
+                Este un proces integrativ care combină psihologia profundă cu ghidaj orientat spre prezent, viitor, performanță și identitate.
+            </p>
+            <p>
+                <strong style="color: var(--gold);">Se adresează persoanelor cu nivel ridicat de conștiență și responsabilitate personală</strong>, care nu se identifică drept „pacienți", dar caută claritate, profunzime și ghidaj autentic.
+            </p>
+
+            <div class="service-highlight">
+                <h4>Cum lucrăm:</h4>
+                <ul>
+                    <li>Explorăm rădăcina emoțională a blocajelor</li>
+                    <li>Identificăm tiparele inconștiente</li>
+                    <li>Clarificăm identitatea, valorile și direcția</li>
+                    <li>Construim motivație internă și autonomie</li>
+                    <li>Susținem creșterea umană și profesională</li>
+                </ul>
+            </div>
+
+            <a href="#programare" class="programare-btn"><i class="fas fa-calendar-check" style="margin-right: 10px;"></i>Programare</a>
+        </div>
+
+        <!-- PRETURI DETAIL -->
+        <div class="clinic-service-full" id="preturi-detail">
+            <h3><i class="fas fa-tag" style="margin-right: 15px;"></i>Prețuri Promoționale</h3>
+            <p>
+                La Brain Wellness nu lucrăm pe ședințe izolate. <strong style="color: var(--gold);">Lucrăm pe programe de transformare</strong>, construite pentru rezultate reale și sustenabile.
+            </p>
+
+            <div class="service-highlight">
+                <h4>Program Intensiv — minimum 3 luni</h4>
+                <ul>
+                    <li>Abordare integrativă: neuro-wellness + psihologie + mentorat</li>
+                    <li>Strategie personalizată</li>
+                    <li>Suport constant</li>
+                </ul>
+            </div>
+
+            <div class="price-info">
+                <div class="price-item">
+                    <span class="price-label">Consultație Inițială</span>
+                    <span class="price-value"><span class="price-original">500 LEI</span> <span class="price-discount">350 LEI</span></span>
+                </div>
+                <div class="price-item">
+                    <span class="price-label">Kit 3 Teste Biologie Celulară (unice în România)</span>
+                    <span class="price-value"><span class="price-reduced-note">redus de la 1.900 USD</span> 1.500 USD</span>
+                </div>
+                <div class="price-item">
+                    <span class="price-label">Investiția finală</span>
+                    <span class="price-value">discutată în prima consultație</span>
+                </div>
+            </div>
+
+            <a href="#programare" class="programare-btn"><i class="fas fa-calendar-check" style="margin-right: 10px;"></i>Programare Consultație</a>
+        </div>
+    </section>
+
+    <!-- ============ CONTACT / PROGRAMARE FORM - NEW ============ -->
+    <section class="contact-form-section" id="programare">
+        <div class="section-header">
+            <h2 class="section-title">Solicită o <span>Programare</span></h2>
+            <p class="section-subtitle">Completează formularul și te vom contacta în cel mai scurt timp</p>
+        </div>
+
+        <div class="contact-form-container">
+            <form class="contact-form" id="contactForm" action="https://formsubmit.co/contact@brainwellness.ro" method="POST">
+                <input type="hidden" name="_subject" value="Programare nouă - Brain Wellness Clinic">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="https://brainwellness.ro/multumim">
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nume">Nume Complet *</label>
+                        <input type="text" id="nume" name="nume" required placeholder="Numele tău complet">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefon">Telefon *</label>
+                        <input type="tel" id="telefon" name="telefon" required placeholder="+40 7XX XXX XXX">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required placeholder="adresa@email.ro">
+                </div>
+
+                <div class="form-group">
+                    <label for="mesaj">Mesaj / Detalii</label>
+                    <textarea id="mesaj" name="mesaj" placeholder="Descrie pe scurt motivul pentru care dorești o programare și cum te putem ajuta..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane" style="margin-right: 10px;"></i>Trimite Solicitarea
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ============ BIOHACKING DETAILS ============ -->
+    <section class="biohacking-section" id="biohacking">
+        <div class="clinic-header">
+            <h2 class="clinic-title">Biohacking <span>— Instrumentele tale pentru un creier și un corp optim</span></h2>
+            <p class="clinic-subtitle">Produse și biotehnologii pentru vitalitate maximă, longevitate și performanță</p>
+        </div>
+        <p class="brand-mention">The leading store of biohacking in Romania</p>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <h3 class="service-title">Produse de Biohacking</h3>
+                <p class="service-description">
+                    Suplimente nootropice, Noordcode, și cele mai bune produse 
+                    pentru optimizarea cognitivă și fizică.
+                </p>
+                <a href="https://brainwellness.ro/product-category/biohacking/" class="service-btn">Vezi produsele</a>
+            </div>
+
+            <div class="service-card">
+                <h3 class="service-title">Romania Biohacking Center</h3>
+                <p class="service-description">
+                    Primul centru dedicat biohacking-ului din România. 
+                    Tehnologii de ultimă generație pentru performanță.
+                </p>
+                <a href="#" class="service-btn">Descoperă centrul</a>
+            </div>
+
+            <div class="service-card">
+                <h3 class="service-title">Pachete Promoționale</h3>
+                <p class="service-description">
+                    Pachete complete pentru imunitate, stres, microbiom și 
+                    performanță cognitivă la prețuri avantajoase.
+                </p>
+                <a href="#" class="service-btn">Vezi pachetele</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ PRODUCTS CAROUSEL ============ -->
+    <section class="products-section" id="produse">
+        <div class="products-header">
+            <h2>Produse Biohacking Recomandate</h2>
+            <p>Selecția noastră de produse premium pentru optimizarea corpului și minții</p>
+        </div>
+
+        <div class="products-carousel" id="productsCarousel">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="images/apollo-wearable.png" alt="Apollo Wearable">
+                    <span class="product-badge">POPULAR</span>
+                </div>
+                <div class="product-info">
+                    <p class="product-category">Wearables</p>
+                    <h3 class="product-name">Apollo Wearable</h3>
+                    <p class="product-price">4.300,00 lei</p>
+                    <a href="https://brainwellness.ro/produs/apollo-wearable/" class="product-btn" target="_blank">Vezi Detalii</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="images/water-bottle.png" alt="Echo Go+ Hydrogen Water Bottle">
+                    <span class="product-badge">NOU</span>
+                </div>
+                <div class="product-info">
+                    <p class="product-category">Hidratare</p>
+                    <h3 class="product-name">Echo Go+ Hydrogen Water Bottle</h3>
+                    <p class="product-price">3.500,00 lei</p>
+                    <a href="https://brainwellness.ro/produs/echo-go-hydrogen-water-bottle/" class="product-btn" target="_blank">Vezi Detalii</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="images/bodybio-pc.png" alt="BodyBio PC">
+                </div>
+                <div class="product-info">
+                    <p class="product-category">Suplimente</p>
+                    <h3 class="product-name">BodyBio PC – Sănătate La Nivel Celular</h3>
+                    <p class="product-price">690,00 lei</p>
+                    <a href="https://brainwellness.ro/produs/bodybio-pc-sanatate-la-nivel-celular/" class="product-btn" target="_blank">Vezi Detalii</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="images/bodybio-tudca.png" alt="BODYBIO TUDCA">
+                </div>
+                <div class="product-info">
+                    <p class="product-category">Suplimente</p>
+                    <h3 class="product-name">BODYBIO – TUDCA</h3>
+                    <p class="product-price">660,00 lei</p>
+                    <a href="https://brainwellness.ro/produs/bodybio-tudca/" class="product-btn" target="_blank">Vezi Detalii</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="images/advanced-greens-plus.png" alt="Advanced Greens Plus">
+                </div>
+                <div class="product-info">
+                    <p class="product-category">Nutriție</p>
+                    <h3 class="product-name">Advanced Greens Plus</h3>
+                    <p class="product-price">750,00 lei</p>
+                    <a href="https://brainwellness.ro/produs/advanced-greens-plus/" class="product-btn" target="_blank">Vezi Detalii</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="images/logo.png" alt="Brain & Memory Power Boost">
+                </div>
+                <div class="product-info">
+                    <p class="product-category">Suplimente</p>
+                    <h3 class="product-name">Brain & Memory Power Boost</h3>
+                    <p class="product-price">760,00 lei</p>
+                    <a href="https://brainwellness.ro/produs/brain-memory-power-boost/" class="product-btn" target="_blank">Vezi Detalii</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-nav">
+            <button class="carousel-btn" onclick="scrollCarousel(-1)"><i class="fas fa-chevron-left"></i></button>
+            <button class="carousel-btn" onclick="scrollCarousel(1)"><i class="fas fa-chevron-right"></i></button>
+        </div>
+
+        <div class="products-footer">
+            <a href="https://brainwellness.ro/product-category/biohacking/" class="view-all-btn" target="_blank">Vezi Toate Produsele</a>
+        </div>
+    </section>
+
+    <!-- ============ ACADEMY SECTION ============ -->
+    <section class="academy-section" id="academy">
+        <div class="clinic-header">
+            <h2 class="clinic-title">Brain Wellness Academy <span>— Educație pentru o minte extraordinară</span></h2>
+            <p class="clinic-subtitle">Cursuri, emisiuni și conferințe pentru dezvoltare personală și profesională</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <h3 class="service-title">Biohacking Conference</h3>
+                <p class="service-description">
+                    Cel mai mare eveniment de biohacking din România. 
+                    Speakeri internaționali și networking de elită.
+                </p>
+                <a href="#" class="service-btn">Află mai multe</a>
+            </div>
+
+            <div class="service-card">
+                <span class="coming-soon-badge">COMING SOON</span>
+                <h3 class="service-title">Cursuri Online</h3>
+                <p class="service-description">
+                    Programe de învățare structurate pentru înțelegerea 
+                    și optimizarea funcționării creierului.
+                </p>
+                <a href="https://brainwellnessacademy.com" class="service-btn" target="_blank">Explorează cursurile</a>
+            </div>
+
+            <div class="service-card">
+                <span class="coming-soon-badge">COMING SOON</span>
+                <h3 class="service-title">Emisiune TV & YouTube</h3>
+                <p class="service-description">
+                    Conținut educativ gratuit despre neuroștiință, 
+                    psihologie și biohacking pe toate platformele.
+                </p>
+                <a href="#" class="service-btn">Urmărește acum</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ TESTIMONIALS - UPDATED STRUCTURE ============ -->
+    <section class="testimonials-section" id="testimoniale">
+        <div class="section-header">
+            <h2 class="section-title">Ce spun oamenii despre <span>Brain Wellness</span></h2>
+            <p class="section-subtitle">Testimoniale de la clienți și colaboratori</p>
+        </div>
+
+        <!-- VIDEO TESTIMONIAL PLACEHOLDER - STRUCTURE READY -->
+        <div class="video-testimonial">
+            <div class="video-placeholder">
+                <i class="fas fa-play-circle"></i>
+                <p>TESTIMONIAL VIDEO — ÎN CURÂND</p>
+            </div>
+        </div>
+
+        <div class="testimonials-grid">
+            <!-- TESTIMONIAL 1 -->
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-quote">
+                    „Am descoperit Brain Wellness într-un moment în care simțeam că am încercat totul. Abordarea lor m-a ajutat să înțeleg ce se întâmpla cu adevărat în corpul meu și să găsesc soluții reale."
+                </p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Alexandra M.">
+                    </div>
+                    <div class="testimonial-info">
+                        <h4>Alexandra M.</h4>
+                        <span>Client Verificat</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TESTIMONIAL 2 -->
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-quote">
+                    „Colaborarea cu Sorina și echipa Brain Wellness a fost extraordinară. Profesionalismul și viziunea lor asupra sănătății mintale sunt de neegalat în România."
+                </p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Dr. Andrei P.">
+                    </div>
+                    <div class="testimonial-info">
+                        <h4>Dr. Andrei P.</h4>
+                        <span>Psiholog Colaborator</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TESTIMONIAL 3 -->
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-quote">
+                    „Produsele de biohacking și consultanța primită au făcut o diferență reală în performanța mea zilnică. Recomand cu încredere oricui vrea să funcționeze la potențial maxim."
+                </p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">
+                        <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Cristian T.">
+                    </div>
+                    <div class="testimonial-info">
+                        <h4>Cristian T.</h4>
+                        <span>Antreprenor</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FEATURED IN - SLIDER ============ -->
+    <section class="featured-section">
+        <p class="featured-title">As Seen In</p>
+        <div class="featured-slider-wrapper">
+            <div class="featured-slider">
+                <span class="featured-logo">Forbes</span>
+                <span class="featured-logo">PRO TV</span>
+                <span class="featured-logo">Digi24</span>
+                <span class="featured-logo">Business Magazin</span>
+                <span class="featured-logo">Elle</span>
+                <span class="featured-logo">Știri pe Surse</span>
+                <span class="featured-logo">Prima TV</span>
+                <span class="featured-logo">Transilvania+</span>
+                <span class="featured-logo">Cluj Life</span>
+                <!-- Duplicat pentru loop continuu -->
+                <span class="featured-logo">Forbes</span>
+                <span class="featured-logo">PRO TV</span>
+                <span class="featured-logo">Digi24</span>
+                <span class="featured-logo">Business Magazin</span>
+                <span class="featured-logo">Elle</span>
+                <span class="featured-logo">Știri pe Surse</span>
+                <span class="featured-logo">Prima TV</span>
+                <span class="featured-logo">Transilvania+</span>
+                <span class="featured-logo">Cluj Life</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="/" class="logo">
+                    <img src="images/logo.png" alt="Brain Wellness" class="logo-icon">
+                </a>
+                <p>
+                    Brain Wellness este destinația ta pentru optimizarea minții și corpului. 
+                    Combinăm știința cu practica pentru rezultate extraordinare.
+                </p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h4>Clinic</h4>
+                <ul>
+                    <li><a href="#">Neuro-Wellness</a></li>
+                    <li><a href="#">Psihologie</a></li>
+                    <li><a href="#">Pachete & Prețuri</a></li>
+                    <li><a href="#">Programări</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Academy</h4>
+                <ul>
+                    <li><a href="#">Cursuri</a></li>
+                    <li><a href="#">Emisiune TV</a></li>
+                    <li><a href="#">YouTube</a></li>
+                    <li><a href="#">Biohacking Conference</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="#">Cluj-Napoca, România</a></li>
+                    <li><a href="mailto:contact@brainwellness.ro">contact@brainwellness.ro</a></li>
+                    <li><a href="tel:+40700000000">+40 700 000 000</a></li>
+                    <li><a href="#">Despre Noi</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- NEWSLETTER -->
+        <div class="footer-newsletter">
+            <h4>Abonează-te la newsletter Brain Wellness</h4>
+            <form class="newsletter-form" action="https://formsubmit.co/contact@brainwellness.ro" method="POST">
+                <input type="hidden" name="_subject" value="Abonare Newsletter - Brain Wellness">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="email" name="email" placeholder="Adresa ta de email" required>
+                <button type="submit">Abonează-te</button>
+            </form>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 Brain Wellness. Toate drepturile rezervate.</p>
+        </div>
+    </footer>
+
+    <!-- ============ JAVASCRIPT ============ -->
+    <script>
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Products carousel scroll function
+        function scrollCarousel(direction) {
+            const carousel = document.getElementById('productsCarousel');
+            const cards = carousel.querySelectorAll('.product-card');
+            if (cards.length === 0) return;
+            
+            const cardWidth = cards[0].offsetWidth;
+            const gap = 30;
+            const scrollAmount = cardWidth + gap;
+            
+            carousel.scrollBy({
+                left: direction * scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+
+        // Auto-scroll carousel
+        let autoScrollInterval;
+        const carousel = document.getElementById('productsCarousel');
+        
+        function startAutoScroll() {
+            autoScrollInterval = setInterval(() => {
+                const cards = carousel.querySelectorAll('.product-card');
+                if (cards.length === 0) return;
+                
+                const cardWidth = cards[0].offsetWidth;
+                const gap = 30;
+                
+                if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 10) {
+                    carousel.scrollTo({ left: 0, behavior: 'smooth' });
+                } else {
+                    carousel.scrollBy({ left: cardWidth + gap, behavior: 'smooth' });
+                }
+            }, 4000);
+        }
+
+        function stopAutoScroll() {
+            clearInterval(autoScrollInterval);
+        }
+
+        carousel.addEventListener('mouseenter', stopAutoScroll);
+        carousel.addEventListener('mouseleave', startAutoScroll);
+        startAutoScroll();
+    </script>
+
+</div><!-- .brainwellness-landing -->
+</body>
+</html>
