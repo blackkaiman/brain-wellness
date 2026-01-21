@@ -631,7 +631,8 @@
         .featured-slider {
             display: flex;
             gap: 60px;
-            animation: slideLogos 25s linear infinite;
+            align-items: center;
+            animation: slideLogos 35s linear infinite;
             width: max-content;
         }
 
@@ -648,8 +649,67 @@
             animation-play-state: paused;
         }
 
+        .featured-logo-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            min-width: 100px;
+            padding: 15px 20px;
+            transition: all 0.4s ease;
+        }
+
+        .featured-logo-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .featured-logo-img {
+            height: 50px;
+            width: auto;
+            max-width: 140px;
+            object-fit: contain;
+            opacity: 0.7;
+            transition: all 0.4s ease;
+            border-radius: 12px;
+        }
+
+        .featured-logo-item:hover .featured-logo-img {
+            opacity: 1;
+        }
+
+        .featured-logo-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 10px;
+            color: var(--white-muted);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            opacity: 0.6;
+            transition: all 0.4s ease;
+        }
+
+        .featured-logo-item:hover .featured-logo-name {
+            color: var(--gold);
+            opacity: 1;
+        }
+
         .featured-logos {
             display: none;
+        }
+
+        .featured-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            color: var(--white);
+            font-weight: 600;
+            letter-spacing: 2px;
+            opacity: 0.6;
+            transition: all 0.4s ease;
+            white-space: nowrap;
+        }
+
+        .featured-logo:hover {
+            opacity: 1;
+            color: var(--gold);
         }
 
         /* ============ FOOTER NEWSLETTER ============ */
@@ -3241,25 +3301,79 @@
         <p class="featured-title">As Seen In</p>
         <div class="featured-slider-wrapper">
             <div class="featured-slider">
-                <span class="featured-logo">Forbes</span>
-                <span class="featured-logo">PRO TV</span>
-                <span class="featured-logo">Digi24</span>
-                <span class="featured-logo">Business Magazin</span>
-                <span class="featured-logo">Elle</span>
-                <span class="featured-logo">Știri pe Surse</span>
-                <span class="featured-logo">Prima TV</span>
-                <span class="featured-logo">Transilvania+</span>
-                <span class="featured-logo">Cluj Life</span>
+                <div class="featured-logo-item">
+                    <img src="images/logos-as-seen-in/Forbes.png" alt="Forbes" class="featured-logo-img">
+                    <span class="featured-logo-name">Forbes</span>
+                </div>
+                <div class="featured-logo-item">
+                    <img src="images/logos-as-seen-in/protv.png" alt="PRO TV" class="featured-logo-img">
+                    <span class="featured-logo-name">PRO TV</span>
+                </div>
+                <div class="featured-logo-item">
+                    <img src="images/logos-as-seen-in/digi24.png" alt="Digi24" class="featured-logo-img">
+                    <span class="featured-logo-name">Digi24</span>
+                </div>
+                <div class="featured-logo-item">
+                    <img src="images/logos-as-seen-in/businessmgazine.png" alt="Business Magazine" class="featured-logo-img">
+                    <span class="featured-logo-name">Business Magazine</span>
+                </div>
+                <div class="featured-logo-item">
+                    <img src="images/logos-as-seen-in/Elle.png" alt="Elle" class="featured-logo-img">
+                    <span class="featured-logo-name">Elle</span>
+                </div>
+                <div class="featured-logo-item">
+                    <img src="images/logos-as-seen-in/stiripesurse.png" alt="Știri pe Surse" class="featured-logo-img">
+                    <span class="featured-logo-name">Știri pe Surse</span>
+                </div>
+                <div class="featured-logo-item">
+                    <img src="images/logos-as-seen-in/primatv.png" alt="Prima TV" class="featured-logo-img">
+                    <span class="featured-logo-name">Prima TV</span>
+                </div>
+                <div class="featured-logo-item">
+                    <img src="images/logos-as-seen-in/transilvania+.png" alt="Transilvania+" class="featured-logo-img">
+                    <span class="featured-logo-name">Transilvania+</span>
+                </div>
+                <div class="featured-logo-item">
+                    <img src="images/logos-as-seen-in/clujlife.png" alt="Cluj Life" class="featured-logo-img">
+                    <span class="featured-logo-name">Cluj Life</span>
+                </div>
                 <!-- Duplicat pentru loop continuu -->
-                <span class="featured-logo">Forbes</span>
-                <span class="featured-logo">PRO TV</span>
-                <span class="featured-logo">Digi24</span>
-                <span class="featured-logo">Business Magazin</span>
-                <span class="featured-logo">Elle</span>
-                <span class="featured-logo">Știri pe Surse</span>
-                <span class="featured-logo">Prima TV</span>
-                <span class="featured-logo">Transilvania+</span>
-                <span class="featured-logo">Cluj Life</span>
+                <div class="featured-logo-item">
+                    <img src="images/logos-as-seen-in/Forbes.png" alt="Forbes" class="featured-logo-img">
+                    <span class="featured-logo-name">Forbes</span>
+                </div>
+                <div class="featured-logo-item">
+                    <img src="images/logos-as-seen-in/protv.png" alt="PRO TV" class="featured-logo-img">
+                    <span class="featured-logo-name">PRO TV</span>
+                </div>
+                <div class="featured-logo-item">
+                    <img src="images/logos-as-seen-in/digi24.png" alt="Digi24" class="featured-logo-img">
+                    <span class="featured-logo-name">Digi24</span>
+                </div>
+                <div class="featured-logo-item">
+                    <img src="images/logos-as-seen-in/businessmgazine.png" alt="Business Magazine" class="featured-logo-img">
+                    <span class="featured-logo-name">Business Magazine</span>
+                </div>
+                <div class="featured-logo-item">
+                    <img src="images/logos-as-seen-in/Elle.png" alt="Elle" class="featured-logo-img">
+                    <span class="featured-logo-name">Elle</span>
+                </div>
+                <div class="featured-logo-item">
+                    <img src="images/logos-as-seen-in/stiripesurse.png" alt="Știri pe Surse" class="featured-logo-img">
+                    <span class="featured-logo-name">Știri pe Surse</span>
+                </div>
+                <div class="featured-logo-item">
+                    <img src="images/logos-as-seen-in/primatv.png" alt="Prima TV" class="featured-logo-img">
+                    <span class="featured-logo-name">Prima TV</span>
+                </div>
+                <div class="featured-logo-item">
+                    <img src="images/logos-as-seen-in/transilvania+.png" alt="Transilvania+" class="featured-logo-img">
+                    <span class="featured-logo-name">Transilvania+</span>
+                </div>
+                <div class="featured-logo-item">
+                    <img src="images/logos-as-seen-in/clujlife.png" alt="Cluj Life" class="featured-logo-img">
+                    <span class="featured-logo-name">Cluj Life</span>
+                </div>
             </div>
         </div>
     </section>
