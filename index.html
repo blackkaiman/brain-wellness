@@ -333,6 +333,19 @@
             pointer-events: none;
         }
 
+        /* Full-width bottom gradient for hero */
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: linear-gradient(to top, var(--black) 0%, transparent 100%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
         @keyframes slideInFromRight {
             0% {
                 opacity: 0;
@@ -450,20 +463,82 @@
         /* ============ HERO ANIMATED TITLE ============ */
         .hero-animated-title {
             position: relative;
-            height: 80px;
+            height: 100px;
             margin-bottom: 40px;
             overflow: hidden;
         }
 
         .hero-title-word {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 58px;
-            font-weight: 300;
+            font-size: 72px;
+            font-weight: 500;
             color: var(--gold);
             position: absolute;
             opacity: 0;
             transform: translateX(-100%);
             animation: slideWordIn 6s ease-in-out infinite;
+            letter-spacing: 3px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ============ HERO SCROLL ARROW ============ */
+        .hero-scroll-arrow {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            z-index: 10;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+            animation-delay: 1.5s;
+        }
+
+        .scroll-arrow-line {
+            width: 1px;
+            height: 50px;
+            background: linear-gradient(to bottom, transparent, var(--gold));
+            animation: scrollLineGrow 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollLineGrow {
+            0%, 100% {
+                opacity: 0.3;
+                transform: scaleY(0.7);
+            }
+            50% {
+                opacity: 1;
+                transform: scaleY(1);
+            }
+        }
+
+        .hero-scroll-arrow i {
+            color: var(--gold);
+            font-size: 16px;
+            animation: scrollArrowBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollArrowBounce {
+            0%, 100% {
+                transform: translateY(0);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translateY(8px);
+                opacity: 1;
+            }
+        }
+
+        .hero-scroll-arrow:hover .scroll-arrow-line {
+            background: linear-gradient(to bottom, transparent, var(--gold-light));
+        }
+
+        .hero-scroll-arrow:hover i {
+            color: var(--gold-light);
         }
 
         .hero-title-word:nth-child(1) {
@@ -1194,12 +1269,35 @@
         }
 
         /* ============ BENEFITS SECTION ============ */
-        .benefits-section {
-            padding: 100px 60px;
-            background: var(--black);
+        /* ============ BENEFITS SECTION PREMIUM ============ */
+        .benefits-section-premium {
+            padding: 80px 60px;
+            background: linear-gradient(180deg, var(--black) 0%, #0d0808 50%, var(--black) 100%);
+            position: relative;
+            overflow: hidden;
         }
 
-        .benefits-grid {
+        .benefits-section-premium::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(201, 169, 98, 0.3), transparent);
+        }
+
+        .benefits-section-premium::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(201, 169, 98, 0.3), transparent);
+        }
+
+        .benefits-premium-grid {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
             gap: 30px;
@@ -1207,125 +1305,118 @@
             margin: 0 auto;
         }
 
-        .benefit-item {
+        .benefit-premium-item {
             text-align: center;
-            padding: 30px 20px;
-            border: 1px solid rgba(201, 169, 98, 0.15);
-            border-radius: 8px;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            background: var(--black-card);
-            box-shadow: var(--shadow-gold-sm);
+            padding: 40px 25px;
+            background: transparent;
             position: relative;
-            overflow: hidden;
             opacity: 0;
             transform: translateY(30px);
-            animation: benefitFadeIn 0.8s ease forwards;
+            animation: benefitPremiumFadeIn 0.8s ease forwards;
+            transition: all 0.4s ease;
         }
 
-        @keyframes benefitFadeIn {
+        @keyframes benefitPremiumFadeIn {
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        .benefit-item::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: radial-gradient(circle, var(--gold-glow-strong) 0%, transparent 70%);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: all 0.6s ease;
-            pointer-events: none;
+        .benefit-premium-item:hover {
+            transform: translateY(-10px);
         }
 
-        .benefit-item::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(ellipse at center, var(--gold-glow) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            pointer-events: none;
-        }
-
-        .benefit-item:hover {
-            border-color: var(--gold);
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: var(--shadow-gold-hover);
-        }
-
-        .benefit-item:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-
-        .benefit-item:hover::after {
-            opacity: 1;
-        }
-
-        .benefit-icon {
-            width: 70px;
-            height: 70px;
-            margin: 0 auto 20px;
+        .benefit-premium-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 25px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 2px solid var(--gold);
-            border-radius: 50%;
-            color: var(--gold);
-            font-size: 28px;
             position: relative;
             transition: all 0.5s ease;
-            background: transparent;
         }
 
-        .benefit-icon::before {
+        .benefit-premium-icon::before {
             content: '';
             position: absolute;
-            inset: -4px;
+            inset: -10px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--gold), var(--gold-dark), var(--gold));
+            background: radial-gradient(circle, rgba(201, 169, 98, 0.15) 0%, transparent 70%);
             opacity: 0;
-            z-index: -1;
             transition: opacity 0.4s ease;
         }
 
-        .benefit-item:hover .benefit-icon {
-            transform: scale(1.1) rotate(5deg);
-            border-color: transparent;
-            color: var(--black);
-            background: var(--gold);
-            box-shadow: 0 0 30px rgba(201, 169, 98, 0.5);
-        }
-
-        .benefit-item:hover .benefit-icon::before {
+        .benefit-premium-item:hover .benefit-premium-icon::before {
             opacity: 1;
         }
 
-        .benefit-icon i {
-            transition: transform 0.4s ease;
+        .benefit-premium-icon img {
+            width: 90px;
+            height: auto;
+            object-fit: contain;
+            filter: brightness(1) drop-shadow(0 4px 15px rgba(201, 169, 98, 0.3));
+            transition: all 0.5s ease;
         }
 
-        .benefit-item:hover .benefit-icon i {
-            transform: scale(1.15);
+        .benefit-premium-item:hover .benefit-premium-icon img {
+            transform: scale(1.1);
+            filter: brightness(1.2) drop-shadow(0 8px 25px rgba(201, 169, 98, 0.5));
         }
 
-        .benefit-title {
+        .benefit-premium-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 18px;
+            font-size: 22px;
             font-weight: 500;
-            color: var(--white);
-            line-height: 1.4;
-            transition: color 0.3s ease;
+            line-height: 1.3;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: all 0.3s ease;
         }
 
-        .benefit-item:hover .benefit-title {
-            color: var(--gold);
+        .benefit-premium-item:hover .benefit-premium-title {
+            text-shadow: 0 0 30px rgba(201, 169, 98, 0.5);
+        }
+
+        /* Mobile responsiveness for premium benefits */
+        @media (max-width: 1024px) {
+            .benefits-premium-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .benefits-section-premium {
+                padding: 60px 30px;
+            }
+            
+            .benefits-premium-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .benefit-premium-item {
+                padding: 25px 15px;
+            }
+            
+            .benefit-premium-icon {
+                width: 70px;
+                height: 70px;
+                margin-bottom: 15px;
+            }
+            
+            .benefit-premium-icon img {
+                width: 60px;
+            }
+            
+            .benefit-premium-title {
+                font-size: 16px;
+            }
         }
 
         /* ============ BRANDS SECTION ============ */
@@ -2326,6 +2417,269 @@
             text-align: center;
         }
 
+        /* ============ PACKAGES SECTION ============ */
+        .packages-section {
+            padding: 100px 60px;
+            background: linear-gradient(180deg, var(--black) 0%, #0d0808 50%, var(--black) 100%);
+            position: relative;
+        }
+
+        .packages-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .packages-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+            color: var(--gold);
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .packages-header p {
+            font-size: 16px;
+            color: var(--white-soft);
+            max-width: 700px;
+            margin: 0 auto 20px;
+        }
+
+        .packages-header .promo-note {
+            display: inline-block;
+            padding: 12px 25px;
+            background: rgba(201, 169, 98, 0.15);
+            border: 1px solid rgba(201, 169, 98, 0.3);
+            border-radius: 8px;
+            color: var(--gold);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .packages-header .promo-note i {
+            margin-right: 8px;
+        }
+
+        .packages-carousel {
+            display: flex;
+            gap: 25px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 20px 10px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .packages-carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .package-card {
+            min-width: 320px;
+            max-width: 320px;
+            background: var(--black-card);
+            border: 1px solid rgba(201, 169, 98, 0.2);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            flex-shrink: 0;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .package-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-gold-hover);
+        }
+
+        .package-image {
+            position: relative;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(201, 169, 98, 0.1) 0%, rgba(139, 69, 80, 0.1) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .package-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .package-image .placeholder-icon {
+            font-size: 60px;
+            color: var(--gold);
+            opacity: 0.5;
+            position: relative;
+            z-index: 1;
+        }
+
+        .package-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            color: var(--black);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .package-discount-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #6b2a3a;
+            color: var(--white);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .package-info {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .package-category {
+            font-size: 11px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .package-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            color: var(--white);
+            font-weight: 500;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .package-description {
+            font-size: 13px;
+            color: var(--white-muted);
+            line-height: 1.6;
+            margin-bottom: 15px;
+            min-height: 45px;
+        }
+
+        .package-products {
+            font-size: 12px;
+            color: var(--white-soft);
+            margin-bottom: 20px;
+            padding: 12px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+            line-height: 1.6;
+            min-height: 100px;
+        }
+
+        .package-pricing {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            margin-top: auto;
+        }
+
+        .package-price-old {
+            font-size: 16px;
+            color: var(--white-muted);
+            text-decoration: line-through;
+        }
+
+        .package-price-new {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .package-price-new span {
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .package-btn {
+            display: block;
+            width: 100%;
+            padding: 14px 20px;
+            background: transparent;
+            border: 1px solid var(--gold);
+            margin-top: auto;
+            color: var(--gold);
+            text-decoration: none;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .package-btn:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        .packages-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .packages-nav .carousel-btn {
+            width: 50px;
+            height: 50px;
+            border: 1px solid var(--gold);
+            background: transparent;
+            color: var(--gold);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .packages-nav .carousel-btn:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        /* Responsive packages */
+        @media (max-width: 768px) {
+            .packages-section {
+                padding: 60px 20px;
+            }
+
+            .packages-header h2 {
+                font-size: 32px;
+            }
+
+            .package-card {
+                min-width: 280px;
+                max-width: 280px;
+            }
+        }
+
         /* ============ TESTIMONIALS SECTION ============ */
         .testimonials-section {
             padding: 100px 60px;
@@ -2476,10 +2830,26 @@
 
         .footer-grid {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 60px;
-            max-width: 1200px;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+            gap: 40px;
+            max-width: 1400px;
             margin: 0 auto 60px;
+        }
+
+        .netopia-badge {
+            margin-top: 20px;
+        }
+
+        .netopia-badge img {
+            max-width: 180px;
+            height: auto;
+            opacity: 0.8;
+            filter: invert(1);
+            transition: opacity 0.3s ease;
+        }
+
+        .netopia-badge img:hover {
+            opacity: 1;
         }
 
         .footer-brand .logo {
@@ -2785,7 +3155,6 @@
             <img src="images/logo.png" alt="Brain Wellness" class="logo-icon">
             <div class="logo-text-group">
                 <span class="logo-brand">BRAIN WELLNESS</span>
-                <span class="logo-slogan">The new era of Health optimization</span>
             </div>
         </a>
 
@@ -2845,9 +3214,13 @@
             </div>
 
             <div class="hero-divider"></div>
-
-            <p class="hero-slogan">The new era of Health optimization</p>
         </div>
+
+        <!-- Scroll Arrow -->
+        <a href="#pillars" class="hero-scroll-arrow">
+            <span class="scroll-arrow-line"></span>
+            <i class="fas fa-chevron-down"></i>
+        </a>
     </section>
 
     <!-- ============ PILLARS SECTION ============ -->
@@ -2876,7 +3249,7 @@
                 </div>
                 <h3 class="pillar-title">Academy</h3>
                 <p class="pillar-description">
-                    Informații validate științific despre cum să îți upgradezi mintea și corpul. Educație bazată pe studii clinice, practicate de elita mondială pentru obținerea sănătății perfecte.
+                    Informații validate științific despre cum să îți upgradezi mintea și corpul. Educație bazată pe studii clinice, practicate de elita mondială, pentru obținerea sănătății perfecte.
                 </p>
                 <a href="https://brainwellnessacademy.com" class="pillar-btn">Intră în Academy</a>
             </div>
@@ -2961,47 +3334,42 @@
         </div>
     </section>
 
-    <!-- ============ BENEFITS SECTION - NEW ============ -->
-    <section class="benefits-section">
-        <div class="section-header">
-            <h2 class="section-title">Life <span>Transformation</span></h2>
-            <p class="section-subtitle">Beneficiile abordării Brain Wellness</p>
-        </div>
-
-        <div class="benefits-grid">
-            <div class="benefit-item" style="animation-delay: 0.1s;">
-                <div class="benefit-icon">
-                    <i class="fas fa-brain"></i>
+    <!-- ============ BENEFITS SECTION - PREMIUM ============ -->
+    <section class="benefits-section-premium">
+        <div class="benefits-premium-grid">
+            <div class="benefit-premium-item" style="animation-delay: 0.1s;">
+                <div class="benefit-premium-icon">
+                    <img src="images/benefits/restore_your_stamina.png" alt="Vitalitate 100%" loading="lazy">
                 </div>
-                <h3 class="benefit-title">Restabilește-ți<br>Mintea</h3>
+                <h3 class="benefit-premium-title">Vitalitate<br>100%</h3>
             </div>
 
-            <div class="benefit-item" style="animation-delay: 0.2s;">
-                <div class="benefit-icon">
-                    <i class="fas fa-bolt"></i>
+            <div class="benefit-premium-item" style="animation-delay: 0.2s;">
+                <div class="benefit-premium-icon">
+                    <img src="images/benefits/increase_your_performance.png" alt="Claritate Mentală" loading="lazy">
                 </div>
-                <h3 class="benefit-title">Construiește-ți<br>Vitalitatea</h3>
+                <h3 class="benefit-premium-title">Claritate<br>Mentală</h3>
             </div>
 
-            <div class="benefit-item" style="animation-delay: 0.3s;">
-                <div class="benefit-icon">
-                    <i class="fas fa-shield-alt"></i>
+            <div class="benefit-premium-item" style="animation-delay: 0.3s;">
+                <div class="benefit-premium-icon">
+                    <img src="images/benefits/build_your_vitality.png" alt="Longevitate" loading="lazy">
                 </div>
-                <h3 class="benefit-title">Previne<br>Bolile</h3>
+                <h3 class="benefit-premium-title">Longevitate<br>Activă</h3>
             </div>
 
-            <div class="benefit-item" style="animation-delay: 0.4s;">
-                <div class="benefit-icon">
-                    <i class="fas fa-infinity"></i>
+            <div class="benefit-premium-item" style="animation-delay: 0.4s;">
+                <div class="benefit-premium-icon">
+                    <img src="images/benefits/achieve_longevity.png" alt="Prevenție" loading="lazy">
                 </div>
-                <h3 class="benefit-title">Atinge<br>Longevitatea</h3>
+                <h3 class="benefit-premium-title">Prevenție<br>Inteligentă</h3>
             </div>
 
-            <div class="benefit-item" style="animation-delay: 0.5s;">
-                <div class="benefit-icon">
-                    <i class="fas fa-rocket"></i>
+            <div class="benefit-premium-item" style="animation-delay: 0.5s;">
+                <div class="benefit-premium-icon">
+                    <img src="images/benefits/performance.png" alt="Performanță" loading="lazy">
                 </div>
-                <h3 class="benefit-title">Performanță<br>Maximă</h3>
+                <h3 class="benefit-premium-title">Performanță<br>Maximă</h3>
             </div>
         </div>
     </section>
@@ -3275,7 +3643,7 @@
 
                 <div class="form-group">
                     <label for="mesaj">Mesaj / Detalii</label>
-                    <textarea id="mesaj" name="mesaj" placeholder="Descrie pe scurt motivul pentru care dorești o programare și cum te putem ajuta..."></textarea>
+                    <textarea id="mesaj" name="mesaj" placeholder="Descrie pe scurt motivul pentru care dorești o programare..."></textarea>
                 </div>
 
                 <button type="submit" class="submit-btn">
@@ -3289,7 +3657,7 @@
     <section class="biohacking-section" id="biohacking">
         <div class="clinic-header">
             <h2 class="clinic-title">Biohacking <span>— Instrumentele tale pentru un creier și un corp optim</span></h2>
-            <p class="clinic-subtitle">Produse și biotehnologii pentru vitalitate maximă, longevitate și performanță</p>
+            <p class="clinic-subtitle">Produse și bio-tehnologii pentru vitalitate maximă, longevitate și performanță, folosite de elita mondială, precum: Cristiano Ronaldo, Elon Musk, Jennifer Aniston, Gwyneth Paltrow, Joe Rogan, Will Smith, Novak Djokovic, Tony Robbins, Keanu Reeves.</p>
         </div>
         <p class="brand-mention">The leading store of biohacking in Romania</p>
 
@@ -3297,7 +3665,7 @@
             <div class="service-card">
                 <h3 class="service-title">Produse de Biohacking</h3>
                 <p class="service-description">
-                    Suplimente nootropice, Noordcode, și cele mai bune produse 
+                    Cele mai bune produse din lume: suplimente nootropice, Noordcode, și cele mai bune produse 
                     pentru optimizarea cognitivă și fizică.
                 </p>
                 <a href="https://brainwellness.ro/product-category/biohacking/" class="service-btn">Vezi produsele</a>
@@ -3327,7 +3695,7 @@
     <section class="products-section" id="produse">
         <div class="products-header">
             <h2>Produse Biohacking Recomandate</h2>
-            <p>Selecția noastră de produse premium pentru optimizarea corpului și minții</p>
+            <p>Selecția noastră de produse "luxury health" premium, pentru optimizarea corpului și minții</p>
         </div>
 
         <div class="products-carousel" id="productsCarousel">
@@ -3416,18 +3784,332 @@
         </div>
     </section>
 
+    <!-- ============ PROMOTIONAL PACKAGES SECTION ============ -->
+    <section class="packages-section" id="pachete-promo">
+        <div class="packages-header">
+            <h2>Pachete Promoționale</h2>
+            <p>Combinații inteligente de produse premium pentru obiective specifice de sănătate și performanță</p>
+            <div class="promo-note">
+                <i class="fas fa-gift"></i>
+                La achiziționarea oricărui pachet, primești o consultație la doar 200 Lei (în loc de 350 Lei)
+            </div>
+        </div>
+
+        <div class="packages-carousel" id="packagesCarousel">
+            <!-- Pachet 1: Anti-aging sănătos -->
+            <div class="package-card">
+                <div class="package-image">
+                    <img src="images/packages/anti-aging.jpg" alt="Pachet Anti-aging Sănătos" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" onload="this.nextElementSibling.style.display='none';">
+                    <i class="fas fa-hourglass-half placeholder-icon"></i>
+                    <span class="package-badge">BESTSELLER</span>
+                    <span class="package-discount-badge">-15%</span>
+                </div>
+                <div class="package-info">
+                    <p class="package-category">Longevitate</p>
+                    <h3 class="package-name">Anti-aging Sănătos</h3>
+                    <p class="package-description">Pachet complet pentru întinerire celulară și vitalitate de durată.</p>
+                    <div class="package-products">
+                        Advanced Green Plus • Tudca • PC • Electroliti Performance • Cafea Anti-aging • Creatina • MCT C8 Oil • Vit D3+K2 • Colagen • Aminoacizi Body Health
+                    </div>
+                    <div class="package-pricing">
+                        <span class="package-price-old">3.370 Lei</span>
+                        <span class="package-price-new">2.860 <span>Lei</span></span>
+                    </div>
+                    <a href="#" class="package-btn">Cumpără Pachetul</a>
+                </div>
+            </div>
+
+            <!-- Pachet 2: Imunitate/Inflamație -->
+            <div class="package-card">
+                <div class="package-image">
+                    <img src="images/packages/immunity.jpg" alt="Pachet Imunitate" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fas fa-shield-virus placeholder-icon" style="display: none;"></i>
+                    <span class="package-badge">POPULAR</span>
+                    <span class="package-discount-badge">-15%</span>
+                </div>
+                <div class="package-info">
+                    <p class="package-category">Imunitate</p>
+                    <h3 class="package-name">Imunitate & Anti-inflamație</h3>
+                    <p class="package-description">Fortifică sistemul imunitar și reduce inflamația cronică.</p>
+                    <div class="package-products">
+                        Vit C Liposomală • Vit D3+K2 • Smart Mushrooms • Curcumins • Omega 3 • Neuro Zinc • Neurovite • Polyphenols Booster
+                    </div>
+                    <div class="package-pricing">
+                        <span class="package-price-old">3.245 Lei</span>
+                        <span class="package-price-new">2.750 <span>Lei</span></span>
+                    </div>
+                    <a href="#" class="package-btn">Cumpără Pachetul</a>
+                </div>
+            </div>
+
+            <!-- Pachet 3: Stress -->
+            <div class="package-card">
+                <div class="package-image">
+                    <img src="images/packages/stress.jpg" alt="Pachet Stress" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fas fa-spa placeholder-icon" style="display: none;"></i>
+                    <span class="package-badge">PREMIUM</span>
+                    <span class="package-discount-badge">-15%</span>
+                </div>
+                <div class="package-info">
+                    <p class="package-category">Relaxare</p>
+                    <h3 class="package-name">Anti-Stress & Calm</h3>
+                    <p class="package-description">Reduce stresul și anxietatea pentru o minte liniștită.</p>
+                    <div class="package-products">
+                        Probrainbiotics • Calm My Brain • Brățară Apollo Neuroscience • Mg Noordcode • Vit D3+K2 • MCT C8 Oil • Everyday Essentials
+                    </div>
+                    <div class="package-pricing">
+                        <span class="package-price-old">6.550 Lei</span>
+                        <span class="package-price-new">5.600 <span>Lei</span></span>
+                    </div>
+                    <a href="#" class="package-btn">Cumpără Pachetul</a>
+                </div>
+            </div>
+
+            <!-- Pachet 4: Detox -->
+            <div class="package-card">
+                <div class="package-image">
+                    <img src="images/packages/detox.jpg" alt="Pachet Detox" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fas fa-leaf placeholder-icon" style="display: none;"></i>
+                    <span class="package-discount-badge">-13%</span>
+                </div>
+                <div class="package-info">
+                    <p class="package-category">Detoxifiere</p>
+                    <h3 class="package-name">Detox Complet</h3>
+                    <p class="package-description">Curăță organismul de toxine și susține funcția hepatică.</p>
+                    <div class="package-products">
+                        TUDCA • PC • NAC • Glutation • Omega 3 • Liver Tea • Vit C Liposomală • Vit D3+K2
+                    </div>
+                    <div class="package-pricing">
+                        <span class="package-price-old">4.215 Lei</span>
+                        <span class="package-price-new">3.660 <span>Lei</span></span>
+                    </div>
+                    <a href="#" class="package-btn">Cumpără Pachetul</a>
+                </div>
+            </div>
+
+            <!-- Pachet 5: Somn -->
+            <div class="package-card">
+                <div class="package-image">
+                    <img src="images/packages/sleep.jpg" alt="Pachet Somn" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fas fa-moon placeholder-icon" style="display: none;"></i>
+                    <span class="package-badge">PREMIUM</span>
+                    <span class="package-discount-badge">-13%</span>
+                </div>
+                <div class="package-info">
+                    <p class="package-category">Somn</p>
+                    <h3 class="package-name">Somn Profund & Recuperare</h3>
+                    <p class="package-description">Îmbunătățește calitatea somnului și regenerarea nocturnă.</p>
+                    <div class="package-products">
+                        Mg Noordcode • MCT C8 Oil • GABA • Vit D3 • Brățară Apollo Neuroscience • Ochelari TrueDark Noapte
+                    </div>
+                    <div class="package-pricing">
+                        <span class="package-price-old">7.080 Lei</span>
+                        <span class="package-price-new">6.150 <span>Lei</span></span>
+                    </div>
+                    <a href="#" class="package-btn">Cumpără Pachetul</a>
+                </div>
+            </div>
+
+            <!-- Pachet 6: Optimizare creier -->
+            <div class="package-card">
+                <div class="package-image">
+                    <img src="images/packages/brain.jpg" alt="Pachet Optimizare Creier" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fas fa-brain placeholder-icon" style="display: none;"></i>
+                    <span class="package-badge">TOP CHOICE</span>
+                    <span class="package-discount-badge">-13%</span>
+                </div>
+                <div class="package-info">
+                    <p class="package-category">Cognitiv</p>
+                    <h3 class="package-name">Optimizare Creier</h3>
+                    <p class="package-description">Maximizează funcția cognitivă, focusul și memoria.</p>
+                    <div class="package-products">
+                        Probrainbiotics • Everyday Essentials • Mg Noordcode • Omega 3 • Electroliti Performance • Focus & Energy • Memory & Power Boost • Creatina • Vit D3+K2 • TrueDark Glasses Zi
+                    </div>
+                    <div class="package-pricing">
+                        <span class="package-price-old">5.350 Lei</span>
+                        <span class="package-price-new">4.650 <span>Lei</span></span>
+                    </div>
+                    <a href="#" class="package-btn">Cumpără Pachetul</a>
+                </div>
+            </div>
+
+            <!-- Pachet 7: Microbiom -->
+            <div class="package-card">
+                <div class="package-image">
+                    <img src="images/packages/microbiome.jpg" alt="Pachet Microbiom" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fas fa-bacterium placeholder-icon" style="display: none;"></i>
+                    <span class="package-discount-badge">-17%</span>
+                </div>
+                <div class="package-info">
+                    <p class="package-category">Digestie</p>
+                    <h3 class="package-name">Sănătatea Microbiomului</h3>
+                    <p class="package-description">Restaurează flora intestinală pentru sănătate optimă.</p>
+                    <div class="package-products">
+                        Probiotice Akkermansia • Prebrainbiotics • Neuro Zinc • Vit D3+K2 • MCT C8 Oil
+                    </div>
+                    <div class="package-pricing">
+                        <span class="package-price-old">2.050 Lei</span>
+                        <span class="package-price-new">1.700 <span>Lei</span></span>
+                    </div>
+                    <a href="#" class="package-btn">Cumpără Pachetul</a>
+                </div>
+            </div>
+
+            <!-- Pachet 8: Skin & Beauty -->
+            <div class="package-card">
+                <div class="package-image">
+                    <img src="images/packages/beauty.jpg" alt="Pachet Skin & Beauty" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fas fa-gem placeholder-icon" style="display: none;"></i>
+                    <span class="package-badge">LUXURY</span>
+                    <span class="package-discount-badge">-13%</span>
+                </div>
+                <div class="package-info">
+                    <p class="package-category">Frumusețe</p>
+                    <h3 class="package-name">Skin & Beauty Premium</h3>
+                    <p class="package-description">Frumusețe din interior spre exterior, piele radiantă.</p>
+                    <div class="package-products">
+                        Cremă Anti-aging Mytos • Serum Ochi Mytos • Neurovite • Electroliti Performance • PC • Omega 3 • Colagen • Glutation • Vit C Liposomală • Vit D3+K2 • Liver Tea • Echo Hydrogen Water
+                    </div>
+                    <div class="package-pricing">
+                        <span class="package-price-old">8.904 Lei</span>
+                        <span class="package-price-new">7.750 <span>Lei</span></span>
+                    </div>
+                    <a href="#" class="package-btn">Cumpără Pachetul</a>
+                </div>
+            </div>
+
+            <!-- Pachet 9: Slăbit -->
+            <div class="package-card">
+                <div class="package-image">
+                    <img src="images/packages/weight.jpg" alt="Pachet Slăbit" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fas fa-weight-scale placeholder-icon" style="display: none;"></i>
+                    <span class="package-badge">TRENDING</span>
+                    <span class="package-discount-badge">-13%</span>
+                </div>
+                <div class="package-info">
+                    <p class="package-category">Slăbire</p>
+                    <h3 class="package-name">Weight Management</h3>
+                    <p class="package-description">Suport metabolic și hormonal pentru greutatea ideală.</p>
+                    <div class="package-products">
+                        GLP-1 Probiotic • Electroliti Performance • Advanced Green Juice • Prebrainbiotics • TUDCA • PC • Liver Tea
+                    </div>
+                    <div class="package-pricing">
+                        <span class="package-price-old">4.330 Lei</span>
+                        <span class="package-price-new">3.750 <span>Lei</span></span>
+                    </div>
+                    <a href="#" class="package-btn">Cumpără Pachetul</a>
+                </div>
+            </div>
+
+            <!-- Pachet 10: Depresie -->
+            <div class="package-card">
+                <div class="package-image">
+                    <img src="images/packages/mood.jpg" alt="Pachet Depresie" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fas fa-sun placeholder-icon" style="display: none;"></i>
+                    <span class="package-discount-badge">-13%</span>
+                </div>
+                <div class="package-info">
+                    <p class="package-category">Dispoziție</p>
+                    <h3 class="package-name">Mood & Wellbeing</h3>
+                    <p class="package-description">Echilibrează neurotransmițătorii pentru o dispoziție pozitivă.</p>
+                    <div class="package-products">
+                        Probrainbiotics • Omega 3 • PC • Happy Saffron/Serotonin • Everyday Essentials • Sare Redmond • Vit D3+K2 • MCT C8 Oil
+                    </div>
+                    <div class="package-pricing">
+                        <span class="package-price-old">3.270 Lei</span>
+                        <span class="package-price-new">2.850 <span>Lei</span></span>
+                    </div>
+                    <a href="#" class="package-btn">Cumpără Pachetul</a>
+                </div>
+            </div>
+
+            <!-- Pachet 11: Memorie -->
+            <div class="package-card">
+                <div class="package-image">
+                    <img src="images/packages/memory.jpg" alt="Pachet Memorie" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fas fa-lightbulb placeholder-icon" style="display: none;"></i>
+                    <span class="package-discount-badge">-12%</span>
+                </div>
+                <div class="package-info">
+                    <p class="package-category">Memorie</p>
+                    <h3 class="package-name">Memory Boost</h3>
+                    <p class="package-description">Îmbunătățește memoria și claritatea mentală.</p>
+                    <div class="package-products">
+                        Neurovite • PC • Omega 3 • Brain & Memory Power Boost • Curcumins • MCT C8 Oil
+                    </div>
+                    <div class="package-pricing">
+                        <span class="package-price-old">2.900 Lei</span>
+                        <span class="package-price-new">2.550 <span>Lei</span></span>
+                    </div>
+                    <a href="#" class="package-btn">Cumpără Pachetul</a>
+                </div>
+            </div>
+
+            <!-- Pachet 12: Fericire Totală -->
+            <div class="package-card">
+                <div class="package-image">
+                    <img src="images/packages/prenatal.jpg" alt="Pachet Fericire Totală" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fas fa-heart placeholder-icon" style="display: none;"></i>
+                    <span class="package-badge">STARTER</span>
+                    <span class="package-discount-badge">-17%</span>
+                </div>
+                <div class="package-info">
+                    <p class="package-category">Prenatal</p>
+                    <h3 class="package-name">Fericire Totală</h3>
+                    <p class="package-description">Suport prenatal complet pentru mamă și copil.</p>
+                    <div class="package-products">
+                        Smart Prenatal • Omega 3 • MCT C8 Oil
+                    </div>
+                    <div class="package-pricing">
+                        <span class="package-price-old">900 Lei</span>
+                        <span class="package-price-new">750 <span>Lei</span></span>
+                    </div>
+                    <a href="#" class="package-btn">Cumpără Pachetul</a>
+                </div>
+            </div>
+
+            <!-- Pachet 13: Cadouri sub 500 Lei -->
+            <div class="package-card">
+                <div class="package-image">
+                    <img src="images/packages/gift.jpg" alt="Cadouri sub 500 Lei" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fas fa-gift placeholder-icon" style="display: none;"></i>
+                    <span class="package-badge">CADOU</span>
+                    <span class="package-discount-badge">-38%</span>
+                </div>
+                <div class="package-info">
+                    <p class="package-category">Gift Set</p>
+                    <h3 class="package-name">Cadouri sub 500 Lei</h3>
+                    <p class="package-description">Set cadou perfect pentru cei dragi, la preț accesibil.</p>
+                    <div class="package-products">
+                        Mg Noordcode • Cafea Anti-aging • Creatina • Creamer
+                    </div>
+                    <div class="package-pricing">
+                        <span class="package-price-old">790 Lei</span>
+                        <span class="package-price-new">490 <span>Lei</span></span>
+                    </div>
+                    <a href="#" class="package-btn">Cumpără Pachetul</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="packages-nav">
+            <button class="carousel-btn" onclick="scrollPackages(-1)"><i class="fas fa-chevron-left"></i></button>
+            <button class="carousel-btn" onclick="scrollPackages(1)"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
     <!-- ============ ACADEMY SECTION ============ -->
     <section class="academy-section" id="academy">
         <div class="clinic-header">
             <h2 class="clinic-title">Brain Wellness Academy <span>— Educație pentru o minte extraordinară</span></h2>
-            <p class="clinic-subtitle">Cursuri, emisiuni și conferințe pentru dezvoltare personală și profesională</p>
+            <p class="clinic-subtitle">Cursuri, emisiuni și conferințe, bazate pe ultimele informații științifice, din domeniul neuroștiințelor, psihologiei, longevității și biohackingului.</p>
         </div>
 
         <div class="services-grid">
             <div class="service-card">
                 <h3 class="service-title">Biohacking Conference</h3>
                 <p class="service-description">
-                    Cel mai mare eveniment de biohacking din România. 
+                    Primul eveniment de biohacking din România. 
                     Speakeri internaționali și networking de elită.
                 </p>
                 <a href="#" class="service-btn">Află mai multe</a>
@@ -3437,7 +4119,7 @@
                 <span class="coming-soon-badge">COMING SOON</span>
                 <h3 class="service-title">Cursuri Online</h3>
                 <p class="service-description">
-                    Programe de învățare structurate pentru înțelegerea 
+                    Programe de învățare structurate, pentru înțelegerea 
                     și optimizarea funcționării creierului.
                 </p>
                 <a href="https://brainwellnessacademy.com" class="service-btn" target="_blank">Explorează cursurile</a>
@@ -3448,7 +4130,7 @@
                 <h3 class="service-title">Emisiune TV & YouTube</h3>
                 <p class="service-description">
                     Conținut educativ gratuit despre neuroștiință, 
-                    psihologie și biohacking pe toate platformele.
+                    psihologie și biohacking, pe toate platformele.
                 </p>
                 <a href="#" class="service-btn">Urmărește acum</a>
             </div>
@@ -3615,7 +4297,7 @@
                 </a>
                 <p>
                     Brain Wellness este destinația ta pentru optimizarea minții și corpului. 
-                    Combinăm știința cu practica pentru rezultate extraordinare.
+                    Combinăm știința cu practica, pentru rezultate extraordinare.
                 </p>
                 <div class="footer-social">
                     <a href="#"><i class="fab fa-instagram"></i></a>
@@ -3653,6 +4335,19 @@
                     <li><a href="tel:+40700000000">+40 700 000 000</a></li>
                     <li><a href="#">Despre Noi</a></li>
                 </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Scurtături</h4>
+                <ul>
+                    <li><a href="https://brainwellness.ro/termeni-si-conditii/">Termeni și Condiții</a></li>
+                    <li><a href="https://brainwellness.ro/politica-de-confidentialitate/">Politica de Confidențialitate</a></li>
+                    <li><a href="https://brainwellness.ro/rambursare_si_returnare/">Rambursări</a></li>
+                    <li><a href="https://brainwellness.ro/politica-cookies/">Politica Cookies</a></li>
+                </ul>
+                <div class="netopia-badge">
+                    <img src="https://mny.ro/np-black-0.svg" alt="Netopia Payments" height="54" width="301">
+                </div>
             </div>
         </div>
 
@@ -3706,6 +4401,22 @@
             
             const cardWidth = cards[0].offsetWidth;
             const gap = 30;
+            const scrollAmount = cardWidth + gap;
+            
+            carousel.scrollBy({
+                left: direction * scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+
+        // Packages carousel scroll function
+        function scrollPackages(direction) {
+            const carousel = document.getElementById('packagesCarousel');
+            const cards = carousel.querySelectorAll('.package-card');
+            if (cards.length === 0) return;
+            
+            const cardWidth = cards[0].offsetWidth;
+            const gap = 25;
             const scrollAmount = cardWidth + gap;
             
             carousel.scrollBy({
