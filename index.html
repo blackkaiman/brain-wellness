@@ -120,8 +120,12 @@
         }
 
         .logo-icon {
-            height: 70px;
+            height: 90px;
             width: auto;
+        }
+
+        .logo-text-group {
+            display: none;
         }
 
         .logo-text {
@@ -273,6 +277,119 @@
         .lang-switch:hover {
             border-color: var(--gold);
             color: var(--gold);
+        }
+
+        /* ============ HAMBURGER MENU ============ */
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .hamburger-menu span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--gold);
+            margin: 3px 0;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .hamburger-menu.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-menu.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 10, 10, 0.98);
+            z-index: 999;
+            padding-top: 100px;
+            overflow-y: auto;
+        }
+
+        .mobile-menu-overlay.active {
+            display: block;
+        }
+
+        .mobile-nav-menu {
+            list-style: none;
+            padding: 20px 30px;
+        }
+
+        .mobile-nav-item {
+            border-bottom: 1px solid rgba(201, 169, 98, 0.15);
+        }
+
+        .mobile-nav-link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+            color: var(--white);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-nav-link:hover {
+            color: var(--gold);
+        }
+
+        .mobile-nav-link i {
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-nav-item.open .mobile-nav-link i {
+            transform: rotate(180deg);
+        }
+
+        .mobile-dropdown {
+            display: none;
+            padding: 0 0 15px 20px;
+        }
+
+        .mobile-nav-item.open .mobile-dropdown {
+            display: block;
+        }
+
+        .mobile-dropdown-link {
+            display: block;
+            padding: 12px 0;
+            color: var(--white-muted);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-dropdown-link:hover {
+            color: var(--gold);
+            padding-left: 10px;
         }
 
         /* ============ HERO SECTION ============ */
@@ -867,21 +984,25 @@
             }
 
             .hero-animated-title {
-                height: 50px;
+                height: 55px;
                 width: 100%;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 position: relative;
+                padding: 0 15px;
             }
 
             .hero-title-word {
-                font-size: 32px;
+                font-size: clamp(24px, 7vw, 36px);
                 position: absolute;
                 left: 50%;
                 transform: translateX(-50%);
                 text-align: center;
                 animation: slideWordInMobile 6s ease-in-out infinite;
+                white-space: nowrap;
+                width: max-content;
+                max-width: 90vw;
             }
 
             .hero-title-word:nth-child(1) {
@@ -1416,6 +1537,10 @@
             
             .benefit-premium-title {
                 font-size: 16px;
+            }
+
+            .benefit-premium-item.benefit-wide {
+                grid-column: span 2;
             }
         }
 
@@ -2417,6 +2542,397 @@
             text-align: center;
         }
 
+        /* ============ RECOMMENDATION STAMP ============ */
+        .recommendation-stamp {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, rgba(201, 169, 98, 0.95) 0%, rgba(168, 138, 74, 0.95) 100%);
+            color: var(--black);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            text-align: center;
+            line-height: 1.3;
+            box-shadow: 0 4px 15px rgba(201, 169, 98, 0.4);
+            z-index: 5;
+            max-width: 130px;
+            transform: rotate(-3deg);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .recommendation-stamp::before {
+            content: '★';
+            display: block;
+            font-size: 12px;
+            margin-bottom: 2px;
+            color: var(--black);
+        }
+
+        .recommendation-stamp .stamp-text {
+            display: block;
+            font-size: 8px;
+            font-weight: 500;
+            opacity: 0.8;
+            margin-bottom: 2px;
+        }
+
+        .recommendation-stamp .stamp-name {
+            display: block;
+            font-size: 10px;
+            font-weight: 800;
+        }
+
+        /* ============ RECOMMENDED PRODUCTS SECTION ============ */
+        .recommended-section {
+            padding: 100px 60px;
+            background: var(--black);
+        }
+
+        .recommended-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .recommended-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+            font-weight: 400;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .recommended-header h2 span {
+            color: var(--white);
+        }
+
+        .recommended-header p {
+            font-size: 15px;
+            color: var(--white-muted);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .recommended-carousel {
+            display: flex;
+            gap: 25px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 20px 0;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            scroll-snap-type: x mandatory;
+        }
+
+        .recommended-carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .recommended-card {
+            flex: 0 0 300px;
+            background: var(--black-card);
+            border: 1px solid rgba(201, 169, 98, 0.15);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            position: relative;
+            scroll-snap-align: start;
+        }
+
+        .recommended-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--gold);
+            box-shadow: var(--shadow-gold-lg);
+        }
+
+        .recommended-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #252525 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 60px;
+        }
+
+        .recommended-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 15px;
+            transition: transform 0.4s ease;
+        }
+
+        .recommended-card:hover .recommended-image img {
+            transform: scale(1.05);
+        }
+
+        .recommended-image .placeholder-icon {
+            font-size: 60px;
+            color: rgba(201, 169, 98, 0.3);
+        }
+
+        .recommended-stamp {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            background: linear-gradient(135deg, rgba(201, 169, 98, 0.15) 0%, rgba(201, 169, 98, 0.08) 100%);
+            border-bottom: 1px solid rgba(201, 169, 98, 0.4);
+            border-radius: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .recommended-stamp::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            opacity: 0.8;
+        }
+
+        .recommended-stamp:hover {
+            background: linear-gradient(135deg, rgba(201, 169, 98, 0.25) 0%, rgba(201, 169, 98, 0.12) 100%);
+            box-shadow: 0 4px 15px rgba(201, 169, 98, 0.2);
+        }
+
+        .recommended-stamp .stamp-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 11px;
+            color: var(--gold);
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 3px;
+            font-style: italic;
+        }
+
+        .recommended-stamp .stamp-author {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--white);
+            text-align: center;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+
+        .recommended-stamp:hover .stamp-author {
+            color: var(--gold);
+        }
+
+        .recommended-stamp .stamp-logo {
+            display: none;
+        }
+
+        .recommended-stamp .stamp-name {
+            display: none;
+        }
+
+        .recommended-stamp .stamp-star {
+            display: none;
+        }
+
+        /* Stamp text-only (pentru experți fără logo) */
+        .recommended-stamp.stamp-text-only {
+            padding: 12px 15px;
+        }
+
+        .recommended-stamp.stamp-text-only .stamp-label {
+            font-size: 11px;
+            margin-bottom: 3px;
+        }
+
+        .recommended-stamp.stamp-text-only .stamp-author {
+            display: block;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .recommended-stamp.stamp-text-only:hover .stamp-author {
+            color: var(--gold);
+        }
+
+        @media (max-width: 768px) {
+            .recommended-stamp {
+                padding: 10px 12px;
+            }
+            .recommended-stamp .stamp-label {
+                font-size: 9px;
+                margin-bottom: 2px;
+            }
+            .recommended-stamp .stamp-author {
+                font-size: 13px;
+            }
+            .recommended-stamp.stamp-text-only .stamp-author {
+                font-size: 13px;
+            }
+        }
+
+        .recommended-info {
+            padding: 25px;
+        }
+
+        .recommended-category {
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+
+        .recommended-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-weight: 500;
+            color: var(--white);
+            margin-bottom: 8px;
+            min-height: 55px;
+        }
+
+        .recommended-benefits {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 12px 0;
+        }
+
+        .recommended-benefits li {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.75);
+            padding: 3px 0;
+            padding-left: 16px;
+            position: relative;
+            line-height: 1.4;
+        }
+
+        .recommended-benefits li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .recommended-price {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .recommended-links {
+            display: flex;
+            gap: 8px;
+            flex-wrap: nowrap;
+            width: 100%;
+        }
+
+        .recommended-btn {
+            flex: 1 1 0;
+            min-width: 0;
+            padding: 12px 8px;
+            text-decoration: none;
+            text-align: center;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            white-space: nowrap;
+        }
+
+        .recommended-btn.primary {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        .recommended-btn.primary:hover {
+            background: var(--gold-light);
+        }
+
+        .recommended-btn.secondary {
+            background: transparent;
+            border: 1px solid rgba(201, 169, 98, 0.5);
+            color: var(--gold);
+        }
+
+        .recommended-btn.secondary:hover {
+            border-color: var(--gold);
+            background: rgba(201, 169, 98, 0.1);
+        }
+
+        .recommended-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        /* Responsive Recommended */
+        @media (max-width: 768px) {
+            .recommended-section {
+                padding: 60px 20px;
+            }
+
+            .recommended-header h2 {
+                font-size: 32px;
+            }
+
+            .recommended-carousel {
+                gap: 15px;
+                padding: 20px 0;
+            }
+
+            .recommended-card {
+                flex: 0 0 calc(100vw - 60px);
+                min-width: calc(100vw - 60px);
+            }
+
+            .recommended-name {
+                font-size: 20px;
+                min-height: auto;
+            }
+
+            .recommended-links {
+                gap: 8px;
+            }
+
+            .recommended-btn {
+                padding: 10px 8px;
+                font-size: 8px;
+                letter-spacing: 0.5px;
+            }
+
+            .recommended-info {
+                padding: 20px 15px;
+            }
+        }
+
         /* ============ PACKAGES SECTION ============ */
         .packages-section {
             padding: 100px 60px;
@@ -2662,6 +3178,363 @@
         .packages-nav .carousel-btn:hover {
             background: var(--gold);
             color: var(--black);
+        }
+
+        /* ============ SUBSCRIPTIONS SECTION ============ */
+        .subscriptions-section {
+            padding: 100px 60px;
+            background: linear-gradient(180deg, var(--black) 0%, #0d0808 50%, var(--black) 100%);
+        }
+
+        .subscriptions-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .subscriptions-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+            font-weight: 400;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .subscriptions-header h2 span {
+            color: var(--white);
+        }
+
+        .subscriptions-header p {
+            font-size: 15px;
+            color: var(--white-muted);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .subscription-product-intro {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+            max-width: 1000px;
+            margin: 0 auto 60px;
+            padding: 40px;
+            background: var(--black-card);
+            border: 1px solid rgba(201, 169, 98, 0.2);
+            border-radius: 16px;
+        }
+
+        .subscription-product-image {
+            flex: 0 0 250px;
+        }
+
+        .subscription-product-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+        }
+
+        .subscription-product-info {
+            flex: 1;
+        }
+
+        .subscription-product-info h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .subscription-product-info p {
+            font-size: 14px;
+            color: var(--white-soft);
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .subscription-product-types {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .product-type-badge {
+            padding: 8px 16px;
+            background: rgba(201, 169, 98, 0.1);
+            border: 1px solid rgba(201, 169, 98, 0.3);
+            border-radius: 20px;
+            font-size: 12px;
+            color: var(--gold);
+            letter-spacing: 0.5px;
+        }
+
+        .subscriptions-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .subscription-card {
+            background: var(--black-card);
+            border: 1px solid rgba(201, 169, 98, 0.2);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .subscription-card.featured {
+            border-color: var(--gold);
+            transform: scale(1.02);
+        }
+
+        .subscription-card.featured::before {
+            content: 'RECOMANDAT';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--gold);
+            color: var(--black);
+            text-align: center;
+            padding: 8px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        .subscription-card.featured .subscription-card-header {
+            padding-top: 50px;
+        }
+
+        .subscription-card:hover {
+            border-color: var(--gold);
+            box-shadow: var(--shadow-gold-lg);
+        }
+
+        .subscription-card-header {
+            padding: 30px;
+            text-align: center;
+            border-bottom: 1px solid rgba(201, 169, 98, 0.15);
+        }
+
+        .subscription-tier {
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        .subscription-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26px;
+            color: var(--white);
+            margin-bottom: 5px;
+        }
+
+        .subscription-quantity {
+            font-size: 13px;
+            color: var(--white-muted);
+        }
+
+        .subscription-price-main {
+            margin-top: 20px;
+        }
+
+        .subscription-price-main .price-value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+            font-weight: 500;
+            color: var(--gold);
+        }
+
+        .subscription-price-main .price-currency {
+            font-size: 16px;
+            color: var(--white-muted);
+        }
+
+        .subscription-price-main .price-period {
+            font-size: 14px;
+            color: var(--white-muted);
+            display: block;
+            margin-top: 5px;
+        }
+
+        .subscription-benefits {
+            padding: 25px 30px;
+        }
+
+        .benefit-tier {
+            margin-bottom: 20px;
+        }
+
+        .benefit-tier-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(201, 169, 98, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-tier-header:hover {
+            color: var(--gold);
+        }
+
+        .benefit-tier-header h4 {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--white-soft);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .benefit-tier-header h4 i {
+            color: var(--gold);
+            font-size: 14px;
+        }
+
+        .benefit-tier-header .discount-badge {
+            background: rgba(201, 169, 98, 0.15);
+            color: var(--gold);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .benefit-tier-header .toggle-icon {
+            color: var(--gold);
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-tier.open .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .benefit-tier-content {
+            display: none;
+            padding: 15px 0 5px 25px;
+        }
+
+        .benefit-tier.open .benefit-tier-content {
+            display: block;
+        }
+
+        .benefit-tier-content ul {
+            list-style: none;
+        }
+
+        .benefit-tier-content li {
+            font-size: 13px;
+            color: var(--white-muted);
+            padding: 6px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .benefit-tier-content li i {
+            color: var(--gold);
+            font-size: 10px;
+        }
+
+        .benefit-highlight {
+            color: var(--gold) !important;
+            font-weight: 500;
+        }
+
+        .subscription-footer {
+            padding: 20px 30px 30px;
+        }
+
+        .subscription-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .subscription-btn:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        .subscription-card.featured .subscription-btn {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        .subscription-card.featured .subscription-btn:hover {
+            background: var(--gold-light);
+        }
+
+        .subscription-note {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 11px;
+            color: var(--white-muted);
+        }
+
+        /* Responsive Subscriptions */
+        @media (max-width: 1024px) {
+            .subscriptions-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .subscription-card.featured {
+                transform: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .subscriptions-section {
+                padding: 60px 20px;
+            }
+
+            .subscriptions-header h2 {
+                font-size: 32px;
+            }
+
+            .subscription-product-intro {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 20px;
+                gap: 30px;
+            }
+
+            .subscription-product-image {
+                flex: none;
+                width: 180px;
+            }
+
+            .subscription-product-types {
+                justify-content: center;
+            }
+
+            .subscriptions-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .subscription-card.featured {
+                order: -1;
+            }
         }
 
         /* Responsive packages */
@@ -2977,6 +3850,39 @@
                 display: none;
             }
 
+            /* Mobile Header Adjustments */
+            .header {
+                padding: 18px 20px;
+            }
+
+            .header .logo {
+                opacity: 1;
+                transform: translateX(0);
+                pointer-events: auto;
+            }
+
+            .logo-text-group {
+                display: none;
+            }
+
+            .logo-icon {
+                height: 65px;
+            }
+
+            .nav-icons .nav-icon.fa-search,
+            .nav-icons > .fa-search,
+            .nav-icons .search-icon {
+                display: none;
+            }
+
+            .hamburger-menu {
+                display: flex;
+            }
+
+            .nav-icons {
+                gap: 15px;
+            }
+
             /* Hero Mobile Layout */
             .hero {
                 flex-direction: column;
@@ -3059,20 +3965,23 @@
             .hero-animated-title {
                 order: 2;
                 margin-bottom: 20px;
-                height: 50px;
+                height: 55px;
                 width: 100%;
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                padding: 0 15px;
             }
 
             .hero-title-word {
                 position: absolute;
                 left: 50%;
                 transform: translateX(-50%);
-                font-size: 32px;
+                font-size: clamp(24px, 7vw, 36px);
                 text-align: center;
                 white-space: nowrap;
+                width: max-content;
+                max-width: 90vw;
             }
 
             .hero-slogan {
@@ -3094,15 +4003,25 @@
             }
 
             /* Products Carousel Mobile */
+            .products-section {
+                padding: 60px 15px;
+                overflow: hidden;
+                max-width: 100vw;
+            }
+
             .products-carousel {
                 gap: 15px;
-                padding: 20px 10px;
+                padding: 20px 0;
                 scroll-snap-type: x mandatory;
+                max-width: 100%;
+                overflow-x: auto;
+                margin: 0;
             }
 
             .product-card {
-                flex: 0 0 85vw;
-                min-width: 85vw;
+                flex: 0 0 calc(100vw - 50px);
+                min-width: calc(100vw - 50px);
+                max-width: calc(100vw - 50px);
                 scroll-snap-align: center;
             }
 
@@ -3144,6 +4063,287 @@
         .animate-in {
             animation: fadeInUp 0.8s ease forwards;
         }
+
+        /* ============ PRODUCT INFO MODAL ============ */
+        .product-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 10000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .product-modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .product-modal {
+            background: linear-gradient(145deg, #1a1a1a 0%, #0a0a0a 100%);
+            border: 1px solid var(--gold);
+            border-radius: 20px;
+            max-width: 700px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(201, 169, 98, 0.15);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .product-modal-overlay.active .product-modal {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            background: rgba(201, 169, 98, 0.2);
+            border: 1px solid var(--gold);
+            border-radius: 50%;
+            color: var(--gold);
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        .modal-header {
+            padding: 30px 30px 20px;
+            border-bottom: 1px solid rgba(201, 169, 98, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .modal-product-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .modal-product-image img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .modal-title-section {
+            flex: 1;
+        }
+
+        .modal-category {
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 5px;
+        }
+
+        .modal-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26px;
+            font-weight: 500;
+            color: var(--white);
+            margin: 0 0 8px 0;
+        }
+
+        .modal-expert {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .modal-expert-logo {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid var(--gold);
+        }
+
+        .modal-expert-text {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .modal-expert-text strong {
+            color: var(--gold);
+        }
+
+        .modal-body {
+            padding: 25px 30px;
+        }
+
+        .modal-section {
+            margin-bottom: 25px;
+        }
+
+        .modal-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .modal-section-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .modal-section-title i {
+            font-size: 16px;
+        }
+
+        .modal-description {
+            font-size: 14px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .modal-benefits-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .modal-benefits-list li {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.8);
+            padding: 10px 12px;
+            padding-left: 35px;
+            position: relative;
+            background: rgba(201, 169, 98, 0.08);
+            border-radius: 8px;
+            border-left: 3px solid var(--gold);
+        }
+
+        .modal-benefits-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 12px;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        .modal-footer {
+            padding: 20px 30px 30px;
+            border-top: 1px solid rgba(201, 169, 98, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .modal-price {
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--gold);
+        }
+
+        .modal-price span {
+            font-size: 16px;
+            font-weight: 400;
+            opacity: 0.7;
+        }
+
+        .modal-cta {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--gold);
+            color: var(--black);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .modal-cta:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(201, 169, 98, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .product-modal {
+                max-height: 85vh;
+                border-radius: 15px;
+            }
+
+            .modal-header {
+                flex-direction: column;
+                text-align: center;
+                padding: 25px 20px 20px;
+            }
+
+            .modal-product-image {
+                width: 80px;
+                height: 80px;
+            }
+
+            .modal-title {
+                font-size: 22px;
+            }
+
+            .modal-expert {
+                justify-content: center;
+            }
+
+            .modal-body {
+                padding: 20px;
+            }
+
+            .modal-benefits-list {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-footer {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .modal-cta {
+                width: 100%;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -3153,9 +4353,6 @@
     <header class="header" id="header">
         <a href="/" class="logo">
             <img src="images/logo.png" alt="Brain Wellness" class="logo-icon">
-            <div class="logo-text-group">
-                <span class="logo-brand">BRAIN WELLNESS</span>
-            </div>
         </a>
 
         <nav class="nav-main">
@@ -3186,16 +4383,61 @@
                     </div>
                 </li>
                 <li class="nav-item">
+                    <a href="#abonamente" class="nav-link">Abonamente</a>
+                </li>
+                <li class="nav-item">
                     <a href="#blog" class="nav-link">Blog</a>
                 </li>
             </ul>
 
             <div class="nav-icons">
-                <i class="fas fa-search nav-icon"></i>
                 <span class="lang-switch">RO</span>
+                <!-- Hamburger Menu Button -->
+                <div class="hamburger-menu" id="hamburgerMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </nav>
     </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+        <ul class="mobile-nav-menu">
+            <li class="mobile-nav-item">
+                <a href="#clinic" class="mobile-nav-link">Clinic <i class="fas fa-chevron-down"></i></a>
+                <div class="mobile-dropdown">
+                    <a href="#neurowellness" class="mobile-dropdown-link">Neuro-Wellness</a>
+                    <a href="#psihologie" class="mobile-dropdown-link">Psihologie</a>
+                    <a href="#pachete" class="mobile-dropdown-link">Pachete & Prețuri</a>
+                </div>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="https://brainwellnessacademy.com" class="mobile-nav-link">Academy <i class="fas fa-chevron-down"></i></a>
+                <div class="mobile-dropdown">
+                    <a href="#cursuri" class="mobile-dropdown-link">Cursuri</a>
+                    <a href="#emisiune" class="mobile-dropdown-link">Emisiune TV</a>
+                    <a href="#youtube" class="mobile-dropdown-link">YouTube</a>
+                    <a href="#conference" class="mobile-dropdown-link">Biohacking Conference</a>
+                </div>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#biohacking" class="mobile-nav-link">Biohacking <i class="fas fa-chevron-down"></i></a>
+                <div class="mobile-dropdown">
+                    <a href="#produse" class="mobile-dropdown-link">Produse de Biohacking</a>
+                    <a href="#center" class="mobile-dropdown-link">Romania Biohacking Center</a>
+                    <a href="#pachete-promo" class="mobile-dropdown-link">Pachete Promoționale</a>
+                </div>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#abonamente" class="mobile-nav-link">Abonamente</a>
+            </li>
+            <li class="mobile-nav-item">
+                <a href="#blog" class="mobile-nav-link">Blog</a>
+            </li>
+        </ul>
+    </div>
 
     <!-- ============ HERO SECTION ============ -->
     <section class="hero">
@@ -3365,9 +4607,9 @@
                 <h3 class="benefit-premium-title">Prevenție<br>Inteligentă</h3>
             </div>
 
-            <div class="benefit-premium-item" style="animation-delay: 0.5s;">
+            <div class="benefit-premium-item benefit-wide" style="animation-delay: 0.5s;">
                 <div class="benefit-premium-icon">
-                    <img src="images/benefits/performance.png" alt="Performanță" loading="lazy">
+                    <img src="images/benefits/performanta_maxima.png" alt="Performanță" loading="lazy">
                 </div>
                 <h3 class="benefit-premium-title">Performanță<br>Maximă</h3>
             </div>
@@ -3784,6 +5026,221 @@
         </div>
     </section>
 
+    <!-- ============ RECOMMENDED BY EXPERTS SECTION ============ -->
+    <section class="recommended-section" id="recomandate">
+        <div class="recommended-header">
+            <h2>Recomandate de <span>Liderii Biohacking-ului</span></h2>
+            <p>Produse validate și folosite personal de cei mai influenți experți în optimizare umană și longevitate din lume</p>
+        </div>
+
+        <div class="recommended-carousel" id="recommendedCarousel">
+            <!-- Polyphenol Booster -->
+            <div class="recommended-card">
+                <div class="recommended-image">
+                    <img src="images/placeholder-polyphenol.png" alt="Polyphenol Booster">
+                    <div class="recommended-stamp">
+                        <span class="stamp-label">Recomandat de</span>
+                        <span class="stamp-author">Gary Brecka</span>
+                    </div>
+                </div>
+                <div class="recommended-info">
+                    <p class="recommended-category">Antioxidanți</p>
+                    <h3 class="recommended-name">Polyphenol Booster</h3>
+                    <ul class="recommended-benefits">
+                        <li>Stimulează producția de Akkermansia</li>
+                        <li>Reduce inflamația cronică</li>
+                        <li>Susține metabolismul sănătos</li>
+                    </ul>
+                    <p class="recommended-price">430 lei</p>
+                    <div class="recommended-links">
+                        <a href="https://brainwellness.ro/produs/polyphenol-booster/" class="recommended-btn primary" target="_blank">Cumpără</a>
+                        <button class="recommended-btn secondary" onclick="openProductModal('polyphenol')">Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NAC -->
+            <div class="recommended-card">
+                <div class="recommended-image">
+                    <img src="images/placeholder-NAC.png" alt="NAC">
+                    <div class="recommended-stamp">
+                        <span class="stamp-label">Recomandat de</span>
+                        <span class="stamp-author">Dr. Daniel Amen</span>
+                    </div>
+                </div>
+                <div class="recommended-info">
+                    <p class="recommended-category">Detox & Protecție</p>
+                    <h3 class="recommended-name">NAC (N-Acetyl L-Cysteine)</h3>
+                    <ul class="recommended-benefits">
+                        <li>Precursor al glutationului</li>
+                        <li>Detoxifiere hepatică profundă</li>
+                        <li>Protecție neuronală</li>
+                    </ul>
+                    <p class="recommended-price">430 lei</p>
+                    <div class="recommended-links">
+                        <a href="https://brainwellness.ro/produs/nac-n-acetyl-l-cysteine/" class="recommended-btn primary" target="_blank">Cumpără</a>
+                        <button class="recommended-btn secondary" onclick="openProductModal('nac')">Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CoQ10 -->
+            <div class="recommended-card">
+                <div class="recommended-image">
+                    <img src="images/placeholder-COQ10.png" alt="CoQ10">
+                    <div class="recommended-stamp">
+                        <span class="stamp-label">Recomandat de</span>
+                        <span class="stamp-author">Dr. Daniel Amen</span>
+                    </div>
+                </div>
+                <div class="recommended-info">
+                    <p class="recommended-category">Energie Celulară</p>
+                    <h3 class="recommended-name">Optimized CoQ10</h3>
+                    <ul class="recommended-benefits">
+                        <li>Energie ATP la nivel mitocondrial</li>
+                        <li>Susține sănătatea cardiacă</li>
+                        <li>Anti-aging celular puternic</li>
+                    </ul>
+                    <p class="recommended-price">400 lei</p>
+                    <div class="recommended-links">
+                        <a href="https://brainwellness.ro/produs/coq10/" class="recommended-btn primary" target="_blank">Cumpără</a>
+                        <button class="recommended-btn secondary" onclick="openProductModal('coq10')">Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PreBrainBiotics -->
+            <div class="recommended-card">
+                <div class="recommended-image">
+                    <img src="images/placeholder-prebrainb.png" alt="PreBrainBiotics">
+                    <div class="recommended-stamp">
+                        <span class="stamp-label">Recomandat de</span>
+                        <span class="stamp-author">Dr. Daniel Amen</span>
+                    </div>
+                </div>
+                <div class="recommended-info">
+                    <p class="recommended-category">Gut-Brain Axis</p>
+                    <h3 class="recommended-name">PreBrainBiotics</h3>
+                    <ul class="recommended-benefits">
+                        <li>Optimizează axa intestin-creier</li>
+                        <li>Îmbunătățește dispoziția și claritatea</li>
+                        <li>Microbiom sănătos = minte sănătoasă</li>
+                    </ul>
+                    <p class="recommended-price">500 lei</p>
+                    <div class="recommended-links">
+                        <a href="https://brainwellness.ro/produs/prebrainbiotics/" class="recommended-btn primary" target="_blank">Cumpără</a>
+                        <button class="recommended-btn secondary" onclick="openProductModal('prebrainbiotics')">Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TrueDark Daylights -->
+            <div class="recommended-card">
+                <div class="recommended-image">
+                    <img src="images/placeholder-daylight.png" alt="TrueDark Daylights">
+                    <div class="recommended-stamp">
+                        <span class="stamp-label">Recomandat de</span>
+                        <span class="stamp-author">Dave Asprey</span>
+                    </div>
+                </div>
+                <div class="recommended-info">
+                    <p class="recommended-category">Light Optimization</p>
+                    <h3 class="recommended-name">TrueDark Daylights Fairlane</h3>
+                    <ul class="recommended-benefits">
+                        <li>Blochează lumina albastră dăunătoare</li>
+                        <li>Reduce oboseala oculară la ecran</li>
+                        <li>Protejează ritmul circadian</li>
+                    </ul>
+                    <p class="recommended-price">1.800 lei</p>
+                    <div class="recommended-links">
+                        <a href="https://brainwellness.ro/produs/ochelari-truedark-daylights-fairlane-transition/" class="recommended-btn primary" target="_blank">Cumpără</a>
+                        <button class="recommended-btn secondary" onclick="openProductModal('daylights')">Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TrueDark Twilights -->
+            <div class="recommended-card">
+                <div class="recommended-image">
+                    <img src="images/placeholder-fitovers.png" alt="TrueDark Twilights">
+                    <div class="recommended-stamp">
+                        <span class="stamp-label">Recomandat de</span>
+                        <span class="stamp-author">Dave Asprey</span>
+                    </div>
+                </div>
+                <div class="recommended-info">
+                    <p class="recommended-category">Sleep Optimization</p>
+                    <h3 class="recommended-name">TrueDark Twilights Fitovers</h3>
+                    <ul class="recommended-benefits">
+                        <li>Blochează 100% lumina perturbatoare</li>
+                        <li>Crește natural producția de melatonină</li>
+                        <li>Somn profund și restaurator</li>
+                    </ul>
+                    <p class="recommended-price">1.500 lei</p>
+                    <div class="recommended-links">
+                        <a href="https://brainwellness.ro/produs/ochelari-truedark-twilights-fitovers/" class="recommended-btn primary" target="_blank">Cumpără</a>
+                        <button class="recommended-btn secondary" onclick="openProductModal('twilights')">Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Liver Tea -->
+            <div class="recommended-card">
+                <div class="recommended-image">
+                    <img src="images/placeholder-livertea.png" alt="Liver Tea">
+                    <div class="recommended-stamp stamp-text-only">
+                        <span class="stamp-label">Recomandat de</span>
+                        <span class="stamp-author">Dr. Neil Nathan</span>
+                    </div>
+                </div>
+                <div class="recommended-info">
+                    <p class="recommended-category">Detoxifiere</p>
+                    <h3 class="recommended-name">Happy Liver Tea</h3>
+                    <ul class="recommended-benefits">
+                        <li>Curățare hepatică naturală profundă</li>
+                        <li>Susține eliminarea toxinelor</li>
+                        <li>Plante organice certificate</li>
+                    </ul>
+                    <p class="recommended-price">450 lei</p>
+                    <div class="recommended-links">
+                        <a href="https://brainwellness.ro/produs/liver-tea/" class="recommended-btn primary" target="_blank">Cumpără</a>
+                        <button class="recommended-btn secondary" onclick="openProductModal('livertea')">Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Perfect Amino -->
+            <div class="recommended-card">
+                <div class="recommended-image">
+                    <img src="images/placeholder-perfectamino.png" alt="Perfect Amino">
+                    <div class="recommended-stamp">
+                        <span class="stamp-label">Recomandat de</span>
+                        <span class="stamp-author">Gary Brecka</span>
+                    </div>
+                </div>
+                <div class="recommended-info">
+                    <p class="recommended-category">Aminoacizi</p>
+                    <h3 class="recommended-name">Perfect Amino</h3>
+                    <ul class="recommended-benefits">
+                        <li>99% utilizare pentru sinteză proteică</li>
+                        <li>Recuperare musculară rapidă</li>
+                        <li>Zero calorii, zero deșeuri metabolice</li>
+                    </ul>
+                    <p class="recommended-price">490 lei</p>
+                    <div class="recommended-links">
+                        <a href="https://brainwellness.ro/produs/perfect-amino/" class="recommended-btn primary" target="_blank">Cumpără</a>
+                        <button class="recommended-btn secondary" onclick="openProductModal('perfectamino')">Info</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="recommended-nav">
+            <button class="carousel-btn" onclick="scrollRecommended(-1)"><i class="fas fa-chevron-left"></i></button>
+            <button class="carousel-btn" onclick="scrollRecommended(1)"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
     <!-- ============ PROMOTIONAL PACKAGES SECTION ============ -->
     <section class="packages-section" id="pachete-promo">
         <div class="packages-header">
@@ -4098,6 +5555,212 @@
         </div>
     </section>
 
+    <!-- ============ SUBSCRIPTIONS SECTION ============ -->
+    <section class="subscriptions-section" id="abonamente">
+        <div class="subscriptions-header">
+            <h2>Abonamente <span>Premium</span></h2>
+            <p>Economisește lunar cu abonamentele noastre. Primești produsele preferate automat, cu reduceri progresive și beneficii exclusive.</p>
+        </div>
+
+        <!-- Product Intro -->
+        <div class="subscription-product-intro">
+            <div class="subscription-product-image">
+                <img src="images/subscriptions/coffee.png" alt="Bulletproof Coffee">
+            </div>
+            <div class="subscription-product-info">
+                <h3>Bulletproof Coffee Decaf</h3>
+                <p>Cafeaua premium creată de Dave Asprey, părintele biohacking-ului. Fără toxine, fără mucegai, pentru energie susținută și claritate mentală. Perfectă cu MCT Oil și unt grass-fed pentru celebra rețetă Bulletproof.</p>
+                <div class="subscription-product-types">
+                    <span class="product-type-badge"><i class="fas fa-coffee"></i> Boabe Întregi</span>
+                    <span class="product-type-badge"><i class="fas fa-mortar-pestle"></i> Măcinată</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subscription Plans -->
+        <div class="subscriptions-grid">
+            <!-- Silver Plan -->
+            <div class="subscription-card">
+                <div class="subscription-card-header">
+                    <p class="subscription-tier">Silver</p>
+                    <h3 class="subscription-name">2 Cutii / Lună</h3>
+                    <p class="subscription-quantity">280 lei preț standard</p>
+                    <div class="subscription-price-main">
+                        <span class="price-value">265</span>
+                        <span class="price-currency">lei</span>
+                        <span class="price-period">prima lună • -5%</span>
+                    </div>
+                </div>
+                <div class="subscription-benefits">
+                    <div class="benefit-tier">
+                        <div class="benefit-tier-header" onclick="this.parentElement.classList.toggle('open')">
+                            <h4><i class="fas fa-clock"></i> După 3 luni</h4>
+                            <span class="discount-badge">-10%</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </div>
+                        <div class="benefit-tier-content">
+                            <ul>
+                                <li><i class="fas fa-check"></i> 255 lei / lună</li>
+                                <li><i class="fas fa-check"></i> Livrare gratuită</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="benefit-tier">
+                        <div class="benefit-tier-header" onclick="this.parentElement.classList.toggle('open')">
+                            <h4><i class="fas fa-clock"></i> După 6 luni</h4>
+                            <span class="discount-badge">-15%</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </div>
+                        <div class="benefit-tier-content">
+                            <ul>
+                                <li><i class="fas fa-check"></i> 245 lei / lună</li>
+                                <li><i class="fas fa-check"></i> Livrare gratuită</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="benefit-tier">
+                        <div class="benefit-tier-header" onclick="this.parentElement.classList.toggle('open')">
+                            <h4><i class="fas fa-gift"></i> Cadou la 12 luni</h4>
+                            <span class="discount-badge">BONUS</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </div>
+                        <div class="benefit-tier-content">
+                            <ul>
+                                <li><i class="fas fa-check"></i> <span class="benefit-highlight">1 cafea gratuită</span></li>
+                                <li><i class="fas fa-check"></i> Anul 2: -17% reducere</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="subscription-footer">
+                    <a href="#" class="subscription-btn">Abonează-te</a>
+                    <p class="subscription-note">*Plată automată lunară</p>
+                </div>
+            </div>
+
+            <!-- Gold Plan - Featured -->
+            <div class="subscription-card featured">
+                <div class="subscription-card-header">
+                    <p class="subscription-tier">Gold</p>
+                    <h3 class="subscription-name">4 Cutii / Lună</h3>
+                    <p class="subscription-quantity">560 lei preț standard</p>
+                    <div class="subscription-price-main">
+                        <span class="price-value">510</span>
+                        <span class="price-currency">lei</span>
+                        <span class="price-period">prima lună • -10%</span>
+                    </div>
+                </div>
+                <div class="subscription-benefits">
+                    <div class="benefit-tier">
+                        <div class="benefit-tier-header" onclick="this.parentElement.classList.toggle('open')">
+                            <h4><i class="fas fa-clock"></i> După 3 luni</h4>
+                            <span class="discount-badge">-12%</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </div>
+                        <div class="benefit-tier-content">
+                            <ul>
+                                <li><i class="fas fa-check"></i> 500 lei / lună</li>
+                                <li><i class="fas fa-check"></i> Livrare gratuită</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="benefit-tier">
+                        <div class="benefit-tier-header" onclick="this.parentElement.classList.toggle('open')">
+                            <h4><i class="fas fa-clock"></i> După 6 luni</h4>
+                            <span class="discount-badge">-17%</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </div>
+                        <div class="benefit-tier-content">
+                            <ul>
+                                <li><i class="fas fa-check"></i> 475 lei / lună</li>
+                                <li><i class="fas fa-check"></i> Livrare gratuită</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="benefit-tier">
+                        <div class="benefit-tier-header" onclick="this.parentElement.classList.toggle('open')">
+                            <h4><i class="fas fa-gift"></i> Cadou la 12 luni</h4>
+                            <span class="discount-badge">BONUS</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </div>
+                        <div class="benefit-tier-content">
+                            <ul>
+                                <li><i class="fas fa-check"></i> <span class="benefit-highlight">1 cafea gratuită</span></li>
+                                <li><i class="fas fa-check"></i> <span class="benefit-highlight">1 supliment pentru creier</span></li>
+                                <li><i class="fas fa-check"></i> Anul 2: -20% reducere</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="subscription-footer">
+                    <a href="#" class="subscription-btn">Abonează-te</a>
+                    <p class="subscription-note">*Plată automată lunară</p>
+                </div>
+            </div>
+
+            <!-- Platinum Plan -->
+            <div class="subscription-card">
+                <div class="subscription-card-header">
+                    <p class="subscription-tier">Platinum</p>
+                    <h3 class="subscription-name">6 Cutii / Lună</h3>
+                    <p class="subscription-quantity">840 lei preț standard</p>
+                    <div class="subscription-price-main">
+                        <span class="price-value">750</span>
+                        <span class="price-currency">lei</span>
+                        <span class="price-period">prima lună • -12%</span>
+                    </div>
+                </div>
+                <div class="subscription-benefits">
+                    <div class="benefit-tier">
+                        <div class="benefit-tier-header" onclick="this.parentElement.classList.toggle('open')">
+                            <h4><i class="fas fa-clock"></i> După 3 luni</h4>
+                            <span class="discount-badge">-15%</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </div>
+                        <div class="benefit-tier-content">
+                            <ul>
+                                <li><i class="fas fa-check"></i> 730 lei / lună</li>
+                                <li><i class="fas fa-check"></i> Livrare gratuită</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="benefit-tier">
+                        <div class="benefit-tier-header" onclick="this.parentElement.classList.toggle('open')">
+                            <h4><i class="fas fa-clock"></i> După 6 luni</h4>
+                            <span class="discount-badge">-20%</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </div>
+                        <div class="benefit-tier-content">
+                            <ul>
+                                <li><i class="fas fa-check"></i> 700 lei / lună</li>
+                                <li><i class="fas fa-check"></i> Livrare gratuită</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="benefit-tier">
+                        <div class="benefit-tier-header" onclick="this.parentElement.classList.toggle('open')">
+                            <h4><i class="fas fa-gift"></i> Cadou la 12 luni</h4>
+                            <span class="discount-badge">BONUS</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </div>
+                        <div class="benefit-tier-content">
+                            <ul>
+                                <li><i class="fas fa-check"></i> <span class="benefit-highlight">1 cafea gratuită</span></li>
+                                <li><i class="fas fa-check"></i> <span class="benefit-highlight">1 supliment pentru creier</span></li>
+                                <li><i class="fas fa-check"></i> <span class="benefit-highlight">1 consultație neuro-wellness</span></li>
+                                <li><i class="fas fa-check"></i> Anul 2: -25% reducere</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="subscription-footer">
+                    <a href="#" class="subscription-btn">Abonează-te</a>
+                    <p class="subscription-note">*Plată automată lunară</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ============ ACADEMY SECTION ============ -->
     <section class="academy-section" id="academy">
         <div class="clinic-header">
@@ -4393,6 +6056,41 @@
             });
         });
 
+        // Hamburger Menu Toggle
+        const hamburgerMenu = document.getElementById('hamburgerMenu');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+
+        hamburgerMenu.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mobileMenuOverlay.classList.toggle('active');
+            document.body.style.overflow = mobileMenuOverlay.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Toggle mobile dropdowns
+        mobileNavItems.forEach(item => {
+            const link = item.querySelector('.mobile-nav-link');
+            const dropdown = item.querySelector('.mobile-dropdown');
+            
+            if (dropdown) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    item.classList.toggle('open');
+                });
+            }
+        });
+
+        // Close mobile menu when clicking a link (without dropdown)
+        document.querySelectorAll('.mobile-dropdown-link, .mobile-nav-link:not([href="#"])').forEach(link => {
+            link.addEventListener('click', function() {
+                if (!this.nextElementSibling || !this.nextElementSibling.classList.contains('mobile-dropdown')) {
+                    hamburgerMenu.classList.remove('active');
+                    mobileMenuOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+
         // Products carousel scroll function
         function scrollCarousel(direction) {
             const carousel = document.getElementById('productsCarousel');
@@ -4413,6 +6111,22 @@
         function scrollPackages(direction) {
             const carousel = document.getElementById('packagesCarousel');
             const cards = carousel.querySelectorAll('.package-card');
+            if (cards.length === 0) return;
+            
+            const cardWidth = cards[0].offsetWidth;
+            const gap = 25;
+            const scrollAmount = cardWidth + gap;
+            
+            carousel.scrollBy({
+                left: direction * scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+
+        // Recommended carousel scroll function
+        function scrollRecommended(direction) {
+            const carousel = document.getElementById('recommendedCarousel');
+            const cards = carousel.querySelectorAll('.recommended-card');
             if (cards.length === 0) return;
             
             const cardWidth = cards[0].offsetWidth;
@@ -4452,8 +6166,260 @@
         carousel.addEventListener('mouseenter', stopAutoScroll);
         carousel.addEventListener('mouseleave', startAutoScroll);
         startAutoScroll();
+
+        // ============ PRODUCT INFO MODAL ============
+        const productData = {
+            'polyphenol': {
+                name: 'Polyphenol Booster',
+                category: 'Antioxidanți',
+                price: '430 lei',
+                image: 'images/placeholder-polyphenol.png',
+                expert: 'Gary Brecka',
+                expertLogo: 'images/logos/garybreka.png',
+                buyLink: 'https://brainwellness.ro/produs/polyphenol-booster/',
+                description: 'Polyphenol Booster a fost conceput pentru a susține echilibrul microbiomului, nu prin intervenție directă, ci prin furnizarea condițiilor necesare funcționării sale naturale. Polifenolii sunt compuși bioactivi prezenți natural în plante, implicați în modularea microbiomului și în susținerea echilibrului intestinal.',
+                benefits: [
+                    'Stimulează producția de Akkermansia',
+                    'Susține diversitatea microbiomului',
+                    'Reduce inflamația cronică',
+                    'Favorizeză integritatea mucoasei intestinale',
+                    'Susține metabolismul sănătos',
+                    'Reziliență intestinală în timp'
+                ]
+            },
+            'nac': {
+                name: 'NAC (N-Acetyl L-Cysteine)',
+                category: 'Detox & Protecție',
+                price: '430 lei',
+                image: 'images/placeholder-NAC.png',
+                expert: 'Dr. Daniel Amen',
+                expertLogo: 'images/logos/brainmd.png',
+                buyLink: 'https://brainwellness.ro/produs/nac-n-acetyl-l-cysteine/',
+                description: 'NAC creat de Dr. Daniel Amen este un precursor esențial al glutationului — principalul antioxidant endogen al organismului. Nu este un stimulent și nu oferă senzații imediate artificiale. Acționează în profunzime, susținând procesele fundamentale ale organismului.',
+                benefits: [
+                    'Precursor al glutationului (master antioxidant)',
+                    'Detoxifiere hepatică profundă',
+                    'Neutralizarea stresului oxidativ',
+                    'Protecție neuronală',
+                    'Susține funcția respiratorie',
+                    'Echilibru intern celular'
+                ]
+            },
+            'coq10': {
+                name: 'Optimized CoQ10',
+                category: 'Energie Celulară',
+                price: '400 lei',
+                image: 'images/placeholder-COQ10.png',
+                expert: 'Dr. Daniel Amen',
+                expertLogo: 'images/logos/brainmd.png',
+                buyLink: 'https://brainwellness.ro/produs/coq10/',
+                description: 'Coenzima Q10 este o moleculă implicată direct în procesele prin care celulele produc energie în mitocondrii. Inima, creierul și musculatura sunt țesuturi cu un consum energetic ridicat și depind în mod constant de aceste mecanisme.',
+                benefits: [
+                    'Energie ATP la nivel mitocondrial',
+                    'Susține sănătatea cardiacă',
+                    'Anti-aging celular puternic',
+                    'Protecție împotriva stresului oxidativ',
+                    'Vitalitate generală crescută',
+                    'Funcționare cognitivă optimă'
+                ]
+            },
+            'prebrainbiotics': {
+                name: 'PreBrainBiotics',
+                category: 'Gut-Brain Axis',
+                price: '500 lei',
+                image: 'images/placeholder-prebrainb.png',
+                expert: 'Dr. Daniel Amen',
+                expertLogo: 'images/logos/brainmd.png',
+                buyLink: 'https://brainwellness.ro/produs/prebrainbiotics/',
+                description: 'PreBRAINBiotics este conceput ca o bază funcțională pentru microbiom, gândită pentru utilizare constantă. Formula combină trei prebiotice validate clinic cu fibră funcțională, într-o doză zilnică ușor de integrat.',
+                benefits: [
+                    'Optimizează axa intestin-creier',
+                    'Îmbunătățește dispoziția și claritatea',
+                    'Susține echilibrul digestiv',
+                    'Hrănește microbiomul direcționat',
+                    'Toleranță digestivă excelentă',
+                    'Microbiom sănătos = minte sănătoasă'
+                ]
+            },
+            'daylights': {
+                name: 'TrueDark Daylights Fairlane',
+                category: 'Light Optimization',
+                price: '1.800 lei',
+                image: 'images/placeholder-daylight.png',
+                expert: 'Dave Asprey',
+                expertLogo: 'images/logos/Dave Asprey.png',
+                buyLink: 'https://brainwellness.ro/produs/ochelari-truedark-daylights-fairlane-transition/',
+                description: 'Ochelarii de zi Daylights Fairlane, creați de liderul în biohacking Dave Asprey, au fost concepuți pentru cei ce își respectă mitocondriile. Filtrează selectiv lungimile de undă asociate cu oboseala, permițând pătrunderea luminii benefice.',
+                benefits: [
+                    'Blochează lumina albastră dăunătoare',
+                    'Reduce oboseala oculară la ecran',
+                    'Protejează ritmul circadian',
+                    'Menține starea de alertă diurnă',
+                    'Claritate și concentrare susținută',
+                    'Energie stabilă pe parcursul zilei'
+                ]
+            },
+            'twilights': {
+                name: 'TrueDark Twilights Fitovers',
+                category: 'Sleep Optimization',
+                price: '1.500 lei',
+                image: 'images/placeholder-fitovers.png',
+                expert: 'Dave Asprey',
+                expertLogo: 'images/logos/Dave Asprey.png',
+                buyLink: 'https://brainwellness.ro/produs/ochelari-truedark-twilights-fitovers/',
+                description: 'Ochelarii Twilights Fitovers, creați de Dave Asprey, reduc aproape complet expunerea la semnalele luminoase nocturne. Permit creierului să primească un semnal clar de întuneric, fără a interveni chimic asupra organismului.',
+                benefits: [
+                    'Blochează 100% lumina perturbatoare',
+                    'Crește natural producția de melatonină',
+                    'Somn profund și restaurator',
+                    'Reglează ritmul circadian seara',
+                    'Tranziție naturală către somn',
+                    'Fără intervenție chimică'
+                ]
+            },
+            'livertea': {
+                name: 'Happy Liver Tea',
+                category: 'Detoxifiere',
+                price: '450 lei',
+                image: 'images/placeholder-livertea.png',
+                expert: 'Dr. Neil Nathan',
+                expertLogo: null,
+                buyLink: 'https://brainwellness.ro/produs/liver-tea/',
+                description: 'Happy Liver Tea este o formulă gândită pentru susținere zilnică, realizată dintr-un amestec de plante medicinale atent selecționate, utilizate tradițional pentru susținerea funcției hepatice, a digestiei și a stării generale de bine.',
+                benefits: [
+                    'Curățare hepatică naturală profundă',
+                    'Susține eliminarea toxinelor',
+                    'Plante organice certificate',
+                    'Fără cofeină, gust delicat',
+                    'Digestie reglată natural',
+                    'Energie constantă și piele uniformă'
+                ]
+            },
+            'perfectamino': {
+                name: 'Perfect Amino',
+                category: 'Aminoacizi',
+                price: '490 lei',
+                image: 'images/placeholder-perfectamino.png',
+                expert: 'Gary Brecka',
+                expertLogo: 'images/logos/garybreka.png',
+                buyLink: 'https://brainwellness.ro/produs/perfect-amino/',
+                description: 'Perfect Amino oferă aminoacizi esențiali într-o formulă cu 99% utilizare pentru sinteză proteică. Este soluția ideală pentru recuperare musculară, fără calorii și fără deșeuri metabolice.',
+                benefits: [
+                    '99% utilizare pentru sinteză proteică',
+                    'Recuperare musculară rapidă',
+                    'Zero calorii, zero deșeuri metabolice',
+                    'Absorbție în 23 minute',
+                    'Ideal pentru atleți și activi',
+                    'Susține masa musculară slabă'
+                ]
+            }
+        };
+
+        function openProductModal(productId) {
+            const product = productData[productId];
+            if (!product) return;
+
+            const modal = document.getElementById('productModal');
+            const overlay = document.getElementById('productModalOverlay');
+
+            // Update modal content
+            document.getElementById('modalImage').src = product.image;
+            document.getElementById('modalImage').alt = product.name;
+            document.getElementById('modalCategory').textContent = product.category;
+            document.getElementById('modalTitle').textContent = product.name;
+            document.getElementById('modalDescription').textContent = product.description;
+            document.getElementById('modalPrice').innerHTML = product.price.replace(' lei', ' <span>lei</span>');
+            document.getElementById('modalCTA').href = product.buyLink;
+
+            // Expert info
+            const expertContainer = document.getElementById('modalExpert');
+            if (product.expertLogo) {
+                expertContainer.innerHTML = `
+                    <img src="${product.expertLogo}" alt="${product.expert}" class="modal-expert-logo">
+                    <span class="modal-expert-text">Recomandat de <strong>${product.expert}</strong></span>
+                `;
+            } else {
+                expertContainer.innerHTML = `
+                    <span class="modal-expert-text">Recomandat de <strong>${product.expert}</strong></span>
+                `;
+            }
+
+            // Benefits list
+            const benefitsList = document.getElementById('modalBenefits');
+            benefitsList.innerHTML = product.benefits.map(b => `<li>${b}</li>`).join('');
+
+            // Show modal
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProductModal() {
+            const overlay = document.getElementById('productModalOverlay');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close on overlay click
+        document.getElementById('productModalOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeProductModal();
+            }
+        });
+
+        // Close on ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeProductModal();
+            }
+        });
     </script>
 
 </div><!-- .brainwellness-landing -->
+
+<!-- Product Info Modal -->
+<div class="product-modal-overlay" id="productModalOverlay">
+    <div class="product-modal" id="productModal">
+        <button class="modal-close" onclick="closeProductModal()">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <div class="modal-header">
+            <div class="modal-product-image">
+                <img src="" alt="" id="modalImage">
+            </div>
+            <div class="modal-title-section">
+                <p class="modal-category" id="modalCategory"></p>
+                <h2 class="modal-title" id="modalTitle"></h2>
+                <div class="modal-expert" id="modalExpert"></div>
+            </div>
+        </div>
+
+        <div class="modal-body">
+            <div class="modal-section">
+                <h3 class="modal-section-title">
+                    <i class="fas fa-info-circle"></i>
+                    Despre Produs
+                </h3>
+                <p class="modal-description" id="modalDescription"></p>
+            </div>
+
+            <div class="modal-section">
+                <h3 class="modal-section-title">
+                    <i class="fas fa-check-circle"></i>
+                    Beneficii Cheie
+                </h3>
+                <ul class="modal-benefits-list" id="modalBenefits"></ul>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <div class="modal-price" id="modalPrice"></div>
+            <a href="#" class="modal-cta" id="modalCTA" target="_blank">
+                Cumpără Acum
+            </a>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
