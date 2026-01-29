@@ -1912,15 +1912,31 @@
         }
 
         /* ============ VIDEO TESTIMONIAL ============ */
+        .video-testimonials-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 50px;
+            padding: 0 20px;
+        }
+
         .video-testimonial {
-            max-width: 800px;
-            margin: 0 auto 40px;
+            max-width: 500px;
+            flex: 1 1 400px;
             background: var(--black-card);
             border: 1px solid rgba(201, 169, 98, 0.2);
             border-radius: 12px;
             overflow: hidden;
             box-shadow: var(--shadow-gold-md);
             position: relative;
+        }
+
+        .video-testimonial video {
+            width: 100%;
+            height: auto;
+            display: block;
+            background: var(--black);
         }
 
         .video-testimonial::before {
@@ -2665,11 +2681,17 @@
             height: 100%;
             object-fit: contain;
             padding: 15px;
-            transition: transform 0.4s ease;
+            transition: transform 0.4s ease, filter 0.4s ease;
+            filter: drop-shadow(0 0 20px rgba(201, 169, 98, 0.25)) 
+                    drop-shadow(0 0 40px rgba(201, 169, 98, 0.15)) 
+                    drop-shadow(0 0 60px rgba(201, 169, 98, 0.08));
         }
 
         .recommended-card:hover .recommended-image img {
             transform: scale(1.05);
+            filter: drop-shadow(0 0 25px rgba(201, 169, 98, 0.4)) 
+                    drop-shadow(0 0 50px rgba(201, 169, 98, 0.25)) 
+                    drop-shadow(0 0 70px rgba(201, 169, 98, 0.12));
         }
 
         .recommended-image .placeholder-icon {
@@ -4046,6 +4068,27 @@
                 width: 45px;
                 height: 45px;
             }
+
+            /* Featured/As Seen In - Mobile */
+            .featured-slider {
+                gap: 25px;
+            }
+
+            .featured-logo-item {
+                min-width: 70px;
+                padding: 10px 8px;
+                gap: 8px;
+            }
+
+            .featured-logo-img {
+                height: 35px;
+                max-width: 90px;
+            }
+
+            .featured-logo-name {
+                font-size: 8px;
+                letter-spacing: 1px;
+            }
         }
 
         /* ============ ANIMATIONS ============ */
@@ -4182,9 +4225,9 @@
         }
 
         .modal-expert-logo {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
+              width: 56px;
+              height: 40px;
+              border-radius: 22px / 20px;
             object-fit: cover;
             border: 1px solid var(--gold);
         }
@@ -4491,7 +4534,7 @@
                 </div>
                 <h3 class="pillar-title">Academy</h3>
                 <p class="pillar-description">
-                    Informații validate științific despre cum să îți upgradezi mintea și corpul. Educație bazată pe studii clinice, practicate de elita mondială, pentru obținerea sănătății perfecte.
+                    Informații validate științific despre cum să îți upgradezi mintea și corpul. Educație bazată pe studii clinice, practicate de elita mondială, pentru obținerea sănătății depline.
                 </p>
                 <a href="https://brainwellnessacademy.com" class="pillar-btn">Intră în Academy</a>
             </div>
@@ -4528,7 +4571,7 @@
         <!-- MANIFEST PRINCIPAL - PRIMA PARTE -->
         <div class="quote-manifest">
             <p class="quote-text">
-                Mulți oameni nu sunt bolnavi, dar trăiesc cu o oboseală, o tensiune și o lipsă de claritate, care, în timp, le afectează vitalitatea, rezistența la stres și chiar felul de a fi și de a se comporta. De cele mai multe ori nu se primește un diagnostic, dar sunt suficient de prezente aceste simptome, încât să îți afecteze real calitatea vieții.
+                Mulți oameni nu sunt bolnavi, dar trăiesc cu oboseală, tensiune și lipsă de claritate, care, în timp, le afectează vitalitatea, rezistența la stres și chiar felul de a fi și de a se comporta. De cele mai multe ori nu se primește un diagnostic, dar, aceste simptome sunt suficient de prezente, încât să îți afecteze real calitatea vieții.
             </p>
             <p class="quote-text" style="margin-top: 25px;">
                 Apare astfel nevoia unei perspective diferite asupra sănătății. Aici intră în scenă biohacking-ul — știința optimizării umane și a longevității. Un domeniu în care creierul joacă rolul principal, iar mintea îl urmează.
@@ -4715,7 +4758,7 @@
         </div>
 
         <p class="brands-note">
-            <strong>Brain Wellness</strong> este singura platformă din România care aduce și recomandă aceste direcții validate internațional.
+            <strong>Brain Wellness</strong> este singura platformă din România care aduce aceste suplimente, produse de nutriție funcțională și concepte validate internațional.
         </p>
     </section>
 
@@ -4914,6 +4957,7 @@
             </div>
 
             <div class="service-card">
+                <span class="coming-soon-badge">COMING SOON</span>
                 <h3 class="service-title">Romania Biohacking Center</h3>
                 <p class="service-description">
                     Primul centru dedicat biohacking-ului din România. 
@@ -5310,7 +5354,7 @@
                 <div class="package-info">
                     <p class="package-category">Relaxare</p>
                     <h3 class="package-name">Anti-Stress & Calm</h3>
-                    <p class="package-description">Reduce stresul și anxietatea pentru o minte liniștită.</p>
+                    <p class="package-description">Reduce stresul și anxietatea, pentru o minte liniștită.</p>
                     <div class="package-products">
                         Probrainbiotics • Calm My Brain • Brățară Apollo Neuroscience • Mg Noordcode • Vit D3+K2 • MCT C8 Oil • Everyday Essentials
                     </div>
@@ -5547,6 +5591,29 @@
                     <a href="#" class="package-btn">Cumpără Pachetul</a>
                 </div>
             </div>
+
+            <!-- Pachet 14: Copii Deștepți și Fericiți -->
+            <div class="package-card">
+                <div class="package-image">
+                    <img src="images/packages/kids.jpg" alt="Pachet Copii" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <i class="fas fa-child placeholder-icon" style="display: none;"></i>
+                    <span class="package-badge">KIDS</span>
+                    <span class="package-discount-badge">-15%</span>
+                </div>
+                <div class="package-info">
+                    <p class="package-category">Copii</p>
+                    <h3 class="package-name">Copii Deștepți și Fericiți</h3>
+                    <p class="package-description">Suport complet pentru dezvoltarea cognitivă și emoțională a copiilor.</p>
+                    <div class="package-products">
+                        Kids Omega 3 • Neurovite Kids
+                    </div>
+                    <div class="package-pricing">
+                        <span class="package-price-old">710 Lei</span>
+                        <span class="package-price-new">610 <span>Lei</span></span>
+                    </div>
+                    <a href="#" class="package-btn">Cumpără Pachetul</a>
+                </div>
+            </div>
         </div>
 
         <div class="packages-nav">
@@ -5565,11 +5632,15 @@
         <!-- Product Intro -->
         <div class="subscription-product-intro">
             <div class="subscription-product-image">
-                <img src="images/subscriptions/coffee.png" alt="Bulletproof Coffee">
+                <img src="images/subscriptions/coffee.png" alt="NoordCode Coffee">
             </div>
             <div class="subscription-product-info">
-                <h3>Bulletproof Coffee Decaf</h3>
-                <p>Cafeaua premium creată de Dave Asprey, părintele biohacking-ului. Fără toxine, fără mucegai, pentru energie susținută și claritate mentală. Perfectă cu MCT Oil și unt grass-fed pentru celebra rețetă Bulletproof.</p>
+                <h3>Cafeaua „Upgrade pentru Creier"</h3>
+                <p><strong style="color: var(--gold);">Cafeaua creată special pentru sănătatea creierului!</strong></p>
+                <p style="margin-top: 10px;">Viziunea științifică din spatele ei? <strong>Puritate maximă!</strong></p>
+                <p style="margin-top: 10px;">NoordCode Coffee este singura cafea de pe piața Europeană, formulată special pentru performanță cognitivă – focus susținut și energie stabilă, fără crash de energie și iritabilitate, după consum.</p>
+                <p style="margin-top: 10px;">Mai mult decât atât, face parte din <strong>top 3% cafea de specialitate din lume</strong> ca și gust, atent selecționată și prăjită pentru puritate, gust curat și toleranță optimă pentru sistemul nervos.</p>
+                <p style="margin-top: 15px; font-style: italic; color: var(--gold);">Exclusiv în România, prin Brain Wellness.</p>
                 <div class="subscription-product-types">
                     <span class="product-type-badge"><i class="fas fa-coffee"></i> Boabe Întregi</span>
                     <span class="product-type-badge"><i class="fas fa-mortar-pestle"></i> Măcinată</span>
@@ -5595,7 +5666,7 @@
                     <div class="benefit-tier">
                         <div class="benefit-tier-header" onclick="this.parentElement.classList.toggle('open')">
                             <h4><i class="fas fa-clock"></i> După 3 luni</h4>
-                            <span class="discount-badge">-10%</span>
+                            <span class="discount-badge">-9%</span>
                             <i class="fas fa-chevron-down toggle-icon"></i>
                         </div>
                         <div class="benefit-tier-content">
@@ -5608,7 +5679,7 @@
                     <div class="benefit-tier">
                         <div class="benefit-tier-header" onclick="this.parentElement.classList.toggle('open')">
                             <h4><i class="fas fa-clock"></i> După 6 luni</h4>
-                            <span class="discount-badge">-15%</span>
+                            <span class="discount-badge">-12%</span>
                             <i class="fas fa-chevron-down toggle-icon"></i>
                         </div>
                         <div class="benefit-tier-content">
@@ -5627,7 +5698,7 @@
                         <div class="benefit-tier-content">
                             <ul>
                                 <li><i class="fas fa-check"></i> <span class="benefit-highlight">1 cafea gratuită</span></li>
-                                <li><i class="fas fa-check"></i> Anul 2: -17% reducere</li>
+                                <li><i class="fas fa-check"></i> Anul 2: -15% reducere</li>
                             </ul>
                         </div>
                     </div>
@@ -5647,14 +5718,14 @@
                     <div class="subscription-price-main">
                         <span class="price-value">510</span>
                         <span class="price-currency">lei</span>
-                        <span class="price-period">prima lună • -10%</span>
+                        <span class="price-period">prima lună • -9%</span>
                     </div>
                 </div>
                 <div class="subscription-benefits">
                     <div class="benefit-tier">
                         <div class="benefit-tier-header" onclick="this.parentElement.classList.toggle('open')">
                             <h4><i class="fas fa-clock"></i> După 3 luni</h4>
-                            <span class="discount-badge">-12%</span>
+                            <span class="discount-badge">-11%</span>
                             <i class="fas fa-chevron-down toggle-icon"></i>
                         </div>
                         <div class="benefit-tier-content">
@@ -5667,7 +5738,7 @@
                     <div class="benefit-tier">
                         <div class="benefit-tier-header" onclick="this.parentElement.classList.toggle('open')">
                             <h4><i class="fas fa-clock"></i> După 6 luni</h4>
-                            <span class="discount-badge">-17%</span>
+                            <span class="discount-badge">-15%</span>
                             <i class="fas fa-chevron-down toggle-icon"></i>
                         </div>
                         <div class="benefit-tier-content">
@@ -5687,7 +5758,7 @@
                             <ul>
                                 <li><i class="fas fa-check"></i> <span class="benefit-highlight">1 cafea gratuită</span></li>
                                 <li><i class="fas fa-check"></i> <span class="benefit-highlight">1 supliment pentru creier</span></li>
-                                <li><i class="fas fa-check"></i> Anul 2: -20% reducere</li>
+                                <li><i class="fas fa-check"></i> Anul 2: -18% reducere</li>
                             </ul>
                         </div>
                     </div>
@@ -5707,14 +5778,14 @@
                     <div class="subscription-price-main">
                         <span class="price-value">750</span>
                         <span class="price-currency">lei</span>
-                        <span class="price-period">prima lună • -12%</span>
+                        <span class="price-period">prima lună • -11%</span>
                     </div>
                 </div>
                 <div class="subscription-benefits">
                     <div class="benefit-tier">
                         <div class="benefit-tier-header" onclick="this.parentElement.classList.toggle('open')">
                             <h4><i class="fas fa-clock"></i> După 3 luni</h4>
-                            <span class="discount-badge">-15%</span>
+                            <span class="discount-badge">-13%</span>
                             <i class="fas fa-chevron-down toggle-icon"></i>
                         </div>
                         <div class="benefit-tier-content">
@@ -5727,7 +5798,7 @@
                     <div class="benefit-tier">
                         <div class="benefit-tier-header" onclick="this.parentElement.classList.toggle('open')">
                             <h4><i class="fas fa-clock"></i> După 6 luni</h4>
-                            <span class="discount-badge">-20%</span>
+                            <span class="discount-badge">-17%</span>
                             <i class="fas fa-chevron-down toggle-icon"></i>
                         </div>
                         <div class="benefit-tier-content">
@@ -5748,7 +5819,7 @@
                                 <li><i class="fas fa-check"></i> <span class="benefit-highlight">1 cafea gratuită</span></li>
                                 <li><i class="fas fa-check"></i> <span class="benefit-highlight">1 supliment pentru creier</span></li>
                                 <li><i class="fas fa-check"></i> <span class="benefit-highlight">1 consultație neuro-wellness</span></li>
-                                <li><i class="fas fa-check"></i> Anul 2: -25% reducere</li>
+                                <li><i class="fas fa-check"></i> Anul 2: -20% reducere</li>
                             </ul>
                         </div>
                     </div>
@@ -5807,11 +5878,13 @@
             <p class="section-subtitle">Testimoniale de la clienți și colaboratori</p>
         </div>
 
-        <!-- VIDEO TESTIMONIAL PLACEHOLDER - STRUCTURE READY -->
-        <div class="video-testimonial">
-            <div class="video-placeholder">
-                <i class="fas fa-play-circle"></i>
-                <p>TESTIMONIAL VIDEO — ÎN CURÂND</p>
+        <!-- VIDEO TESTIMONIALS -->
+        <div class="video-testimonials-container">
+            <div class="video-testimonial">
+                <video controls poster="" preload="metadata">
+                    <source src="Testimoniale/testimonial-1.mp4" type="video/mp4">
+                    Browser-ul tău nu suportă redarea video.
+                </video>
             </div>
         </div>
 
