@@ -1891,25 +1891,74 @@
             transform: translateY(-2px);
         }
 
-        /* ============ VIDEO TESTIMONIAL ============ */
+        /* ============ VIDEO TESTIMONIAL FUTURISTIC SLIDER ============ */
+        .video-testimonials-slider-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto 60px;
+            padding: 0 40px;
+        }
+
         .video-testimonials-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
-            margin-bottom: 50px;
-            padding: 0 20px;
+            padding: 30px 10px;
         }
 
         .video-testimonial {
-            max-width: 500px;
-            flex: 1 1 400px;
-            background: var(--black-card);
-            border: 1px solid rgba(201, 169, 98, 0.2);
-            border-radius: 12px;
+            background: linear-gradient(145deg, rgba(20, 20, 20, 0.95), rgba(10, 10, 10, 0.98));
+            border: 1px solid rgba(201, 169, 98, 0.25);
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: var(--shadow-gold-md);
+            box-shadow: 
+                0 0 30px rgba(201, 169, 98, 0.08),
+                0 15px 40px rgba(0, 0, 0, 0.4);
             position: relative;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .video-testimonial:hover {
+            transform: translateY(-8px);
+            border-color: rgba(201, 169, 98, 0.5);
+            box-shadow: 
+                0 0 50px rgba(201, 169, 98, 0.15),
+                0 25px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .video-testimonial::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                var(--gold) 30%, 
+                var(--gold-light) 50%, 
+                var(--gold) 70%, 
+                transparent 100%);
+            z-index: 10;
+            opacity: 0.7;
+        }
+
+        .video-testimonial::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                var(--gold) 30%, 
+                var(--gold-light) 50%, 
+                var(--gold) 70%, 
+                transparent 100%);
+            z-index: 10;
+            opacity: 0.7;
         }
 
         .video-testimonial video {
@@ -1917,15 +1966,198 @@
             height: auto;
             display: block;
             background: var(--black);
+            max-height: 500px;
+            object-fit: contain;
         }
 
-        .video-testimonial::before {
+        .video-testimonial-glow {
+            display: none;
+        }
+
+        /* Video Testimonial Badge */
+        .video-testimonial-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            padding: 6px 14px;
+            background: linear-gradient(135deg, rgba(201, 169, 98, 0.95), rgba(168, 138, 74, 0.95));
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--black);
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            box-shadow: 0 3px 12px rgba(201, 169, 98, 0.4);
+        }
+
+        .video-testimonial-badge i {
+            font-size: 9px;
+        }
+
+        /* Video Slider Navigation - Hidden on Desktop */
+        .video-slider-nav {
+            display: none;
+        }
+
+        /* ============ MOBILE: Slider Mode ============ */
+        @media (max-width: 768px) {
+            .video-testimonials-slider-wrapper {
+                padding: 0 15px;
+                margin-bottom: 40px;
+            }
+
+            .video-testimonials-container {
+                display: flex;
+                gap: 20px;
+                overflow-x: auto;
+                scroll-behavior: smooth;
+                padding: 20px 5px;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+                scroll-snap-type: x mandatory;
+            }
+
+            .video-testimonials-container::-webkit-scrollbar {
+                display: none;
+            }
+
+            .video-testimonial {
+                flex: 0 0 100%;
+                min-width: 100%;
+                scroll-snap-align: center;
+                border-radius: 14px;
+            }
+
+            .video-testimonial video {
+                aspect-ratio: auto;
+            }
+
+            .video-testimonial-glow {
+                display: block;
+                position: absolute;
+                inset: -2px;
+                background: conic-gradient(
+                    from 0deg,
+                    transparent 0deg 60deg,
+                    rgba(201, 169, 98, 0.3) 60deg 120deg,
+                    transparent 120deg 240deg,
+                    rgba(201, 169, 98, 0.3) 240deg 300deg,
+                    transparent 300deg 360deg
+                );
+                border-radius: 16px;
+                z-index: -1;
+                animation: rotateGlow 8s linear infinite;
+                opacity: 0.5;
+            }
+
+            @keyframes rotateGlow {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(360deg); }
+            }
+
+            .video-slider-nav {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 20px;
+                margin-top: 20px;
+            }
+
+            .video-testimonial-badge {
+                top: 10px;
+                left: 10px;
+                padding: 5px 10px;
+                font-size: 8px;
+            }
+        }
+
+        /* Video Slider Navigation Buttons */
+        .video-slider-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, rgba(201, 169, 98, 0.15), rgba(201, 169, 98, 0.05));
+            border: 1px solid rgba(201, 169, 98, 0.4);
+            color: var(--gold);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-slider-btn::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(ellipse at center, var(--gold-glow) 0%, transparent 60%);
-            pointer-events: none;
+            background: radial-gradient(circle at center, var(--gold) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .video-slider-btn:hover {
+            transform: scale(1.1);
+            border-color: var(--gold);
+            box-shadow: 0 0 30px rgba(201, 169, 98, 0.4);
+        }
+
+        .video-slider-btn:hover::before {
+            opacity: 0.2;
+        }
+
+        .video-slider-btn i {
+            font-size: 18px;
+            position: relative;
             z-index: 1;
+        }
+
+        /* Video Slider Dots */
+        .video-slider-dots {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .video-slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(201, 169, 98, 0.2);
+            border: 1px solid rgba(201, 169, 98, 0.4);
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .video-slider-dot::after {
+            content: '';
+            position: absolute;
+            inset: 2px;
+            border-radius: 50%;
+            background: var(--gold);
+            transform: scale(0);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .video-slider-dot.active {
+            background: rgba(201, 169, 98, 0.4);
+            border-color: var(--gold);
+            box-shadow: 0 0 15px rgba(201, 169, 98, 0.5);
+        }
+
+        .video-slider-dot.active::after {
+            transform: scale(1);
+        }
+
+        .video-slider-dot:hover {
+            border-color: var(--gold);
+            transform: scale(1.2);
         }
 
         .video-placeholder {
@@ -2891,14 +3123,49 @@
         .recommended-nav {
             display: flex;
             justify-content: center;
+            align-items: center;
             gap: 15px;
             margin-top: 40px;
         }
 
-        /* Responsive Recommended */
+        /* Recommended Slider Dots (Mobile) */
+        .recommended-dots {
+            display: none;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .recommended-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(201, 169, 98, 0.2);
+            border: 1px solid rgba(201, 169, 98, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .recommended-dot.active {
+            background: var(--gold);
+            border-color: var(--gold);
+            box-shadow: 0 0 10px rgba(201, 169, 98, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .recommended-dots {
+                display: flex;
+            }
+        }
+
+        /* Responsive Recommended - Full Width Mobile Cards */
         @media (max-width: 768px) {
             .recommended-section {
-                padding: 60px 20px;
+                padding: 60px 0;
+                overflow: hidden;
+            }
+
+            .recommended-header {
+                padding: 0 20px;
             }
 
             .recommended-header h2 {
@@ -2906,13 +3173,42 @@
             }
 
             .recommended-carousel {
-                gap: 15px;
+                gap: 0;
                 padding: 20px 0;
+                scroll-snap-type: x mandatory;
+                scroll-padding: 0;
             }
 
             .recommended-card {
-                flex: 0 0 calc(100vw - 60px);
-                min-width: calc(100vw - 60px);
+                flex: 0 0 100vw;
+                min-width: 100vw;
+                max-width: 100vw;
+                padding: 0 20px;
+                box-sizing: border-box;
+                scroll-snap-align: start;
+                scroll-snap-stop: always;
+                border: none;
+                background: transparent;
+                border-radius: 0;
+                transform: none !important;
+            }
+
+            .recommended-card:hover {
+                transform: none;
+                box-shadow: none;
+            }
+
+            .recommended-card .recommended-image {
+                border-radius: 16px 16px 0 0;
+                border: 1px solid rgba(201, 169, 98, 0.15);
+                border-bottom: none;
+            }
+
+            .recommended-card .recommended-info {
+                background: var(--black-card);
+                border-radius: 0 0 16px 16px;
+                border: 1px solid rgba(201, 169, 98, 0.15);
+                border-top: none;
             }
 
             .recommended-name {
@@ -2925,13 +3221,17 @@
             }
 
             .recommended-btn {
-                padding: 10px 8px;
-                font-size: 8px;
+                padding: 12px 10px;
+                font-size: 10px;
                 letter-spacing: 0.5px;
             }
 
             .recommended-info {
                 padding: 20px 15px;
+            }
+
+            .recommended-nav {
+                padding: 0 20px;
             }
         }
 
@@ -5262,6 +5562,7 @@
 
         <div class="recommended-nav">
             <button class="carousel-btn" onclick="scrollRecommended(-1)"><i class="fas fa-chevron-left"></i></button>
+            <div class="recommended-dots" id="recommendedDots"></div>
             <button class="carousel-btn" onclick="scrollRecommended(1)"><i class="fas fa-chevron-right"></i></button>
         </div>
     </section>
@@ -5859,13 +6160,34 @@
             <p class="section-subtitle">Testimoniale de la clienți și colaboratori</p>
         </div>
 
-        <!-- VIDEO TESTIMONIALS -->
-        <div class="video-testimonials-container">
-            <div class="video-testimonial">
-                <video controls poster="" preload="metadata">
-                    <source src="Testimoniale/testimonial-1.mp4" type="video/mp4">
-                    Browser-ul tău nu suportă redarea video.
-                </video>
+        <!-- VIDEO TESTIMONIALS FUTURISTIC SLIDER -->
+        <div class="video-testimonials-slider-wrapper">
+            <div class="video-testimonials-container" id="videoTestimonialsCarousel">
+                <div class="video-testimonial">
+                    <div class="video-testimonial-glow"></div>
+                    <span class="video-testimonial-badge"><i class="fas fa-star"></i> Testimonial Video</span>
+                    <video controls preload="metadata">
+                        <source src="Testimoniale/testimonial-1.mp4#t=0.1" type="video/mp4">
+                        Browser-ul tău nu suportă redarea video.
+                    </video>
+                </div>
+                <div class="video-testimonial">
+                    <div class="video-testimonial-glow"></div>
+                    <span class="video-testimonial-badge"><i class="fas fa-star"></i> Testimonial Video</span>
+                    <video controls preload="metadata">
+                        <source src="Testimoniale/testimonial-2.mov#t=0.1" type="video/quicktime">
+                        <source src="Testimoniale/testimonial-2.mov#t=0.1" type="video/mp4">
+                        Browser-ul tău nu suportă redarea video.
+                    </video>
+                </div>
+            </div>
+            <div class="video-slider-nav">
+                <button class="video-slider-btn" onclick="scrollVideoTestimonials(-1)"><i class="fas fa-chevron-left"></i></button>
+                <div class="video-slider-dots">
+                    <span class="video-slider-dot active" onclick="goToVideoSlide(0)"></span>
+                    <span class="video-slider-dot" onclick="goToVideoSlide(1)"></span>
+                </div>
+                <button class="video-slider-btn" onclick="scrollVideoTestimonials(1)"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
 
@@ -6177,14 +6499,17 @@
             });
         }
 
-        // Recommended carousel scroll function
+        // Recommended carousel scroll function - Updated for full-width mobile
+        let currentRecommendedSlide = 0;
+
         function scrollRecommended(direction) {
             const carousel = document.getElementById('recommendedCarousel');
             const cards = carousel.querySelectorAll('.recommended-card');
             if (cards.length === 0) return;
             
             const cardWidth = cards[0].offsetWidth;
-            const gap = 25;
+            // No gap on mobile, use full card width
+            const gap = window.innerWidth <= 768 ? 0 : 25;
             const scrollAmount = cardWidth + gap;
             
             carousel.scrollBy({
@@ -6192,6 +6517,123 @@
                 behavior: 'smooth'
             });
         }
+
+        function goToRecommendedSlide(index) {
+            const carousel = document.getElementById('recommendedCarousel');
+            const cards = carousel.querySelectorAll('.recommended-card');
+            if (cards.length === 0) return;
+            
+            currentRecommendedSlide = index;
+            const cardWidth = cards[0].offsetWidth;
+            carousel.scrollTo({
+                left: index * cardWidth,
+                behavior: 'smooth'
+            });
+            updateRecommendedDots();
+        }
+
+        function updateRecommendedDots() {
+            const dots = document.querySelectorAll('.recommended-dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentRecommendedSlide);
+            });
+        }
+
+        // Initialize recommended dots
+        function initRecommendedDots() {
+            const carousel = document.getElementById('recommendedCarousel');
+            const dotsContainer = document.getElementById('recommendedDots');
+            const cards = carousel.querySelectorAll('.recommended-card');
+            
+            if (!dotsContainer || cards.length === 0) return;
+            
+            dotsContainer.innerHTML = '';
+            cards.forEach((_, index) => {
+                const dot = document.createElement('span');
+                dot.className = 'recommended-dot' + (index === 0 ? ' active' : '');
+                dot.onclick = () => goToRecommendedSlide(index);
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        // Update dots on recommended carousel scroll
+        document.getElementById('recommendedCarousel')?.addEventListener('scroll', function() {
+            const carousel = this;
+            const cards = carousel.querySelectorAll('.recommended-card');
+            if (cards.length === 0) return;
+            
+            const cardWidth = cards[0].offsetWidth;
+            const newIndex = Math.round(carousel.scrollLeft / cardWidth);
+            
+            if (newIndex !== currentRecommendedSlide && newIndex >= 0 && newIndex < cards.length) {
+                currentRecommendedSlide = newIndex;
+                updateRecommendedDots();
+            }
+        });
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', initRecommendedDots);
+
+        // ============ VIDEO TESTIMONIALS SLIDER ============
+        let currentVideoSlide = 0;
+        const totalVideoSlides = 2;
+
+        function scrollVideoTestimonials(direction) {
+            const carousel = document.getElementById('videoTestimonialsCarousel');
+            const cards = carousel.querySelectorAll('.video-testimonial');
+            if (cards.length === 0) return;
+            
+            currentVideoSlide += direction;
+            
+            // Loop around
+            if (currentVideoSlide < 0) currentVideoSlide = cards.length - 1;
+            if (currentVideoSlide >= cards.length) currentVideoSlide = 0;
+            
+            const cardWidth = cards[0].offsetWidth;
+            carousel.scrollTo({
+                left: currentVideoSlide * cardWidth,
+                behavior: 'smooth'
+            });
+            
+            updateVideoSliderDots();
+        }
+
+        function goToVideoSlide(index) {
+            const carousel = document.getElementById('videoTestimonialsCarousel');
+            const cards = carousel.querySelectorAll('.video-testimonial');
+            if (cards.length === 0) return;
+            
+            currentVideoSlide = index;
+            const cardWidth = cards[0].offsetWidth;
+            carousel.scrollTo({
+                left: currentVideoSlide * cardWidth,
+                behavior: 'smooth'
+            });
+            
+            updateVideoSliderDots();
+        }
+
+        function updateVideoSliderDots() {
+            const dots = document.querySelectorAll('.video-slider-dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentVideoSlide);
+            });
+        }
+
+        // Update dots on scroll
+        document.getElementById('videoTestimonialsCarousel')?.addEventListener('scroll', function() {
+            const carousel = this;
+            const cards = carousel.querySelectorAll('.video-testimonial');
+            if (cards.length === 0) return;
+            
+            const cardWidth = cards[0].offsetWidth;
+            const newIndex = Math.round(carousel.scrollLeft / cardWidth);
+            
+            if (newIndex !== currentVideoSlide) {
+                currentVideoSlide = newIndex;
+                updateVideoSliderDots();
+            }
+        });
 
         // Auto-scroll carousel
         let autoScrollInterval;
