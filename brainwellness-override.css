@@ -1,0 +1,676 @@
+/**
+ * ============================================================
+ * BRAIN WELLNESS - CSS OVERRIDE pentru WordPress
+ * ============================================================
+ * 
+ * INSTRUCȚIUNI DE UTILIZARE:
+ * 1. În WordPress, mergi la Appearance → Customize → Additional CSS
+ * 2. Copiază tot conținutul acestui fișier
+ * 3. Lipește-l și salvează
+ * 
+ * SAU folosește un plugin precum "Simple Custom CSS and JS"
+ * 
+ * NOTĂ: Acest CSS este prudent și folosește selectori specifici.
+ * Dacă ceva nu se aplică, crește specificitatea adăugând mai
+ * mulți selectori sau folosește !important pe liniile respective.
+ * 
+ * Creat pentru: brainwellness.ro
+ * Versiune: 1.0
+ * ============================================================
+ */
+
+
+/* ============================================================
+   PARTEA 1: VARIABILE CSS (CROMATICĂ)
+   - Acestea definesc culorile din tot site-ul
+   - Modifică doar valorile pentru a schimba întreaga paletă
+   ============================================================ */
+
+:root {
+    /* Culorile principale GOLD */
+    --bw-gold: #c9a962;
+    --bw-gold-light: #d4b978;
+    --bw-gold-dark: #a88a4a;
+    --bw-gold-glow: rgba(201, 169, 98, 0.15);
+    --bw-gold-glow-strong: rgba(201, 169, 98, 0.25);
+    
+    /* Culorile principale NEGRU */
+    --bw-black: #0a0a0a;
+    --bw-black-light: #1a1a1a;
+    --bw-black-card: #111111;
+    
+    /* ALB și nuanțe */
+    --bw-white: #ffffff;
+    --bw-white-soft: rgba(255, 255, 255, 0.85);
+    --bw-white-muted: rgba(255, 255, 255, 0.6);
+    
+    /* Umbri premium aurii */
+    --bw-shadow-gold-sm: 0 4px 20px rgba(201, 169, 98, 0.1);
+    --bw-shadow-gold-md: 0 8px 40px rgba(201, 169, 98, 0.12);
+    --bw-shadow-gold-lg: 0 15px 60px rgba(201, 169, 98, 0.15);
+}
+
+
+/* ============================================================
+   PARTEA 2: FONTURI
+   - Importă fonturile premium
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
+
+
+/* ============================================================
+   PARTEA 3: STILURI GLOBALE - BODY & FUNDAL
+   ============================================================
+   
+   ATENȚIE: Aceste stiluri sunt OPȚIONALE pentru fundal negru.
+   Decomentează-le DOAR dacă vrei întregul site negru.
+   Altfel, lasă-le comentate și folosește doar header/footer.
+   ============================================================ */
+
+/* 
+   OPȚIUNEA A: FUNDAL NEGRU COMPLET (decomentează dacă vrei)
+   --------------------------------------------------------
+*/
+/*
+body {
+    background-color: var(--bw-black) !important;
+    color: var(--bw-white) !important;
+}
+*/
+
+/* Fontul general - SAFE, nu afectează culorile */
+body {
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+
+/* ============================================================
+   PARTEA 4: HEADER / NAVIGATION
+   - Stilul premium negru cu scris auriu/maro
+   - Bară completă fără margini
+   ============================================================ */
+
+/* Header principal - FULL WIDTH, fără margini */
+header,
+.site-header,
+#masthead,
+.header,
+.main-header,
+.navbar,
+.nav-wrapper,
+#header,
+.top-header,
+header.header,
+.flavor-header,
+.flavor-main-header,
+.flavor-top-bar,
+.top-bar,
+#flavor-header,
+.flavor-nav,
+.flavor-navigation,
+.flavor-menu-wrapper,
+div[class*="header"],
+div[id*="header"] {
+    background: var(--bw-black) !important;
+    background-color: var(--bw-black) !important;
+    border-bottom: 1px solid rgba(201, 169, 98, 0.15) !important;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3) !important;
+    margin: 0 !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+}
+
+/* Eliminăm orice container interior care ar avea margini */
+header > *,
+.site-header > *,
+#masthead > *,
+.header > *,
+.main-header > *,
+header .container,
+header .wrapper,
+header .row,
+.site-header .container,
+#masthead .container {
+    background: transparent !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+/* Header FIXED - când are clasa scrolled sau sticky */
+header.scrolled,
+header.fixed,
+header.sticky,
+header.is-sticky,
+.site-header.scrolled,
+.site-header.fixed,
+.site-header.sticky,
+#masthead.scrolled,
+#masthead.sticky,
+.header-sticky,
+.stuck {
+    background: var(--bw-black) !important;
+    background-color: var(--bw-black) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+}
+
+/* Logo în header */
+.site-logo img,
+.custom-logo,
+.logo img,
+header .logo img,
+.site-branding img,
+#logo img,
+.header-logo img {
+    filter: brightness(1.1) !important;
+    max-height: 70px !important;
+}
+
+/* Titlul site-ului dacă e text */
+.site-title,
+.site-title a,
+h1.site-title,
+.logo-text,
+header h1 a,
+header .site-branding a,
+.custom-logo-link {
+    font-family: 'Cormorant Garamond', serif !important;
+    color: var(--bw-gold) !important;
+    text-decoration: none !important;
+    letter-spacing: 2px !important;
+}
+
+/* Descrierea/tagline-ul site-ului */
+.site-description,
+.tagline,
+p.site-description {
+    color: var(--bw-white-muted) !important;
+    font-size: 11px !important;
+}
+
+/* Link-uri navigare în header - AURIU/MARO */
+.main-navigation a,
+.primary-menu a,
+.nav-menu a,
+.main-menu a,
+header nav a,
+.site-navigation a,
+#primary-menu a,
+.menu-item a,
+nav.main-nav a,
+.navbar-nav a,
+.header-menu a,
+.navigation a,
+header a,
+.site-header a,
+#masthead a,
+.flavor-menu a,
+.flavor-nav a,
+header ul li a,
+header nav ul li a {
+    color: var(--bw-gold) !important;
+    text-decoration: none !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    letter-spacing: 1.5px !important;
+    text-transform: uppercase !important;
+    transition: color 0.3s ease !important;
+}
+
+.main-navigation a:hover,
+.primary-menu a:hover,
+.nav-menu a:hover,
+.main-menu a:hover,
+header nav a:hover,
+.site-navigation a:hover,
+#primary-menu a:hover,
+.menu-item a:hover,
+nav.main-nav a:hover,
+.navbar-nav a:hover,
+.header-menu a:hover,
+.navigation a:hover,
+header a:hover,
+.site-header a:hover,
+#masthead a:hover,
+.flavor-menu a:hover,
+.flavor-nav a:hover,
+header ul li a:hover,
+.current-menu-item > a,
+.current_page_item > a {
+    color: var(--bw-gold-light) !important;
+    opacity: 0.9 !important;
+}
+
+/* Dropdown menus în header */
+.sub-menu,
+.dropdown-menu,
+ul.sub-menu,
+.main-navigation ul ul,
+.nav-menu ul.sub-menu {
+    background: var(--bw-black) !important;
+    border: 1px solid rgba(201, 169, 98, 0.2) !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5) !important;
+}
+
+.sub-menu a,
+.dropdown-menu a,
+.sub-menu .menu-item a {
+    color: var(--bw-gold) !important;
+    font-size: 13px !important;
+    padding: 12px 25px !important;
+}
+
+.sub-menu a:hover,
+.dropdown-menu a:hover {
+    color: var(--bw-gold-light) !important;
+    background: rgba(201, 169, 98, 0.1) !important;
+}
+
+/* Icoane în header (search, cart, etc.) - AURIU */
+header .cart-icon,
+header .search-icon,
+.header-cart,
+.header-search,
+.woocommerce-cart-link,
+.cart-contents,
+header i,
+header svg,
+header .fa,
+header .fas,
+header .far,
+header .fab,
+header [class*="icon"],
+.site-header i,
+.site-header svg,
+#masthead i,
+#masthead svg {
+    color: var(--bw-gold) !important;
+    fill: var(--bw-gold) !important;
+    transition: color 0.3s ease !important;
+}
+
+header .cart-icon:hover,
+header .search-icon:hover,
+.header-cart:hover,
+.header-search:hover,
+.woocommerce-cart-link:hover,
+.cart-contents:hover,
+header i:hover,
+header svg:hover {
+    color: var(--bw-gold-light) !important;
+    fill: var(--bw-gold-light) !important;
+}
+
+/* Cart count badge */
+.cart-count,
+.cart-contents-count,
+.count,
+.mini-cart-count,
+.shopping-cart .count {
+    background: var(--bw-gold) !important;
+    color: var(--bw-black) !important;
+    font-weight: 600 !important;
+}
+
+/* Orice element roz din header - forțăm auriu */
+header *[style*="color"],
+.site-header *[style*="color"],
+#masthead *[style*="color"] {
+    color: var(--bw-gold) !important;
+}
+
+
+/* ============================================================
+   PARTEA 5: FOOTER
+   - Stilul premium dark cu accente aurii
+   ============================================================ */
+
+footer,
+.site-footer,
+#footer,
+.footer,
+.main-footer,
+#colophon,
+.footer-wrapper,
+.flavor-footer {
+    background: var(--bw-black) !important;
+    border-top: 1px solid rgba(201, 169, 98, 0.1) !important;
+    color: var(--bw-white-muted) !important;
+    padding: 60px 40px 30px !important;
+}
+
+/* Titluri din footer (widget titles) */
+footer h1,
+footer h2,
+footer h3,
+footer h4,
+footer h5,
+footer h6,
+.footer h1,
+.footer h2,
+.footer h3,
+.footer h4,
+.footer h5,
+.footer h6,
+.site-footer h1,
+.site-footer h2,
+.site-footer h3,
+.site-footer h4,
+.site-footer h5,
+.site-footer h6,
+.widget-title,
+footer .widget-title,
+.footer-widget-title {
+    font-family: 'Cormorant Garamond', serif !important;
+    color: var(--bw-gold) !important;
+    font-weight: 500 !important;
+    font-size: 18px !important;
+    margin-bottom: 20px !important;
+}
+
+/* Text și paragrafe în footer */
+footer p,
+.site-footer p,
+.footer p,
+#footer p {
+    color: var(--bw-white-muted) !important;
+    font-size: 14px !important;
+    line-height: 1.7 !important;
+}
+
+/* Link-uri în footer */
+footer a,
+.site-footer a,
+.footer a,
+#footer a,
+.footer-menu a,
+footer .menu a,
+.footer-widget a,
+footer li a {
+    color: var(--bw-white-muted) !important;
+    text-decoration: none !important;
+    transition: color 0.3s ease !important;
+}
+
+footer a:hover,
+.site-footer a:hover,
+.footer a:hover,
+#footer a:hover,
+.footer-menu a:hover,
+footer .menu a:hover,
+.footer-widget a:hover,
+footer li a:hover {
+    color: var(--bw-gold) !important;
+}
+
+/* Liste în footer */
+footer ul,
+.site-footer ul,
+.footer ul,
+footer ol {
+    list-style: none !important;
+    padding-left: 0 !important;
+    margin: 0 !important;
+}
+
+footer li,
+.site-footer li,
+.footer li {
+    margin-bottom: 10px !important;
+    padding: 0 !important;
+}
+
+/* Social icons în footer */
+footer .social-icons a,
+.footer-social a,
+.social-links a,
+footer .social a,
+.footer .social-media a {
+    width: 40px !important;
+    height: 40px !important;
+    border: 1px solid rgba(201, 169, 98, 0.3) !important;
+    border-radius: 50% !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: var(--bw-white) !important;
+    transition: all 0.3s ease !important;
+    margin-right: 10px !important;
+    background: transparent !important;
+}
+
+footer .social-icons a:hover,
+.footer-social a:hover,
+.social-links a:hover,
+footer .social a:hover,
+.footer .social-media a:hover {
+    background: var(--bw-gold) !important;
+    border-color: var(--bw-gold) !important;
+    color: var(--bw-black) !important;
+}
+
+/* Footer bottom bar / copyright */
+.footer-bottom,
+.site-info,
+.copyright,
+.footer-copyright,
+.colophon,
+#footer-bottom,
+.footer-bar {
+    text-align: center !important;
+    padding-top: 30px !important;
+    margin-top: 40px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.footer-bottom p,
+.site-info p,
+.copyright p,
+.footer-copyright p {
+    font-size: 13px !important;
+    color: var(--bw-white-muted) !important;
+}
+
+
+/* ============================================================
+   PARTEA 6: BUTOANE
+   - Stilul premium auriu - SAFE version
+   - Afectează doar hover și tranziții
+   ============================================================ */
+
+/* Butoane - doar hover effect auriu */
+.button:hover,
+.btn:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover,
+.wp-block-button__link:hover,
+.woocommerce .button:hover,
+.woocommerce-Button:hover,
+a.button:hover,
+.add_to_cart_button:hover,
+.single_add_to_cart_button:hover,
+.checkout-button:hover {
+    border-color: var(--bw-gold) !important;
+    box-shadow: var(--bw-shadow-gold-sm) !important;
+}
+
+/* Butoane WooCommerce ALT (Adaugă în coș, Checkout) */
+.woocommerce a.button.alt,
+.woocommerce button.button.alt,
+.woocommerce input.button.alt {
+    background: var(--bw-gold) !important;
+    color: var(--bw-black) !important;
+    border: 1px solid var(--bw-gold) !important;
+    transition: all 0.3s ease !important;
+}
+
+.woocommerce a.button.alt:hover,
+.woocommerce button.button.alt:hover,
+.woocommerce input.button.alt:hover {
+    background: var(--bw-gold-light) !important;
+    border-color: var(--bw-gold-light) !important;
+}
+
+
+/* ============================================================
+   PARTEA 7: TITLURI GENERALE
+   - Font Cormorant Garamond pentru titluri
+   - SAFE: nu schimbă culorile, doar fontul
+   ============================================================ */
+
+h1, h2, h3, h4, h5, h6,
+.entry-title,
+.page-title,
+.post-title,
+.product-title,
+.woocommerce-loop-product__title {
+    font-family: 'Cormorant Garamond', serif !important;
+    /* Culoarea rămâne originală - nu forțăm alb */
+}
+
+/* Titluri cu accent auriu - DOAR pentru span-uri */
+h1 span.gold,
+h2 span.gold,
+.section-title span,
+.entry-title span.gold {
+    color: var(--bw-gold) !important;
+}
+
+
+/* ============================================================
+   PARTEA 8: LINK-URI
+   - Culoare aurie pe hover
+   - SAFE: nu afectează link-urile din meniuri (sunt separate)
+   ============================================================ */
+
+/* Link-uri generale - DOAR hover auriu, păstrăm culoarea originală */
+.entry-content a,
+article a,
+.post-content a {
+    transition: color 0.3s ease !important;
+}
+
+.entry-content a:hover,
+article a:hover,
+.post-content a:hover {
+    color: var(--bw-gold) !important;
+}
+
+
+/* ============================================================
+   PARTEA 9: WOOCOMMERCE PRODUSE (opțional)
+   - Stilizare pentru paginile de produse
+   - SAFE: doar hover effects, nu schimbă fundalurile
+   ============================================================ */
+
+/* Card produs - DOAR hover effect */
+.woocommerce ul.products li.product:hover,
+.product-card:hover,
+.wc-block-grid__product:hover {
+    box-shadow: var(--bw-shadow-gold-sm) !important;
+    transform: translateY(-3px) !important;
+}
+
+/* Numele produsului - font upgrade */
+.woocommerce ul.products li.product .woocommerce-loop-product__title,
+.product-title,
+.wc-block-grid__product-title {
+    font-family: 'Cormorant Garamond', serif !important;
+}
+
+/* Preț produs - accent auriu OPȚIONAL */
+/*
+.woocommerce ul.products li.product .price,
+.product-price,
+.wc-block-grid__product-price,
+.woocommerce .price,
+.amount {
+    color: var(--bw-gold) !important;
+}
+*/
+
+
+/* ============================================================
+   PARTEA 10: FORMULARE
+   - Input-uri și form elements
+   - SAFE: doar border și focus effects
+   ============================================================ */
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--bw-gold) !important;
+    outline: none !important;
+    box-shadow: 0 0 0 2px rgba(201, 169, 98, 0.15) !important;
+}
+
+
+/* ============================================================
+   PARTEA 11: SCROLLBAR PERSONALIZAT
+   - OPȚIONAL - decomentează dacă vrei scrollbar auriu
+   ============================================================ */
+
+/*
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bw-black);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--bw-gold-dark);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--bw-gold);
+}
+*/
+
+
+/* ============================================================
+   PARTEA 12: UTILITY CLASSES (poți folosi manual în WP)
+   ============================================================ */
+
+.text-gold {
+    color: var(--bw-gold) !important;
+}
+
+.bg-black {
+    background: var(--bw-black) !important;
+}
+
+.bg-black-light {
+    background: var(--bw-black-light) !important;
+}
+
+.border-gold {
+    border-color: var(--bw-gold) !important;
+}
+
+.font-serif {
+    font-family: 'Cormorant Garamond', serif !important;
+}
+
+
+/* ============================================================
+   SFÂRȘIT
+   
+   Dacă anumite elemente nu se schimbă:
+   1. Verifică în browser DevTools care selector le targetează
+   2. Adaugă acel selector aici cu !important
+   3. Sau mărește specificitatea: body header.specific-class { }
+   ============================================================ */
